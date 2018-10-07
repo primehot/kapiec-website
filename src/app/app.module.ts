@@ -5,16 +5,20 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { AnimatedSearchComponent } from './animated-search/animated-search.component';
+import { NewsViewComponent } from './news-view/news-view.component';
+import {NgxPaginationModule} from "ngx-pagination";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    AnimatedSearchComponent
+    AnimatedSearchComponent,
+    NewsViewComponent
   ],
   imports: [
     NgbCollapseModule,
-    BrowserModule
+    BrowserModule,
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

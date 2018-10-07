@@ -1,0 +1,23 @@
+<div class="card-columns">
+  <div class=""  *ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: 10, currentPage: p, totalItems: total }">
+    <div class="card">
+      <!--<a [routerLink]="['/presentation', presentation._id]">{{presentation.title}}</a>-->
+      <img class="card-img-top" src="..." alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{ item }}</h5>
+        <p class="card-text">This is a longer card It's a broader card with text below as a natural lead-in to extra content. This content is a little longer. This content is a little bit longer.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<ul class="meal-list">-->
+  <!--<li *ngFor="let meal of asyncMeals | async | paginate: { id: 'server', itemsPerPage: 10, currentPage: p, totalItems: total }">-->
+    <!--{{ meal }}-->
+  <!--</li>-->
+<!--</ul>-->
+
+<div class="has-text-centered">
+  <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+  <pagination-controls (pageChange)="getPage($event)" id="server"></pagination-controls>
+</div>

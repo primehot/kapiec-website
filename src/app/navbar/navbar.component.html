@@ -5,30 +5,26 @@
   </header>
 </div>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-0">
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark py-0">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
           aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
           (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
-    <div class="navbar-nav col-4"></div>
-    <div class="navbar-nav col-4 justify-content-center">
+    <div class="navbar-nav col-4 col-md-3"></div>
+    <div class="navbar-nav col-4 col-md-6 justify-content-center">
       <a class="nav-item nav-link active" href="#">Загальне <span class="sr-only">(current)</span></a>
       <a class="nav-item nav-link" href="#">Сонник</a>
       <a class="nav-item nav-link" href="#">Для женщин</a>
     </div>
-    <div class="navbar-nav col-4 justify-content-end">
-      <div class="input-group">
-        <input type="text" class="form-control form-control-sm" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary btn-sm" type="button">Button</button>
-        </div>
+    <div class="navbar-nav col-4 col-md-3 justify-content-end">
+      <div class="input-group col-lg-8 col-sm-10">
+        <input type="text" class="form-control form-control-sm input-xs" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <!--<div class="input-group-append">-->
+          <!--<button class="btn btn-outline-secondary btn-sm" type="button">Поиск</button>-->
+        <!--</div>-->
       </div>
-      <!--<form class="form-inline my-2 my-lg-0 ">-->
-        <!--<input class="search form-control  mr-sm-2" type="search" placeholder="Search" aria-label="Search">-->
-        <!--<button class="btn btn-outline-success btn-sm my-2 my-sm-0" type="submit">Search</button>-->
-      <!--</form>-->
     </div>
   </div>
 </nav>
