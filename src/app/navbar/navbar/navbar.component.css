@@ -17,7 +17,7 @@ a:active {
 }
 
 .navbar .navbar-nav>a:hover,
-.navbar .navbar-nav>a:focus {
+.navbar .navbar-nav>a:focus{
   color: black;
   background-color: white;
 }

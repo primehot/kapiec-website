@@ -1,9 +1,4 @@
-<div class="d-flex justify-content-center bg-dark">
-  <header role="banner">
-    <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/32877/logo-thing.png" width="200"
-         alt="Logo Thing main logo">
-  </header>
-</div>
+<app-navbar-header></app-navbar-header>
 
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark py-0">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -14,9 +9,9 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
     <div class="navbar-nav col-4 col-md-3"></div>
     <div class="navbar-nav col-4 col-md-6 justify-content-center">
-      <a class="nav-item nav-link active" href="#">Загальне <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link" href="#">Сонник</a>
-      <a class="nav-item nav-link" href="#">Для женщин</a>
+      <a class="nav-item nav-link nav-item-news active" href="#" id="nav-item-news">Новости <span class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link nav-item-dreams" href="#" >Сонник</a>
+      <a class="nav-item nav-link" href="#" id="nav-item-woman">Для женщин</a>
     </div>
     <div class="navbar-nav col-4 col-md-3 justify-content-end">
       <div class="input-group col-lg-8 col-sm-10">

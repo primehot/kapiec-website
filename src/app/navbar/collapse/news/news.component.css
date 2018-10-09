@@ -1,0 +1,6 @@
+#hover-content {
+  display:none;
+}
+.nav-item-news:hover, #hover-content {
+  display:block;
+}
