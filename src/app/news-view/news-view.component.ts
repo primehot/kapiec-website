@@ -15,11 +15,13 @@ interface IServerResponse {
 @Component({
   selector: 'app-news-view',
   templateUrl: './news-view.component.html',
-  styleUrls: ['./news-view.component.css'],
+  styleUrls: ['./news-view.component.css', './new-view.components.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewsViewComponent implements OnInit {
   @Input() meals: string[] = ['test', 'test1', 'test2', 'test3', 'test4', 'test5', 'test6', 'test7', 'test8', 'test9', 'test10', 'test11'];
+
+  mainNews = 'Main title';
 
   asyncMeals: Observable<string[]>;
   p = 1;
@@ -55,6 +57,6 @@ function serverCall(meals: string[], page: number): Observable<IServerResponse> 
 
   return of({
       items: meals.slice(start, end),
-      total: 100
+      total: meals.length
     }) ;
 }
