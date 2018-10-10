@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavbarCollapseServiceService} from '../../../navbar-collapse-service.service';
 
 @Component({
   selector: 'app-navbar-collapse-woman',
@@ -7,7 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WomanComponent implements OnInit {
 
-  constructor() { }
+  show = false;
+
+  constructor(private navbarCollapseServiceService: NavbarCollapseServiceService) {
+    navbarCollapseServiceService.showWomanCollapse$.subscribe(
+      show => {
+        this.show = show;
+        console.log(`log change ${show}`);
+      });
+  }
 
   ngOnInit() {
   }

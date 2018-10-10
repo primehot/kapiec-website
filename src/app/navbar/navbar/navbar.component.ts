@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NavbarCollapseServiceService} from '../../navbar-collapse-service.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private navbarCollapseServiceService: NavbarCollapseServiceService) { }
 
   ngOnInit() {
   }
 
+  navNewsMouseEnter() {
+   this.navbarCollapseServiceService.showNewsEvent(true);
+  }
+  navNewsMouseLeave() {
+    this.navbarCollapseServiceService.showNewsEvent(false);
+  }
+
+  navDreamsMouseEnter() {
+    this.navbarCollapseServiceService.showDreamsEvent(true);
+  }
+  navDreamsMouseLeave() {
+    this.navbarCollapseServiceService.showDreamsEvent(false);
+  }
+
+  navWomanMouseEnter() {
+    this.navbarCollapseServiceService.showWomanEvent(true);
+  }
+  navWomanMouseLeave() {
+    this.navbarCollapseServiceService.showWomanEvent(false);
+  }
 }
