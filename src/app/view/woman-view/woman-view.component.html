@@ -1,0 +1,39 @@
+<div class="card bg-dark text-white d-sm-none d-md-block">
+  <!--<a [routerLink]="['/presentation', presentation._id]">{{presentation.title}}</a>-->
+  <img class="card-img" src="../../../../main.jpg" alt="Main card image">
+  <div class="card-img-overlay">
+    <h5 class="card-title">{{ mainNews }}</h5>
+    <h3 class="card-text">This is main</h3>
+    <p class="card-text">Last updated 3 mins ago</p>
+  </div>
+</div>
+<div class="row">
+  <div class="container col-md-8">
+    <div class="card-columns justify-content-center">
+      <div class="card bg-dark text-white"
+           *ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: 10, currentPage: p, totalItems: total }">
+
+        <!--<a [routerLink]="['/presentation', presentation._id]">{{presentation.title}}</a>-->
+        <img class="card-img" src="{{getImage(item.id)}}" alt="Card image">
+        <div class="card-img-overlay">
+          <h5 class="card-title">{{ item.title }}</h5>
+          <h3 class="card-text">{{ item.hotContent }}</h3>
+        </div>
+      </div>
+    </div>
+    <div class="has-text-centered">
+      <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+      <pagination-controls class="container" (pageChange)="getPage($event)"
+                           id="server"></pagination-controls>
+    </div>
+  </div>
+  <div class="container d-flex col-md-4 justify-content-center">
+    <a href="https://clck.yandex.ru/redir/dtype=stred/pid=7/cid=1228/*https://yandex.ru/pogoda/143" target="_blank">
+      <img src="https://info.weather.yandex.net/143/2_white.ru.png?domain=ru" border="0" alt="Яндекс.Погода"/>
+      <img width="1" height="1"
+           src="https://clck.yandex.ru/click/dtype=stred/pid=7/cid=1227/*https://img.yandex.ru/i/pix.gif" alt=""
+           border="0"/>
+    </a>
+  </div>
+</div>
+

@@ -1,6 +1,6 @@
-<div class="card bg-dark text-white">
+<div class="card bg-dark text-white d-sm-none d-md-block">
   <!--<a [routerLink]="['/presentation', presentation._id]">{{presentation.title}}</a>-->
-  <img class="card-img" src="../../../main.jpg" alt="Main card image">
+  <img class="card-img" src="../../../../main.jpg" alt="Main card image">
   <div class="card-img-overlay">
     <h5 class="card-title">{{ mainNews }}</h5>
     <h3 class="card-text">This is main</h3>
@@ -14,13 +14,10 @@
            *ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: 10, currentPage: p, totalItems: total }">
 
         <!--<a [routerLink]="['/presentation', presentation._id]">{{presentation.title}}</a>-->
-        <img class="card-img" src="../../../news.jpg" alt="Card image">
+        <img class="card-img" src="{{getImage(item.id)}}" alt="Card image">
         <div class="card-img-overlay">
-          <h5 class="card-title">{{ item }}</h5>
-          <h3 class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-            content.
-            This content is a little bit longer.</h3>
-          <p class="card-text">Last updated 3 mins ago</p>
+          <h5 class="card-title">{{ item.title }}</h5>
+          <h3 class="card-text">{{ item.hotContent }}</h3>
         </div>
       </div>
     </div>

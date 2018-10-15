@@ -5,6 +5,7 @@ import {Subject} from 'rxjs/index';
   providedIn: 'root'
 })
 export class NavbarCollapseServiceService {
+
   // Observable string sources
   private showNewsCollapse = new Subject<boolean>();
   private showDreamsCollapse = new Subject<boolean>();

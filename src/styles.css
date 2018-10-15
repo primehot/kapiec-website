@@ -1,2 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+
+.overlap {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+.navbar-collapse-container {
+
+}
+
+.navbar-collapse-container-topic {
+  color: white;
+  /*background-color: black;*/
+}

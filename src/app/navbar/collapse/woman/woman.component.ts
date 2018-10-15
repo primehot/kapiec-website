@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NavbarCollapseServiceService} from '../../../navbar-collapse-service.service';
+import {NavbarCollapseServiceService} from '../../../service/navbar-collapse-service.service';
 
 @Component({
   selector: 'app-navbar-collapse-woman',
