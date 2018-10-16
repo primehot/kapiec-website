@@ -1,3 +1,6 @@
-<p>
-  {{article}}
-</p>
+<div class="component" *ngIf="article">
+  <h5>{{article.title}}</h5>
+  <h3>{{article.hotContent}}</h3>
+  <img class="img-fluid" alt="Responsive image" [lazyLoad]="imageSrc" [offset]="100">
+  <p class="text-justify">{{article.content}}</p>
+</div>

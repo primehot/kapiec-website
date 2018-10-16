@@ -67,7 +67,7 @@ export class BackendService {
     }
   }
 
-  geImage(articleType, id): string {
+  getImage(articleType, id): string {
     switch (articleType) {
       case ArticleType.news: {
         return this.getImageLink(this.newsUrl, id);
@@ -81,11 +81,11 @@ export class BackendService {
     }
   }
 
-  getImageLink(url, id) {
+  private getImageLink(url, id) {
     return `${url}/${id}/image`;
   }
 
-  getPageRequest(url, page, size) {
+  private getPageRequest(url, page, size) {
     return this.http.get<ArticlePage>(`${url}?page=${page}&size=${size}`);
   }
 }

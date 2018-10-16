@@ -29,8 +29,8 @@ export class TableComponent implements OnInit {
   }
 
   getImage(id) {
-    console.log(this.backendService.geImage(this.articleType, id));
-    return this.backendService.geImage(this.articleType, id);
+    console.log(this.backendService.getImage(this.articleType, id));
+    return this.backendService.getImage(this.articleType, id);
   }
 
   getPage(page: number) {

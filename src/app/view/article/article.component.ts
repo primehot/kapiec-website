@@ -11,6 +11,7 @@ import {Article} from '../../dto/article';
 export class ArticleComponent implements OnInit {
 
   article: Article;
+  imageSrc: string;
 
   constructor(private route: ActivatedRoute,
               private backendService: BackendService) { }
@@ -20,9 +21,16 @@ export class ArticleComponent implements OnInit {
   }
 
   getArticle(): void {
-    const articleType = +this.route.snapshot.data.articleType;
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.backendService.getArticle(articleType, id).subscribe(article => this.article = article);
+    const articleType = this.route.snapshot.data.articleType;
+    const id = this.route.snapshot.paramMap.get('id');
+
+    console.log(id);
+    console.log(this.backendService.getArticle(articleType, id));
+    this.backendService.getArticle(articleType, id).pipe().subscribe(article => {
+      this.article = article;
+      console.log(article);
+    });
+    this.imageSrc = this.backendService.getImage(articleType, id);
   }
 
 }

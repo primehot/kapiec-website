@@ -1,6 +1,6 @@
 export enum ArticleType {
-  news,
-  woman,
-  dream
+  news = 'news',
+  woman = 'woman',
+  dream = 'dream'
 }
 
