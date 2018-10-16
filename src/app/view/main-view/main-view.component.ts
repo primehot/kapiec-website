@@ -1,21 +1,20 @@
-import {Component, ChangeDetectionStrategy, Input, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 import {BackendService} from '../../service/backend.service';
 import {Article} from '../../dto/article';
+import {Observable} from 'rxjs/index';
+import {tap, map} from 'rxjs/internal/operators';
 
 @Component({
-  selector: 'app-woman-view',
-  templateUrl: './woman-view.component.html',
-  styleUrls: ['./woman-view.component.css', '../bootstrap.view.scss'],
+  selector: 'app-main-view',
+  templateUrl: './main-view.component.html',
+  styleUrls: ['./main-view.component.css', '../bootstrap.view.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class WomanViewComponent implements OnInit {
+export class MainViewComponent implements OnInit {
   mainNews = 'Main title';
 
   asyncMeals: Observable<Article[]>;
   p = 1;
-  pageSize = 10;
   total: number;
   loading: boolean;
 
@@ -28,12 +27,13 @@ export class WomanViewComponent implements OnInit {
   }
 
   getImage(id) {
-    return this.backendService.getWomanImageLink(id);
+    console.log(this.backendService.getNewsImageLink(id));
+    return this.backendService.getNewsImageLink(id);
   }
 
   getPage(page: number) {
     this.loading = true;
-    this.asyncMeals = this.backendService.getWomanPage(page - 1, this.pageSize).pipe(
+    this.asyncMeals = this.backendService.getNewsPage(page - 1, 10).pipe(
       tap(res => {
         console.log(res);
         this.total = res.totalElements;
@@ -44,5 +44,4 @@ export class WomanViewComponent implements OnInit {
       map(res => res.items)
     );
   }
-
 }

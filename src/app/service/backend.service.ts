@@ -24,11 +24,11 @@ export class BackendService {
   }
 
   getNewsImageLink(newsId) {
-    this.getImageLink(this.newsUrl, newsId);
+    return this.getImageLink(this.newsUrl, newsId);
   }
 
   getWomanImageLink(newsId) {
-    this.getImageLink(this.womanUrl, newsId);
+    return this.getImageLink(this.womanUrl, newsId);
   }
 
   getNewsPage(page, size): Observable<ArticlePage> {
@@ -36,7 +36,7 @@ export class BackendService {
   }
 
   getWomanPage(page, size): Observable<ArticlePage> {
-    return this.getPage(this.newsUrl, page, size);
+    return this.getPage(this.womanUrl, page, size);
   }
 
   getImageLink(url, id) {

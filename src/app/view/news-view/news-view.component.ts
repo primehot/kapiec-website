@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy, Input, OnInit} from '@angular/core';
+import {Component, ChangeDetectionStrategy, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {BackendService} from '../../service/backend.service';
@@ -27,6 +27,7 @@ export class NewsViewComponent implements OnInit {
   }
 
   getImage(id) {
+    console.log(this.backendService.getNewsImageLink(id))
     return this.backendService.getNewsImageLink(id);
   }
 
