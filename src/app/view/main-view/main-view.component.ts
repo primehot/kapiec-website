@@ -1,47 +1,17 @@
-import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
-import {BackendService} from '../../service/backend.service';
-import {Article} from '../../dto/article';
-import {Observable} from 'rxjs/index';
-import {tap, map} from 'rxjs/internal/operators';
+import {Component, OnInit} from '@angular/core';
+import {ArticleType} from '../../emun/article-type';
 
 @Component({
   selector: 'app-main-view',
   templateUrl: './main-view.component.html',
-  styleUrls: ['./main-view.component.css', '../bootstrap.view.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./main-view.component.css']
 })
 export class MainViewComponent implements OnInit {
-  mainNews = 'Main title';
+  articleType = ArticleType.news;
 
-  asyncMeals: Observable<Article[]>;
-  p = 1;
-  total: number;
-  loading: boolean;
-
-
-  constructor(private backendService: BackendService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.getPage(1);
-  }
-
-  getImage(id) {
-    console.log(this.backendService.getNewsImageLink(id));
-    return this.backendService.getNewsImageLink(id);
-  }
-
-  getPage(page: number) {
-    this.loading = true;
-    this.asyncMeals = this.backendService.getNewsPage(page - 1, 10).pipe(
-      tap(res => {
-        console.log(res);
-        this.total = res.totalElements;
-        this.p = page;
-        this.loading = false;
-      })
-      ,
-      map(res => res.items)
-    );
   }
 }

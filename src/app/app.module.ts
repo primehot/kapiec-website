@@ -18,6 +18,8 @@ import { LazyLoadImageModule } from 'ng-lazyload-image';
 import { AppRoutingModule } from './app-routing.module';
 import { MainViewComponent } from './view/main-view/main-view.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ArticleComponent } from './view/article/article.component';
+import { TableComponent } from './view/table/table.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CollapseComponent,
     WomanViewComponent,
     MainViewComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ArticleComponent,
+    TableComponent
   ],
   imports: [
     NgbCollapseModule,

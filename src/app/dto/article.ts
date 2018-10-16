@@ -4,5 +4,4 @@ export class Article {
   topic: string;
   hotContent: string;
   content: string;
-  image: any[];
 }

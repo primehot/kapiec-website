@@ -1,48 +1,18 @@
-import {Component, ChangeDetectionStrategy, Input, OnInit} from '@angular/core';
-import {Observable} from 'rxjs';
-import {map, tap} from 'rxjs/operators';
-import {BackendService} from '../../service/backend.service';
-import {Article} from '../../dto/article';
+import {Component, OnInit} from '@angular/core';
+import {ArticleType} from '../../emun/article-type';
 
 @Component({
   selector: 'app-woman-view',
   templateUrl: './woman-view.component.html',
-  styleUrls: ['./woman-view.component.css', '../bootstrap.view.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./woman-view.component.css']
 })
 export class WomanViewComponent implements OnInit {
-  mainNews = 'Main title';
+  articleType = ArticleType.woman;
 
-  asyncMeals: Observable<Article[]>;
-  p = 1;
-  pageSize = 10;
-  total: number;
-  loading: boolean;
-
-
-  constructor(private backendService: BackendService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.getPage(1);
-  }
-
-  getImage(id) {
-    return this.backendService.getWomanImageLink(id);
-  }
-
-  getPage(page: number) {
-    this.loading = true;
-    this.asyncMeals = this.backendService.getWomanPage(page - 1, this.pageSize).pipe(
-      tap(res => {
-        console.log(res);
-        this.total = res.totalElements;
-        this.p = page;
-        this.loading = false;
-      })
-      ,
-      map(res => res.items)
-    );
   }
 
 }
