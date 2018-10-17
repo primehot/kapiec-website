@@ -1,9 +1,9 @@
-import {Component, ChangeDetectionStrategy, OnInit, Input} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
-import {BackendService} from '../../service/backend.service';
 import {Article} from '../../dto/article';
 import {ArticleType} from '../../emun/article-type';
+import {AbstractArticleService} from "../../service/backend/abstract.article.service";
 
 @Component({
   selector: 'app-table',
@@ -13,6 +13,8 @@ import {ArticleType} from '../../emun/article-type';
 })
 export class TableComponent implements OnInit {
   @Input() articleType: ArticleType;
+  @Input() articleService: AbstractArticleService;
+  @Input() topicId?: number;
 
   asyncMeals: Observable<Article[]>;
   p = 1;
@@ -20,8 +22,7 @@ export class TableComponent implements OnInit {
   loading: boolean;
   pageSize = 10;
 
-
-  constructor(private backendService: BackendService) {
+  constructor() {
   }
 
   ngOnInit() {
@@ -29,21 +30,33 @@ export class TableComponent implements OnInit {
   }
 
   getImage(id) {
-    console.log(this.backendService.getImage(this.articleType, id));
-    return this.backendService.getImage(this.articleType, id);
+    console.log(this.articleService.getImage(id));
+    return this.articleService.getImage(id);
+  }
+
+  getServicePageMethod(page: number) {
+    if (this.topicId) {
+      return this.articleService.getPageByTopic(this.topicId, page, this.pageSize);
+    } else {
+      return this.articleService.getPage(page, this.pageSize);
+    }
   }
 
   getPage(page: number) {
     this.loading = true;
-    this.asyncMeals = this.backendService.getPage(this.articleType, page - 1, 10).pipe(
-      tap(res => {
-        console.log(res);
-        this.total = res.totalElements;
-        this.p = page;
-        this.loading = false;
-      })
-      ,
-      map(res => res.items)
-    );
+    if (this.topicId) {
+
+    } else {
+      this.asyncMeals = this.getServicePageMethod(page - 1).pipe(
+        tap(res => {
+          console.log(res);
+          this.total = res.totalElements;
+          this.p = page;
+          this.loading = false;
+        }),
+        map(res => res.items)
+      );
+    }
   }
+
 }

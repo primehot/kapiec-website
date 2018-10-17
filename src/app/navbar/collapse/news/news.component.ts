@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavbarCollapseServiceService} from '../../../service/navbar-collapse-service.service';
+import {NavbarCollapseService} from '../../../service/collapse/navbar.collapse.service';
 
 @Component({
   selector: 'app-navbar-collapse-news',
@@ -15,7 +15,7 @@ export class NewsComponent implements OnInit {
 
   alsoSee = ['also see 1', 'also see '];
 
-  constructor(private navbarCollapseServiceService: NavbarCollapseServiceService) {
+  constructor(private navbarCollapseServiceService: NavbarCollapseService) {
     navbarCollapseServiceService.showNewsCollapse$.subscribe(
       show => {
         this.show = show;

@@ -6,6 +6,7 @@ import {Article} from '../dto/article';
 import {ArticlePage} from '../dto/article-page';
 import {ArticleType} from '../emun/article-type';
 import {ArticleTopic} from '../dto/article-topic';
+import {UrlConfig} from "./url.config";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -15,12 +16,6 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class BackendService {
-  private serverHost = 'http://localhost';
-  private serverPort = '8080';
-  private serverUrl = this.serverHost + ':' + this.serverPort;
-
-  private newsUrl = this.serverUrl + '/news';
-  private womanUrl = this.serverUrl + '/woman';
 
   constructor(private http: HttpClient) {
   }
@@ -28,10 +23,24 @@ export class BackendService {
   getPage(articleType, page, size): Observable<ArticlePage> {
     switch (articleType) {
       case ArticleType.news: {
-        return this.getPageRequest(this.newsUrl, page, size);
+        return this.getPageRequest(UrlConfig.newsUrl, page, size);
       }
-      case ArticleType.woman: {
-        return this.getPageRequest(this.womanUrl, page, size);
+      case ArticleType.women: {
+        return this.getPageRequest(UrlConfig.womenUrl, page, size);
+      }
+      default: {
+        break;
+      }
+    }
+  }
+
+  getPageByTopic(articleType, topicId, page, size): Observable<ArticlePage> {
+    switch (articleType) {
+      case ArticleType.news: {
+        return this.getPageRequestByTopic(UrlConfig.newsUrl, topicId, page, size);
+      }
+      case ArticleType.women: {
+        return this.getPageRequestByTopic(UrlConfig.womenUrl, topicId, page, size);
       }
       default: {
         break;
@@ -42,10 +51,10 @@ export class BackendService {
   getArticle(articleType, id): Observable<Article> {
     switch (articleType) {
       case ArticleType.news: {
-        return this.http.get<Article>(`${this.newsUrl}/${id}`);
+        return this.http.get<Article>(`${UrlConfig.newsUrl}/${id}`);
       }
-      case ArticleType.woman: {
-        return this.http.get<Article>(`${this.womanUrl}/${id}`);
+      case ArticleType.women: {
+        return this.http.get<Article>(`${UrlConfig.womenUrl}/${id}`);
       }
       default: {
         break;
@@ -56,10 +65,10 @@ export class BackendService {
   getTopics(articleType): Observable<ArticleTopic> {
     switch (articleType) {
       case ArticleType.news: {
-        return this.http.get<ArticleTopic>(`${this.newsUrl}/topics`);
+        return this.http.get<ArticleTopic>(`${UrlConfig.newsUrl}/topics`);
       }
-      case ArticleType.woman: {
-        return this.http.get<ArticleTopic>(`${this.womanUrl}/topics`);
+      case ArticleType.women: {
+        return this.http.get<ArticleTopic>(`${UrlConfig.womenUrl}/topics`);
       }
       default: {
         break;
@@ -70,10 +79,10 @@ export class BackendService {
   getImage(articleType, id): string {
     switch (articleType) {
       case ArticleType.news: {
-        return this.getImageLink(this.newsUrl, id);
+        return this.getImageLink(UrlConfig.newsUrl, id);
       }
-      case ArticleType.woman: {
-        return this.getImageLink(this.womanUrl, id);
+      case ArticleType.women: {
+        return this.getImageLink(UrlConfig.womenUrl, id);
       }
       default: {
         break;
@@ -83,6 +92,10 @@ export class BackendService {
 
   private getImageLink(url, id) {
     return `${url}/${id}/image`;
+  }
+
+  private getPageRequestByTopic(url, topicId, page, size) {
+    return this.http.get<ArticlePage>(`${url}?topicId=${topicId}?page=${page}&size=${size}`);
   }
 
   private getPageRequest(url, page, size) {

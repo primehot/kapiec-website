@@ -4,7 +4,7 @@ import {Subject} from 'rxjs/index';
 @Injectable({
   providedIn: 'root'
 })
-export class NavbarCollapseServiceService {
+export class NavbarCollapseService {
 
   // Observable string sources
   private showNewsCollapse = new Subject<boolean>();

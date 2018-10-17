@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {NavbarCollapseServiceService} from '../../../service/navbar-collapse-service.service';
+import {NavbarCollapseService} from '../../../service/collapse/navbar.collapse.service';
 
 @Component({
   selector: 'app-navbar-collapse-woman',
@@ -10,7 +10,7 @@ export class WomanComponent implements OnInit {
 
   show = false;
 
-  constructor(private navbarCollapseServiceService: NavbarCollapseServiceService) {
+  constructor(private navbarCollapseServiceService: NavbarCollapseService) {
     navbarCollapseServiceService.showWomanCollapse$.subscribe(
       show => {
         this.show = show;

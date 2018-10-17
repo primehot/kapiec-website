@@ -11,9 +11,9 @@ import {ArticleType} from './emun/article-type';
 const routes: Routes = [
   { path: '', component: MainViewComponent },
   { path: 'news', component: NewsViewComponent },
-  { path: 'woman', component: WomanViewComponent },
+  { path: 'women', component: WomanViewComponent },
   { path: 'news/:id', component: ArticleComponent, data: { articleType: ArticleType.news }},
-  { path: 'woman/:id', component: ArticleComponent, data: { articleType: ArticleType.woman }},
+  { path: 'women/:id', component: ArticleComponent, data: { articleType: ArticleType.women }},
 
   { path: '**', component: PageNotFoundComponent }
 ];

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NavbarCollapseServiceService} from '../../service/navbar-collapse-service.service';
+import {NavbarCollapseService} from '../../service/collapse/navbar.collapse.service';
+import {ArticleType} from "../../emun/article-type";
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +9,11 @@ import {NavbarCollapseServiceService} from '../../service/navbar-collapse-servic
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private navbarCollapseServiceService: NavbarCollapseServiceService) { }
+  news = ArticleType.news;
+  women = ArticleType.women;
+  dream = ArticleType.dream;
+
+  constructor(private navbarCollapseServiceService: NavbarCollapseService) { }
 
   ngOnInit() {
   }
