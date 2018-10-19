@@ -1,40 +1,38 @@
 import * as $ from 'jquery';
+import {ArticleType} from "./emun/article-type";
 
 function addJqueryLogic() {
   $(document).ready(function(){
-    addNavbarLogic();
+    addNavbarLogic(ArticleType.news);
+    addNavbarLogic(ArticleType.women);
+    addNavbarLogic(ArticleType.dream);
   });
 }
 
-function addNavbarLogic() {
-  let panelNavbar = $('.panel-navbar');
-  let panelHeading = $('.panel-heading');
-  let overlap = $('.overlap');
+function addNavbarLogic(navElement) {
+  let panelHeading = $('.panel-heading' + '-' + navElement);
+  let overlap = $('.overlap' + '-' + navElement);
 
   panelHeading.mouseenter(function () {
-    show(overlap);
+    showElement(overlap);
   });
 
   panelHeading.mouseleave(function(){
     if(!overlap.is(':hover')) {
-      hide(overlap);
+      hideElement(overlap);
     }
   });
 
-  // panelNavbar.mouseenter(function () {
-  //   hide(overlap);
-  // });
-
   overlap.mouseleave(function(){
-    hide(overlap);
+    hideElement(overlap);
   });
 }
 
-function  show(el) {
+function showElement(el) {
   el.show().css('z-index', 1).css('visibility', 'visible');
 }
 
-function hide(el) {
+function hideElement(el) {
   el.hide().css('z-index', -1).css('visibility', 'hidden');
 }
 

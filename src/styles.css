@@ -2,14 +2,12 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
 .overlap {
-  /*display: none;*/
   position: absolute;
-  /*z-index: 1;*/
+  z-index: -1;
   top: 0;
   left: 0;
-  background-color: orange;
-  visibility: hidden
-  /*overflow: hidden;*/
+  background-color: white;
+  visibility: hidden;
 }
 
 .navbar-collapse-container-topic {

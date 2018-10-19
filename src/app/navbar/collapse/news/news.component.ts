@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NavbarCollapseService} from '../../../service/collapse/navbar.collapse.service';
+import {ArticleType} from "../../../emun/article-type";
 
 @Component({
   selector: 'app-navbar-collapse-news',
@@ -8,30 +8,19 @@ import {NavbarCollapseService} from '../../../service/collapse/navbar.collapse.s
 })
 export class NewsComponent implements OnInit {
 
-  show = false;
+  type = ArticleType.news;
+
   topics = ['topic1', 'topic 2'];
 
   twoNews = ['news 1', 'news 2'];
 
   alsoSee = ['also see 1', 'also see '];
 
-  constructor(private navbarCollapseServiceService: NavbarCollapseService) {
-    navbarCollapseServiceService.showNewsCollapse$.subscribe(
-      show => {
-        this.show = show;
-        console.log(`log change ${show}`);
-      });
+  constructor() {
+
   }
 
   ngOnInit() {
   }
 
-  newsMouseEnter() {
-    console.log('ENTER');
-    this.navbarCollapseServiceService.showNewsEvent(true);
-  }
-
-  newsMouseLeave() {
-    this.navbarCollapseServiceService.showNewsEvent(false);
-  }
 }

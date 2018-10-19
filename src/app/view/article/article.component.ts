@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {BackendService} from '../../service/backend.service';
 import {Article} from '../../dto/article';
 import {NewsArticleService} from "../../service/backend/news.article.service";
 import {WomenArticleService} from "../../service/backend/women.article.service";
