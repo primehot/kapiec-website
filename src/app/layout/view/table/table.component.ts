@@ -1,9 +1,9 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
-import {Article} from '../../dto/article';
-import {ArticleType} from '../../emun/article-type';
-import {AbstractArticleService} from "../../service/backend/abstract.article.service";
+import {Article} from '../../../domain/dto/article';
+import {ArticleType} from '../../../domain/emun/article-type';
+import {AbstractArticleService} from "../../../service/backend/abstract.article.service";
 
 @Component({
   selector: 'app-table',

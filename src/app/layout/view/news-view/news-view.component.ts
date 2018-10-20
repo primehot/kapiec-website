@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ArticleType} from '../../emun/article-type';
-import {NewsArticleService} from "../../service/backend/news.article.service";
-import {AbstractArticleService} from "../../service/backend/abstract.article.service";
+import {ArticleType} from '../../../domain/emun/article-type';
+import {NewsArticleService} from "../../../service/backend/news.article.service";
+import {AbstractArticleService} from "../../../service/backend/abstract.article.service";
 
 @Component({
   selector: 'app-news-view',

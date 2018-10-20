@@ -6,4 +6,5 @@ export class ArticleNavigation {
   topics: ArticleType[];
   articles: Article[];
   seeAlso: ArticleShort[];
+  mostCommented: ArticleShort[];
 }

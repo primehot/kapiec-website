@@ -1,5 +1,5 @@
 import * as $ from 'jquery';
-import {ArticleType} from "./emun/article-type";
+import {ArticleType} from "./domain/emun/article-type";
 
 function addJqueryLogic() {
   $(document).ready(function(){

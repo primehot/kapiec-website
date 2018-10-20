@@ -1,12 +1,12 @@
 import {Injectable} from '@angular/core';
 import {AbstractArticleService} from "./abstract.article.service";
 import {Observable} from "rxjs/index";
-import {ArticlePage} from "../../dto/article.page";
-import {Article} from "../../dto/article";
-import {ArticleTopic} from "../../dto/article.topic";
+import {ArticlePage} from "../../domain/dto/article.page";
+import {Article} from "../../domain/dto/article";
+import {ArticleTopic} from "../../domain/dto/article.topic";
 import {HttpClient} from "@angular/common/http";
 import {UrlConfig} from "../url.config";
-import {ArticleNavigation} from "../../dto/article.navigation";
+import {ArticleNavigation} from "../../domain/dto/article.navigation";
 
 @Injectable({
   providedIn: 'root'

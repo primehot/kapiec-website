@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ArticleType} from "../../../emun/article-type";
+import {ArticleType} from "../../../../domain/emun/article-type";
 
 @Component({
   selector: 'app-navbar-collapse-dream',

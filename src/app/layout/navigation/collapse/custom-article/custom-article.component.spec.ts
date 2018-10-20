@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CollapseComponent } from './collapse.component';
+import { CustomArticleComponent } from './custom-article.component';
 
-describe('CollapseComponent', () => {
-  let component: CollapseComponent;
-  let fixture: ComponentFixture<CollapseComponent>;
+describe('CustomArticleComponent', () => {
+  let component: CustomArticleComponent;
+  let fixture: ComponentFixture<CustomArticleComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CollapseComponent ]
+      declarations: [ CustomArticleComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CollapseComponent);
+    fixture = TestBed.createComponent(CustomArticleComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

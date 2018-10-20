@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {ArticlePage} from "../../dto/article.page";
+import {ArticlePage} from "../../domain/dto/article.page";
 import {Observable} from "rxjs/index";
-import {Article} from "../../dto/article";
-import {ArticleTopic} from "../../dto/article.topic";
-import {ArticleNavigation} from "../../dto/article.navigation";
+import {Article} from "../../domain/dto/article";
+import {ArticleTopic} from "../../domain/dto/article.topic";
+import {ArticleNavigation} from "../../domain/dto/article.navigation";
 
 @Injectable({
   providedIn: 'root'

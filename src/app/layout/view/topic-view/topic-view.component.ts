@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {Article} from "../../dto/article";
+import {Article} from "../../../domain/dto/article";
 import {ActivatedRoute} from "@angular/router";
-import {WomenArticleService} from "../../service/backend/women.article.service";
-import {NewsArticleService} from "../../service/backend/news.article.service";
-import {AbstractArticleService} from "../../service/backend/abstract.article.service";
-import {ArticleType} from "../../emun/article-type";
+import {WomenArticleService} from "../../../service/backend/women.article.service";
+import {NewsArticleService} from "../../../service/backend/news.article.service";
+import {AbstractArticleService} from "../../../service/backend/abstract.article.service";
+import {ArticleType} from "../../../domain/emun/article-type";
 
 @Component({
   selector: 'app-topic-view',

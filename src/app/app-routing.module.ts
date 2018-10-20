@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import {NewsViewComponent} from './view/news-view/news-view.component';
-import {WomanViewComponent} from './view/woman-view/woman-view.component';
-import {MainViewComponent} from './view/main-view/main-view.component';
-import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
-import {ArticleComponent} from './view/article/article.component';
-import {ArticleType} from './emun/article-type';
-import {TopicViewComponent} from "./view/topic-view/topic-view.component";
+import {NewsViewComponent} from './layout/view/news-view/news-view.component';
+import {WomanViewComponent} from './layout/view/woman-view/woman-view.component';
+import {MainViewComponent} from './layout/view/main-view/main-view.component';
+import {PageNotFoundComponent} from './layout/page-not-found/page-not-found.component';
+import {ArticleComponent} from './layout/view/article/article.component';
+import {ArticleType} from './domain/emun/article-type';
+import {TopicViewComponent} from "./layout/view/topic-view/topic-view.component";
 
 const routes: Routes = [
   { path: '', component: MainViewComponent },

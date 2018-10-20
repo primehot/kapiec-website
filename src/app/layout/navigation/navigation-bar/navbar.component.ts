@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {NavbarCollapseService} from '../../service/collapse/navbar.collapse.service';
-import {ArticleType} from "../../emun/article-type";
+import {NavbarCollapseService} from '../../../service/collapse/navbar.collapse.service';
+import {ArticleType} from "../../../domain/emun/article-type";
 
 @Component({
   selector: 'app-navbar',
