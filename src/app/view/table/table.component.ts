@@ -30,7 +30,6 @@ export class TableComponent implements OnInit {
   }
 
   getImage(id) {
-    console.log(this.articleService.getImage(id));
     return this.articleService.getImage(id);
   }
 
@@ -44,19 +43,15 @@ export class TableComponent implements OnInit {
 
   getPage(page: number) {
     this.loading = true;
-    if (this.topicId) {
-
-    } else {
-      this.asyncMeals = this.getServicePageMethod(page - 1).pipe(
-        tap(res => {
-          console.log(res);
-          this.total = res.totalElements;
-          this.p = page;
-          this.loading = false;
-        }),
-        map(res => res.items)
-      );
-    }
+    this.asyncMeals = this.getServicePageMethod(page - 1).pipe(
+      tap(res => {
+        console.log(res);
+        this.total = res.totalElements;
+        this.p = page;
+        this.loading = false;
+      }),
+      map(res => res.items)
+    );
   }
 
 }

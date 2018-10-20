@@ -7,13 +7,20 @@ import {MainViewComponent} from './view/main-view/main-view.component';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {ArticleComponent} from './view/article/article.component';
 import {ArticleType} from './emun/article-type';
+import {TopicViewComponent} from "./view/topic-view/topic-view.component";
 
 const routes: Routes = [
   { path: '', component: MainViewComponent },
   { path: 'news', component: NewsViewComponent },
   { path: 'women', component: WomanViewComponent },
+
   { path: 'news/:id', component: ArticleComponent, data: { articleType: ArticleType.news }},
+  { path: 'dream/:id', component: ArticleComponent, data: { articleType: ArticleType.dream }},
   { path: 'women/:id', component: ArticleComponent, data: { articleType: ArticleType.women }},
+
+  { path: 'news/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.news }},
+  { path: 'dream/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.dream }},
+  { path: 'women/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.women }},
 
   { path: '**', component: PageNotFoundComponent }
 ];

@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleType} from "../../../emun/article-type";
+import {NewsArticleService} from "../../../service/backend/news.article.service";
 
 @Component({
   selector: 'app-navbar-collapse-news',
@@ -10,17 +11,19 @@ export class NewsComponent implements OnInit {
 
   type = ArticleType.news;
 
-  topics = ['topic1', 'topic 2'];
-
-  twoNews = ['news 1', 'news 2'];
-
-  alsoSee = ['also see 1', 'also see '];
-
-  constructor() {
-
+  topics;
+  articles;
+  seeAlso;
+  constructor(private newsArticleService: NewsArticleService) {
   }
 
   ngOnInit() {
+    this.newsArticleService.getNavigationData().pipe().subscribe(navData => {
+      this.topics = navData.topics;
+      this.articles = navData.articles;
+      this.seeAlso = navData.seeAlso;
+      console.log(navData);
+    });
   }
 
 }
