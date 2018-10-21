@@ -1,10 +1,45 @@
-<div class="card bg-dark text-white d-sm-none d-md-block">
-  <!--<a [routerLink]="['/presentation', presentation._id]">{{presentation.title}}</a>-->
-  <img class="card-img" src="../../../../../main.jpg" alt="Main card image">
+<div *ngIf="mainArticle" class="card bg-dark text-white d-sm-none d-md-block"
+     routerLink="/{{newsType}}/{{mainArticle.id}}">
+  <img class="card-img" [lazyLoad]="getImage(mainArticle.id)" [offset]="100">
   <div class="card-img-overlay">
-    <h5 class="card-title">MmM</h5>
-    <h3 class="card-text">This is main</h3>
-    <p class="card-text">Last updated 3 mins ago</p>
+    <h1 class="card-title">{{mainArticle.shortContent}}</h1>
   </div>
 </div>
-<app-table [articleType]="articleType" [articleService]="service"></app-table>
+<div class="row" style="margin-top: 10px">
+  <div *ngIf="mainItems" class="container col-md-9">
+    <div class="card-columns justify-content-center no-gutter-card-deck">
+      <div class="card bg-dark text-white" *ngFor="let item of mainItems" routerLink="/{{newsType}}/{{item.id}}">
+
+        <img class="card-img" [lazyLoad]="getImage(item.id)" [offset]="100">
+        <div class="card-img-overlay">
+          <h3 class="card-text">{{ item.shortContent }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container justify-content-center col-md-3 border">
+    <div class="container">
+      <a href="https://clck.yandex.ru/redir/dtype=stred/pid=7/cid=1228/*https://yandex.ru/pogoda/143" target="_blank">
+        <img src="https://info.weather.yandex.net/143/2_white.ru.png?domain=ru" border="0" alt="Яндекс.Погода"/>
+        <img width="1" height="1"
+             src="https://clck.yandex.ru/click/dtype=stred/pid=7/cid=1227/*https://img.yandex.ru/i/pix.gif" alt=""
+             border="0"/>
+      </a>
+    </div>
+    <h6>Топ новости:</h6>
+    <ul *ngIf="recommendedNews" class="list-unstyled">
+      <li *ngFor="let toSee of recommendedNews">
+        <a class="link-on-white" href="{{newsType}}/{{toSee.id}}" style="font-size: 75%;">{{toSee.shortContent}}</a>
+      </li>
+    </ul>
+    <h6>Топ для женщин:</h6>
+    <ul *ngIf="recommendedWomen">
+      <li *ngFor="let toSee of recommendedWomen">
+        <a class="link-on-white" href="{{newsType}}/{{toSee.id}}" style="font-size: 75%;">{{toSee.shortContent}}</a>
+      </li>
+    </ul>
+
+  </div>
+</div>
+
+

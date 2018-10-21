@@ -1,6 +1,6 @@
 <div class="row">
   <div class="container col-md-8">
-    <div class="card-columns justify-content-center no-gutter-card-deck">
+    <div class="card-columns justify-content-center">
       <div class="card bg-dark text-white"
            *ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: p, totalItems: total }"
            routerLink="/{{articleType}}/{{item.id}}">

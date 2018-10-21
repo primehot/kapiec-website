@@ -1,0 +1,7 @@
+.no-gutter-card-deck.card-columns {
+  column-gap: 1px;
+}
+
+.card-columns .card {
+  margin-bottom: 1px;
+}
