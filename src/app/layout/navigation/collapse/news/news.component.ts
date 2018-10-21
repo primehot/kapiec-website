@@ -13,7 +13,7 @@ import {NewsArticleService} from "../../../../service/backend/news.article.servi
 })
 export class NewsComponent implements OnInit {
 
-  type = ArticleType.women;
+  type = ArticleType.news;
   service;
 
   constructor(abstractBackendService: AbstractArticleService) {

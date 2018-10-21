@@ -3,7 +3,7 @@
 
     <div class="container col-md-2 bg-dark navbar-collapse-container-topic">
       <ul class="list-unstyled">
-        <li *ngFor="let topic of topics"><a class="link-on-black" href="news/by-topics/{{topic.id}}">{{topic.name}}</a>
+        <li *ngFor="let topic of topics"><a class="link-on-black" href="{{type}}/by-topics/{{topic.id}}">{{topic.name}}</a>
         </li>
       </ul>
     </div>
@@ -30,13 +30,13 @@
       <h6>Также смотрите:</h6>
       <ul>
         <li *ngFor="let toSee of seeAlso">
-          <a class="link-on-white" href="news/{{toSee.id}}" style="font-size: 75%;">{{toSee.shortContent}}</a>
+          <a class="link-on-white" href="{{type}}/{{toSee.id}}" style="font-size: 75%;">{{toSee.shortContent}}</a>
         </li>
       </ul>
       <h6>Топ коментариев:</h6>
       <ul>
         <li *ngFor="let mostC of mostCommented">
-          <a class="link-on-white" href="news/{{mostC.id}}" style="font-size: 75%;">{{mostC.shortContent}}</a>
+          <a class="link-on-white" href="{{type}}/{{mostC.id}}" style="font-size: 75%;">{{mostC.shortContent}}</a>
         </li>
       </ul>
     </div>

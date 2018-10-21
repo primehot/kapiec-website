@@ -7,6 +7,7 @@ import {ArticleTopic} from "../../domain/dto/article.topic";
 import {HttpClient} from "@angular/common/http";
 import {UrlConfig} from "../url.config";
 import {ArticleNavigation} from "../../domain/dto/article.navigation";
+import {ArticleShort} from "../../domain/dto/article.short";
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,10 @@ import {ArticleNavigation} from "../../domain/dto/article.navigation";
 export class NewsArticleService implements AbstractArticleService {
 
   constructor(private http: HttpClient) {
+  }
+
+  getRecommended(): Observable<ArticleShort> {
+    return this.http.get<ArticleShort>(`${UrlConfig.newsUrl}/recommended`);
   }
 
   getPage(page, size): Observable<ArticlePage> {

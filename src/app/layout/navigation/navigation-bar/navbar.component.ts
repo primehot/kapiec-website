@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import {NavbarCollapseService} from '../../../service/collapse/navbar.collapse.service';
+import {Component, OnInit} from '@angular/core';
 import {ArticleType} from "../../../domain/emun/article-type";
 
 @Component({
@@ -13,29 +12,9 @@ export class NavbarComponent implements OnInit {
   women = ArticleType.women;
   dream = ArticleType.dream;
 
-  constructor(private navbarCollapseServiceService: NavbarCollapseService) { }
+  constructor() {
+  }
 
   ngOnInit() {
-  }
-
-  navNewsMouseEnter() {
-   this.navbarCollapseServiceService.showNewsEvent(true);
-  }
-  navNewsMouseLeave() {
-    this.navbarCollapseServiceService.showNewsEvent(false);
-  }
-
-  navDreamsMouseEnter() {
-    this.navbarCollapseServiceService.showDreamsEvent(true);
-  }
-  navDreamsMouseLeave() {
-    this.navbarCollapseServiceService.showDreamsEvent(false);
-  }
-
-  navWomanMouseEnter() {
-    this.navbarCollapseServiceService.showWomanEvent(true);
-  }
-  navWomanMouseLeave() {
-    this.navbarCollapseServiceService.showWomanEvent(false);
   }
 }

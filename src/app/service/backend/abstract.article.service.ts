@@ -4,6 +4,7 @@ import {Observable} from "rxjs/index";
 import {Article} from "../../domain/dto/article";
 import {ArticleTopic} from "../../domain/dto/article.topic";
 import {ArticleNavigation} from "../../domain/dto/article.navigation";
+import {ArticleShort} from "../../domain/dto/article.short";
 
 @Injectable({
   providedIn: 'root'
@@ -19,4 +20,6 @@ export abstract class AbstractArticleService {
   abstract getNavigationData(): Observable<ArticleNavigation>;
 
   abstract getImage(id): string;
+
+  abstract getRecommended(): Observable<ArticleShort>;
 }

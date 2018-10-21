@@ -20,13 +20,16 @@ export class TableComponent implements OnInit {
   p = 1;
   total: number;
   loading: boolean;
-  pageSize = 10;
+  pageSize = 20;
+
+  recommended;
 
   constructor() {
   }
 
   ngOnInit() {
     this.getPage(1);
+    this.articleService.getRecommended().subscribe(next => this.recommended = next);
   }
 
   getImage(id) {

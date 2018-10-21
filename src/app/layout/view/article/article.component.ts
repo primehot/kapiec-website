@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Article} from '../../dto/article';
-import {NewsArticleService} from "../../service/backend/news.article.service";
-import {WomenArticleService} from "../../service/backend/women.article.service";
-import {ArticleType} from "../../emun/article-type";
-import {AbstractArticleService} from "../../service/backend/abstract.article.service";
-
+import {Article} from "../../../domain/dto/article";
+import {AbstractArticleService} from "../../../service/backend/abstract.article.service";
+import {WomenArticleService} from "../../../service/backend/women.article.service";
+import {NewsArticleService} from "../../../service/backend/news.article.service";
+import {ArticleType} from "../../../domain/emun/article-type";
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',
