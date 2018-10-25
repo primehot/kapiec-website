@@ -2,7 +2,7 @@ import * as $ from 'jquery';
 import {ArticleType} from "./domain/emun/article-type";
 
 function addJqueryLogic() {
-  $(document).ready(function(){
+  $(document).ready(function () {
     addNavbarLogic(ArticleType.news);
     addNavbarLogic(ArticleType.women);
     addNavbarLogic(ArticleType.dream);
@@ -11,25 +11,21 @@ function addJqueryLogic() {
 }
 
 function addCollapseScroll() {
-  $(window).on('scroll',function() {
+  $(window).on('scroll', function () {
     let scrollTop = $(this).scrollTop();
     let headerHeight = $('#navigation-bar-header').height();
     let navigationBarHeight = $('#navigation-bar').height();
 
-    if(scrollTop > headerHeight) {
-      $('#navigation-bar').addClass("navbar-fixed").animate({
-        top: 0
-      });
-      $('.overlap-collapse').addClass("navbar-fixed").animate({
-        top: navigationBarHeight
-      });//.css('top', scrollTop - headerHeight + navigationBarHeight);
+    if (scrollTop > headerHeight) {
+      $('#navigation-bar').addClass("navbar-fixed")
+        .css('top', 0);
+      $('.overlap-collapse').addClass("navbar-fixed")
+        .css('top', navigationBarHeight);
     } else {
-      $('#navigation-bar').removeClass("navbar-fixed").clearQueue().animate({
-        top: 0
-      }, 0);
-      $('.overlap-collapse').removeClass("navbar-fixed").clearQueue().animate({
-        top: 0
-      });
+      $('#navigation-bar').removeClass("navbar-fixed").clearQueue()
+        .css('top', 0);
+      $('.overlap-collapse').removeClass("navbar-fixed").clearQueue()
+        .css('top', 0);
     }
   });
 }
@@ -42,13 +38,13 @@ function addNavbarLogic(navElement) {
     showElement(overlap);
   });
 
-  panelHeading.mouseleave(function(){
-    if(!overlap.is(':hover')) {
+  panelHeading.mouseleave(function () {
+    if (!overlap.is(':hover')) {
       hideElement(overlap);
     }
   });
 
-  overlap.mouseleave(function(){
+  overlap.mouseleave(function () {
     hideElement(overlap);
   });
 }
