@@ -19,7 +19,6 @@ export class TopicViewComponent implements OnInit {
   constructor(private route: ActivatedRoute,
               private newsArticleService: NewsArticleService,
               private womenArticleService: WomenArticleService) {
-    console.log(this.topicId);
   }
 
   getService(articleType: ArticleType) {
@@ -37,7 +36,6 @@ export class TopicViewComponent implements OnInit {
     this.articleType = this.route.snapshot.data.articleType;
     this.topicId= this.route.snapshot.paramMap.get('id');
     this.service = this.getService(this.articleType);
-    console.log(this.topicId);
   }
 
 }

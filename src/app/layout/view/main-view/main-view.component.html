@@ -1,5 +1,5 @@
 <div *ngIf="mainArticle" class="card bg-dark text-white d-sm-none d-md-block"
-     routerLink="/{{newsType}}/{{mainArticle.id}}">
+     routerLink="/{{newsType}}/{{mainArticle.id}}" style="margin-top: 10px">
   <img class="card-img" [lazyLoad]="getImage(mainArticle.id)" [offset]="100">
   <div class="card-img-overlay">
     <h1 class="card-title">{{mainArticle.shortContent}}</h1>
@@ -17,28 +17,33 @@
       </div>
     </div>
   </div>
-  <div class="container justify-content-center col-md-3 border">
-    <div class="container">
-      <a href="https://clck.yandex.ru/redir/dtype=stred/pid=7/cid=1228/*https://yandex.ru/pogoda/143" target="_blank">
-        <img src="https://info.weather.yandex.net/143/2_white.ru.png?domain=ru" border="0" alt="Яндекс.Погода"/>
-        <img width="1" height="1"
-             src="https://clck.yandex.ru/click/dtype=stred/pid=7/cid=1227/*https://img.yandex.ru/i/pix.gif" alt=""
-             border="0"/>
-      </a>
+  <div class="container justify-content-center col-md-3" style="margin: 0; padding: 0;">
+    <div class="container" style="margin: 0; padding: 0">
+      <a href="https://www.accuweather.com/en/us/google-ca/94043/current-weather/74907_poi" class="aw-widget-legal">
+        <!--
+        By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
+        -->
+      </a><div id="awtd1540135386849" class="aw-widget-36hour"  data-locationkey="" data-unit="f" data-language="en-us" data-useip="true" data-uid="awtd1540135386849" data-editlocation="true"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+      <!-- weather widget start -->
+      <!--<a target="_blank" href="https://nochi.com/weather/kiev-18881"><img-->
+      <!--src="https://w.bookcdn.com/weather/picture/3_18881_1_20_000000_50_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=&anc_id=67171"-->
+      <!--alt="booked.net"/></a>-->
+      <!-- weather widget end -->
     </div>
-    <h6>Топ новости:</h6>
-    <ul *ngIf="recommendedNews" class="list-unstyled">
-      <li *ngFor="let toSee of recommendedNews">
-        <a class="link-on-white" href="{{newsType}}/{{toSee.id}}" style="font-size: 75%;">{{toSee.shortContent}}</a>
-      </li>
-    </ul>
-    <h6>Топ для женщин:</h6>
-    <ul *ngIf="recommendedWomen">
-      <li *ngFor="let toSee of recommendedWomen">
-        <a class="link-on-white" href="{{newsType}}/{{toSee.id}}" style="font-size: 75%;">{{toSee.shortContent}}</a>
-      </li>
-    </ul>
-
+    <div class="container border">
+      <h6>Топ новости:</h6>
+      <ul *ngIf="recommendedNews" class="list-unstyled">
+        <li *ngFor="let toSee of recommendedNews">
+          <a class="link-on-white" href="{{newsType}}/{{toSee.id}}" style="font-size: 75%;">{{toSee.shortContent}}</a>
+        </li>
+      </ul>
+      <h6>Топ для женщин:</h6>
+      <ul *ngIf="recommendedWomen">
+        <li *ngFor="let toSee of recommendedWomen">
+          <a class="link-on-white" href="{{womenType}}/{{toSee.id}}" style="font-size: 75%;">{{toSee.shortContent}}</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 

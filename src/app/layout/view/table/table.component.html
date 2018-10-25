@@ -1,5 +1,8 @@
-<div class="row">
+<div class="row" style="margin-top: 10px">
   <div class="container col-md-8">
+    <div class="container-fluid">
+      <a class="link-on-white" href="/"><h4>...Главная</h4></a>
+    </div>
     <div class="card-columns justify-content-center">
       <div class="card bg-dark text-white"
            *ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: p, totalItems: total }"
@@ -20,19 +23,12 @@
     </div>
   </div>
   <div class="container justify-content-center col-md-4 border">
+    <h4>Рекомендованое</h4>
     <div class="container">
-      <a href="https://clck.yandex.ru/redir/dtype=stred/pid=7/cid=1228/*https://yandex.ru/pogoda/143" target="_blank">
-        <img src="https://info.weather.yandex.net/143/2_white.ru.png?domain=ru" border="0" alt="Яндекс.Погода"/>
-        <img width="1" height="1"
-             src="https://clck.yandex.ru/click/dtype=stred/pid=7/cid=1227/*https://img.yandex.ru/i/pix.gif" alt=""
-             border="0"/>
-      </a>
-    </div>
-    <div class="container">
-      <div class="card small" *ngFor="let rec of recommended">
-        <img class="card-img" [lazyLoad]="getImage(rec.id)" [offset]="100">
+      <div class="card" *ngFor="let rec of recommended">
+        <img class="card-img" [lazyLoad]="getImage(rec.id)" [offset]="100" style="width: 75%; height: 50%">
         <div class="card-body">
-          <h5 class="card-title">{{rec.shortContent}}</h5>
+          <h6 class="card-title link-on-white">{{rec.shortContent}}</h6>
           <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's-->
           <!--content.</p>-->
         </div>

@@ -1,13 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-.overlap {
+.overlap-collapse {
   position: absolute;
   z-index: -1;
   top: 0;
-  left: 0;
   background-color: white;
   visibility: hidden;
+}
+
+#navigation-bar {
+  z-index: 2;
+  width: 100%;
+}
+
+.navbar-fixed {
+  position: fixed;
 }
 
 .navbar-collapse-container-topic {

@@ -6,6 +6,31 @@ function addJqueryLogic() {
     addNavbarLogic(ArticleType.news);
     addNavbarLogic(ArticleType.women);
     addNavbarLogic(ArticleType.dream);
+    addCollapseScroll();
+  });
+}
+
+function addCollapseScroll() {
+  $(window).on('scroll',function() {
+    let scrollTop = $(this).scrollTop();
+    let headerHeight = $('#navigation-bar-header').height();
+    let navigationBarHeight = $('#navigation-bar').height();
+
+    if(scrollTop > headerHeight) {
+      $('#navigation-bar').addClass("navbar-fixed").animate({
+        top: 0
+      });
+      $('.overlap-collapse').addClass("navbar-fixed").animate({
+        top: navigationBarHeight
+      });//.css('top', scrollTop - headerHeight + navigationBarHeight);
+    } else {
+      $('#navigation-bar').removeClass("navbar-fixed").clearQueue().animate({
+        top: 0
+      }, 0);
+      $('.overlap-collapse').removeClass("navbar-fixed").clearQueue().animate({
+        top: 0
+      });
+    }
   });
 }
 
