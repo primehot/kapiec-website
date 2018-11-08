@@ -1,12 +1,12 @@
 <div *ngIf="mainArticle" class="card bg-dark text-white d-sm-none d-md-block"
-     routerLink="/{{newsType}}/{{mainArticle.id}}" style="margin-top: 10px">
+     routerLink="/{{newsType}}/{{mainArticle.id}}">
   <img class="card-img" [lazyLoad]="getImage(mainArticle.id)" [offset]="100">
   <div class="card-img-overlay">
     <h1 class="card-title">{{mainArticle.shortContent}}</h1>
   </div>
 </div>
-<div class="row" style="margin-top: 10px">
-  <div *ngIf="mainItems" class="container col-md-9">
+<div class="row" style="margin-top: 10px;">
+  <div *ngIf="mainItems" class="container col-md-8">
     <div class="card-columns justify-content-center no-gutter-card-deck">
       <div class="card bg-dark text-white" *ngFor="let item of mainItems" routerLink="/{{newsType}}/{{item.id}}">
 
@@ -17,7 +17,7 @@
       </div>
     </div>
   </div>
-  <div class="container justify-content-center col-md-3" style="margin: 0; padding: 0;">
+  <div class="container justify-content-center col-md-4" style="padding-left: 0;">
     <div class="container" style="margin: 0; padding: 0">
       <a href="https://www.accuweather.com/en/us/google-ca/94043/current-weather/74907_poi" class="aw-widget-legal">
         <!--
@@ -31,16 +31,20 @@
       <!-- weather widget end -->
     </div>
     <div class="container border">
-      <h6>Топ новости:</h6>
+      <h5>Топ новости:</h5>
       <ul *ngIf="recommendedNews" class="list-unstyled">
-        <li *ngFor="let toSee of recommendedNews">
-          <a class="link-on-white" href="{{newsType}}/{{toSee.id}}" style="font-size: 75%;">{{toSee.shortContent}}</a>
+        <li *ngFor="let toSee of recommendedNews" class="border" style="background-color: #FFCA28;">
+          <div class="container">
+            <a class="recommended" href="{{newsType}}/{{toSee.id}}" >{{toSee.shortContent}}</a>
+          </div>
         </li>
       </ul>
-      <h6>Топ для женщин:</h6>
-      <ul *ngIf="recommendedWomen">
-        <li *ngFor="let toSee of recommendedWomen">
-          <a class="link-on-white" href="{{womenType}}/{{toSee.id}}" style="font-size: 75%;">{{toSee.shortContent}}</a>
+      <h5>Топ для женщин:</h5>
+      <ul *ngIf="recommendedWomen" class="list-unstyled">
+        <li *ngFor="let toSee of recommendedWomen" class="border" style="background-color: #FFCA28;">
+          <div class="container">
+            <a class="recommended" href="{{womenType}}/{{toSee.id}}">{{toSee.shortContent}}</a>
+          </div>
         </li>
       </ul>
     </div>

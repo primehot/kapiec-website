@@ -1,32 +1,33 @@
 <div class="row" style="margin-top: 10px">
   <div class="container col-md-8">
     <div class="container-fluid">
-      <a class="link-on-white" href="/"><h4>...Главная</h4></a>
+      <a class="link-on-white" href="/"><h6>Главная</h6></a>
+      <h6> > </h6>
     </div>
+
     <div class="card-columns justify-content-center">
-      <div class="card bg-dark text-white"
+      <div class="card"
            *ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: p, totalItems: total }"
            routerLink="/{{articleType}}/{{item.id}}">
 
         <!--<a [routerLink]="['/presentation', presentation._id]">{{presentation.title}}</a>-->
         <img class="card-img" [lazyLoad]="getImage(item.id)" [offset]="100">
-        <div class="card-img-overlay">
-          <h5 class="card-title">{{ item.title }}</h5>
-          <h3 class="card-text">{{ item.hotContent }}</h3>
-        </div>
+          <h4 class="card-title">{{ item.title }}</h4>
+          <h5 class="card-text">{{ item.hotContent }}</h5>
       </div>
     </div>
+
     <div class="has-text-centered">
       <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
       <pagination-controls class="container" (pageChange)="getPage($event)"
                            id="server"></pagination-controls>
     </div>
   </div>
-  <div class="container justify-content-center col-md-4 border">
-    <h4>Рекомендованое</h4>
-    <div class="container">
+  <div class="container col-md-4 border">
+    <h6 class="recommended-title">Рекомендованое</h6>
+    <div class="container col-md-10 justify-content-center">
       <div class="card" *ngFor="let rec of recommended">
-        <img class="card-img" [lazyLoad]="getImage(rec.id)" [offset]="100" style="width: 75%; height: 50%">
+        <img class="card-img" [lazyLoad]="getImage(rec.id)" [offset]="100">
         <div class="card-body">
           <h6 class="card-title link-on-white">{{rec.shortContent}}</h6>
           <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's-->

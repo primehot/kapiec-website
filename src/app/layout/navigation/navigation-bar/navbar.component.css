@@ -7,6 +7,10 @@ a:active {
 
 /* Navigation Bar */
 
+.navbar {
+  border-top: 10em;
+}
+
 .navbar-nav a {
   color: #ffffff;
   text-align: center;

@@ -51,6 +51,26 @@
   transition: 0.08s;
 }
 
+.recommended {
+  color: black;
+  font-weight: bold;
+}
+
+.recommended:hover {
+  color: white;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.recommended-title {
+  color: white;
+  background-color: black;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
 ul li {
   padding: 2px;
 }
