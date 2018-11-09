@@ -1,19 +1,19 @@
 <div class="row" style="margin-top: 10px">
-  <div class="container col-md-8">
+  <div class="container col-md-8 border-left">
     <div class="container-fluid">
       <a class="link-on-white" href="/"><h6>Главная</h6></a>
       <h6> > </h6>
     </div>
 
-    <div class="card-columns justify-content-center">
+    <div class="card-columns justify-content-center table-card">
       <div class="card"
            *ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: p, totalItems: total }"
            routerLink="/{{articleType}}/{{item.id}}">
 
         <!--<a [routerLink]="['/presentation', presentation._id]">{{presentation.title}}</a>-->
         <img class="card-img" [lazyLoad]="getImage(item.id)" [offset]="100">
-          <h4 class="card-title">{{ item.title }}</h4>
-          <h5 class="card-text">{{ item.hotContent }}</h5>
+        <h4 class="card-title">{{ item.title }}</h4>
+        <h5 class="card-text">{{ item.hotContent }}</h5>
       </div>
     </div>
 
@@ -25,8 +25,28 @@
   </div>
   <div class="container col-md-4 border">
     <h6 class="recommended-title">Рекомендованое</h6>
-    <div class="container col-md-10 justify-content-center">
-      <div class="card" *ngFor="let rec of recommended">
+    <div class="container col-md-11 justify-content-center">
+      <div class="card" *ngFor="let rec of firstPartRecommended" style="margin: 1rem">
+        <img class="card-img" [lazyLoad]="getImage(rec.id)" [offset]="100">
+        <div class="card-body">
+          <h6 class="card-title link-on-white">{{rec.shortContent}}</h6>
+          <!--<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's-->
+          <!--content.</p>-->
+        </div>
+      </div>
+    </div>
+
+    <h6 class="recommended-title">Только что добавлено</h6>
+    <ul *ngIf="newest" class="list-unstyled">
+      <li *ngFor="let newestArt of newest" class="recommended-container border-bottom" style="height: 200%">
+        <div class="container">
+          <a class="recommended" href="{{articleType}}/{{newestArt.id}}">{{newestArt.shortContent}}</a>
+        </div>
+      </li>
+    </ul>
+    <h6 class="recommended-title">Рекомендованое</h6>
+    <div class="container col-md-11 justify-content-center">
+      <div class="card" *ngFor="let rec of secondPartRecommended" style="margin: 1rem">
         <img class="card-img" [lazyLoad]="getImage(rec.id)" [offset]="100">
         <div class="card-body">
           <h6 class="card-title link-on-white">{{rec.shortContent}}</h6>

@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {UrlConfig} from "../url.config";
 import {ArticleNavigation} from "../../domain/dto/article.navigation";
 import {ArticleShort} from "../../domain/dto/article.short";
+import {ArticleAdditional} from "../../domain/dto/article.additional";
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +17,8 @@ export class WomenArticleService implements AbstractArticleService {
   constructor(private http: HttpClient) {
   }
 
-  getRecommended(): Observable<ArticleShort> {
-    return this.http.get<ArticleShort>(`${UrlConfig.womenUrl}/recommended`);
+  getAdditionalArticleData(): Observable<ArticleAdditional> {
+    return this.http.get<ArticleAdditional>(`${UrlConfig.womenUrl}/additional`);
   }
 
   getPage(page, size): Observable<ArticlePage> {

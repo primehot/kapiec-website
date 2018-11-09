@@ -5,6 +5,7 @@ import {Article} from "../../domain/dto/article";
 import {ArticleTopic} from "../../domain/dto/article.topic";
 import {ArticleNavigation} from "../../domain/dto/article.navigation";
 import {ArticleShort} from "../../domain/dto/article.short";
+import {ArticleAdditional} from "../../domain/dto/article.additional";
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +22,5 @@ export abstract class AbstractArticleService {
 
   abstract getImage(id): string;
 
-  abstract getRecommended(): Observable<ArticleShort>;
+  abstract getAdditionalArticleData(): Observable<ArticleAdditional>;
 }

@@ -33,7 +33,7 @@
     <div class="container border">
       <h5>Топ новости:</h5>
       <ul *ngIf="recommendedNews" class="list-unstyled">
-        <li *ngFor="let toSee of recommendedNews" class="border" style="background-color: #FFCA28;">
+        <li *ngFor="let toSee of recommendedNews" class="recommended-container border">
           <div class="container">
             <a class="recommended" href="{{newsType}}/{{toSee.id}}" >{{toSee.shortContent}}</a>
           </div>
@@ -41,7 +41,7 @@
       </ul>
       <h5>Топ для женщин:</h5>
       <ul *ngIf="recommendedWomen" class="list-unstyled">
-        <li *ngFor="let toSee of recommendedWomen" class="border" style="background-color: #FFCA28;">
+        <li *ngFor="let toSee of recommendedWomen" class="recommended-container border">
           <div class="container">
             <a class="recommended" href="{{womenType}}/{{toSee.id}}">{{toSee.shortContent}}</a>
           </div>

@@ -3,11 +3,11 @@ import {AbstractArticleService} from "./abstract.article.service";
 import {Observable} from "rxjs/index";
 import {ArticlePage} from "../../domain/dto/article.page";
 import {Article} from "../../domain/dto/article";
-import {ArticleTopic} from "../../domain/dto/article.topic";
 import {HttpClient} from "@angular/common/http";
 import {UrlConfig} from "../url.config";
 import {ArticleNavigation} from "../../domain/dto/article.navigation";
 import {ArticleShort} from "../../domain/dto/article.short";
+import {ArticleAdditional} from "../../domain/dto/article.additional";
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,8 @@ export class NewsArticleService implements AbstractArticleService {
   constructor(private http: HttpClient) {
   }
 
-  getRecommended(): Observable<ArticleShort> {
-    return this.http.get<ArticleShort>(`${UrlConfig.newsUrl}/recommended`);
+  getAdditionalArticleData(): Observable<ArticleAdditional> {
+    return this.http.get<ArticleAdditional>(`${UrlConfig.newsUrl}/additional`);
   }
 
   getPage(page, size): Observable<ArticlePage> {

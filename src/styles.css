@@ -56,6 +56,10 @@
   font-weight: bold;
 }
 
+.recommended-container {
+  background-color: #FFCA28;
+}
+
 .recommended:hover {
   color: white;
   font-weight: bold;
@@ -68,7 +72,6 @@
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
-  margin-bottom: 2rem;
 }
 
 ul li {

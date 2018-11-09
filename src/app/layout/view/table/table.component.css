@@ -1,0 +1,7 @@
+.table-card.card-columns {
+  column-gap: 2rem;
+}
+
+.card-columns .card {
+  margin-bottom: 3rem;
+}
