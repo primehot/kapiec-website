@@ -35,6 +35,7 @@
   color: white;
   font-weight: bold;
   transition: 0.08s;
+  text-decoration: none;
 }
 
 .link-on-white {
@@ -49,6 +50,7 @@
   color: black;
   font-weight: bold;
   transition: 0.08s;
+  text-decoration: none;
 }
 
 .recommended {
@@ -71,6 +73,7 @@
   color: white;
   font-weight: bold;
   transition: 0.3s;
+  text-decoration: none;
 }
 
 .recommended-title {
@@ -88,7 +91,7 @@ a.custom-card {
 
 a.custom-card:hover {
   transition: 0.2s;
-  color: #FFCA28;
+  color: #29B6F6;
   -ms-transform: scale(1.05); /* IE 9 */
   -webkit-transform: scale(1.05); /* Safari 3-8 */
   transform: scale(1.05);
@@ -101,7 +104,7 @@ a.custom-card-main {
 
 a.custom-card-main:hover {
   transition: 0.2s;
-  color: #FFCA28;
+  color: #29B6F6;
 }
 
 ul li {
