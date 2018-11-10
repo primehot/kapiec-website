@@ -1,54 +1,60 @@
-<div *ngIf="mainArticle" class="card bg-dark text-white d-sm-none d-md-block"
-     routerLink="/{{newsType}}/{{mainArticle.id}}">
-  <img class="card-img" [lazyLoad]="getImage(mainArticle.id)" [offset]="100">
-  <div class="card-img-overlay">
-    <h1 class="card-title">{{mainArticle.shortContent}}</h1>
+<div class="container" style="padding-top: 6px">
+  <div *ngIf="mainArticle" class="card bg-dark text-white d-sm-none d-md-block">
+    <a routerLink="/{{newsType}}/{{mainArticle.id}}" class="custom-card-main">
+      <img class="card-img" [lazyLoad]="getImage(mainArticle.id)" [offset]="100">
+      <div class="card-img-overlay">
+        <h1 class="card-title">{{mainArticle.shortContent}}</h1>
+      </div>
+    </a>
   </div>
-</div>
-<div class="row" style="margin-top: 10px;">
-  <div *ngIf="mainItems" class="container col-md-8">
-    <div class="card-columns justify-content-center no-gutter-card-deck">
-      <div class="card bg-dark text-white" *ngFor="let item of mainItems" routerLink="/{{newsType}}/{{item.id}}">
-
-        <img class="card-img" [lazyLoad]="getImage(item.id)" [offset]="100">
-        <div class="card-img-overlay">
-          <h3 class="card-text">{{ item.shortContent }}</h3>
+  <div class="row" style="margin-top: 3px;">
+    <div *ngIf="mainItems" class="container col-md-8" style="padding-right: 0">
+      <div class="card-columns justify-content-center no-gutter-card-deck">
+        <div class="card bg-dark text-white" *ngFor="let item of mainItems">
+          <a routerLink="/{{newsType}}/{{item.id}}" class="custom-card-main">
+            <img class="card-img" [lazyLoad]="getImage(item.id)" [offset]="100">
+            <div class="card-img-overlay">
+              <h3 class="card-text">{{ item.shortContent }}</h3>
+            </div>
+          </a>
         </div>
       </div>
     </div>
-  </div>
-  <div class="container justify-content-center col-md-4" style="padding-left: 0;">
-    <div class="container" style="margin: 0; padding: 0">
-      <a href="https://www.accuweather.com/en/us/google-ca/94043/current-weather/74907_poi" class="aw-widget-legal">
-        <!--
-        By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
-        -->
-      </a><div id="awtd1540135386849" class="aw-widget-36hour"  data-locationkey="" data-unit="f" data-language="en-us" data-useip="true" data-uid="awtd1540135386849" data-editlocation="true"></div><script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
-      <!-- weather widget start -->
-      <!--<a target="_blank" href="https://nochi.com/weather/kiev-18881"><img-->
-      <!--src="https://w.bookcdn.com/weather/picture/3_18881_1_20_000000_50_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=&anc_id=67171"-->
-      <!--alt="booked.net"/></a>-->
-      <!-- weather widget end -->
-    </div>
-    <div class="container border">
-      <h5>Топ новости:</h5>
-      <ul *ngIf="recommendedNews" class="list-unstyled">
-        <li *ngFor="let toSee of recommendedNews" class="recommended-container border">
-          <div class="container">
-            <a class="recommended" href="{{newsType}}/{{toSee.id}}" >{{toSee.shortContent}}</a>
-          </div>
-        </li>
-      </ul>
-      <h5>Топ для женщин:</h5>
-      <ul *ngIf="recommendedWomen" class="list-unstyled">
-        <li *ngFor="let toSee of recommendedWomen" class="recommended-container border">
-          <div class="container">
-            <a class="recommended" href="{{womenType}}/{{toSee.id}}">{{toSee.shortContent}}</a>
-          </div>
-        </li>
-      </ul>
+    <div class="container justify-content-center col-md-4" style="padding-left: 0;">
+      <div class="container" style="margin: 0; padding: 0">
+        <a href="https://www.accuweather.com/en/us/google-ca/94043/current-weather/74907_poi" class="aw-widget-legal">
+          <!--
+          By accessing and/or using this code snippet, you agree to AccuWeather’s terms and conditions (in English) which can be found at https://www.accuweather.com/en/free-weather-widgets/terms and AccuWeather’s Privacy Statement (in English) which can be found at https://www.accuweather.com/en/privacy.
+          -->
+        </a>
+        <div id="awtd1540135386849" class="aw-widget-36hour" data-locationkey="" data-unit="f" data-language="en-us"
+             data-useip="true" data-uid="awtd1540135386849" data-editlocation="true"></div>
+        <script type="text/javascript" src="https://oap.accuweather.com/launch.js"></script>
+        <!-- weather widget start -->
+        <!--<a target="_blank" href="https://nochi.com/weather/kiev-18881"><img-->
+        <!--src="https://w.bookcdn.com/weather/picture/3_18881_1_20_000000_50_ffffff_333333_08488D_1_ffffff_333333_0_6.png?scode=124&domid=&anc_id=67171"-->
+        <!--alt="booked.net"/></a>-->
+        <!-- weather widget end -->
+      </div>
+      <div class="container border border-left-0" style="margin: 0">
+        <h5>Топ новости:</h5>
+        <ul *ngIf="recommendedNews" class="list-unstyled">
+          <li *ngFor="let toSee of recommendedNews" class="recommended-container">
+            <div class="container">
+              <a class="recommended" href="{{newsType}}/{{toSee.id}}">{{toSee.shortContent}}</a>
+            </div>
+          </li>
+        </ul>
+        <h5>Топ для женщин:</h5>
+        <ul *ngIf="recommendedWomen" class="list-unstyled">
+          <li *ngFor="let toSee of recommendedWomen" class="recommended-container">
+            <div class="container">
+              <a class="recommended" href="{{womenType}}/{{toSee.id}}">{{toSee.shortContent}}</a>
+            </div>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
-
 

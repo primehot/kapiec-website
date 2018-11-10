@@ -57,7 +57,14 @@
 }
 
 .recommended-container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   background-color: #FFCA28;
+}
+
+.recommended-container-border {
+  width: 70%;
+  border-bottom: dotted white;
 }
 
 .recommended:hover {
@@ -72,6 +79,29 @@
   font-weight: bold;
   text-align: center;
   text-transform: uppercase;
+}
+
+a.custom-card {
+  text-decoration: none;
+  color: black;
+}
+
+a.custom-card:hover {
+  transition: 0.2s;
+  color: #FFCA28;
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.05); /* Safari 3-8 */
+  transform: scale(1.05);
+}
+
+a.custom-card-main {
+  text-decoration: none;
+  color: white;
+}
+
+a.custom-card-main:hover {
+  transition: 0.2s;
+  color: #FFCA28;
 }
 
 ul li {
