@@ -38,12 +38,14 @@ function addCollapseScroll() {
         .css('top', 0);
       $('.content').css('padding-top', navigationBarHeight);
       $('.overlap-collapse').addClass("navbar-fixed")
+        .addClass("col-lg-6 col-md-10")
         .css('top', navigationBarHeight);
     } else {
       $('#navigation-bar').removeClass("navbar-fixed").clearQueue()
         .css('top', 0);
       $('.content').css('padding-top', 0);
-      $('.overlap-collapse').removeClass("navbar-fixed").clearQueue()
+      $('.overlap-collapse').removeClass("navbar-fixed")
+        .removeClass("col-lg-6 col-md-10").clearQueue()
         .css('top', 0);
     }
   });
