@@ -14,8 +14,13 @@
   width: 100%;
 }
 
+.navigation-bar + .content {
+  padding-top: 60px;
+}
+
 .navbar-fixed {
   position: fixed;
+  width: 100%;
 }
 
 .navbar-collapse-container-topic {

@@ -10,6 +10,23 @@ function addJqueryLogic() {
   });
 }
 
+function addCollapseScroll1() {
+  $(window).on('scroll', function () {
+    let scrollTop = $(this).scrollTop();
+    let headerHeight = $('#navigation-bar-header').height();
+    let navigationBarHeight = $('#navigation-bar').height();
+
+    let navbar = document.getElementById("navigation-bar");
+    let sticky = navbar.offsetTop;
+
+    if (window.pageYOffset >= sticky) {
+      navbar.classList.add("navbar-fixed")
+    } else {
+      navbar.classList.remove("navbar-fixed");
+    }
+  });
+}
+
 function addCollapseScroll() {
   $(window).on('scroll', function () {
     let scrollTop = $(this).scrollTop();
@@ -19,11 +36,13 @@ function addCollapseScroll() {
     if (scrollTop > headerHeight) {
       $('#navigation-bar').addClass("navbar-fixed")
         .css('top', 0);
+      $('.content').css('padding-top', navigationBarHeight);
       $('.overlap-collapse').addClass("navbar-fixed")
         .css('top', navigationBarHeight);
     } else {
       $('#navigation-bar').removeClass("navbar-fixed").clearQueue()
         .css('top', 0);
+      $('.content').css('padding-top', 0);
       $('.overlap-collapse').removeClass("navbar-fixed").clearQueue()
         .css('top', 0);
     }
