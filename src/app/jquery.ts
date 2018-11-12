@@ -10,23 +10,6 @@ function addJqueryLogic() {
   });
 }
 
-function addCollapseScroll1() {
-  $(window).on('scroll', function () {
-    let scrollTop = $(this).scrollTop();
-    let headerHeight = $('#navigation-bar-header').height();
-    let navigationBarHeight = $('#navigation-bar').height();
-
-    let navbar = document.getElementById("navigation-bar");
-    let sticky = navbar.offsetTop;
-
-    if (window.pageYOffset >= sticky) {
-      navbar.classList.add("navbar-fixed")
-    } else {
-      navbar.classList.remove("navbar-fixed");
-    }
-  });
-}
-
 function addCollapseScroll() {
   $(window).on('scroll', function () {
     let scrollTop = $(this).scrollTop();
@@ -34,19 +17,27 @@ function addCollapseScroll() {
     let navigationBarHeight = $('#navigation-bar').height();
 
     if (scrollTop > headerHeight) {
-      $('#navigation-bar').addClass("navbar-fixed")
+      $('#navigation-bar')
+        .addClass("navbar-fixed")
         .css('top', 0);
-      $('.content').css('padding-top', navigationBarHeight);
-      $('.overlap-collapse').addClass("navbar-fixed")
+      $('.content')
+        .css('padding-top', navigationBarHeight);
+      $('.overlap-collapse')
+        .addClass("navbar-fixed")
         .addClass("col-lg-6 col-md-10")
         .css('top', navigationBarHeight);
     } else {
-      $('#navigation-bar').removeClass("navbar-fixed").clearQueue()
-        .css('top', 0);
-      $('.content').css('padding-top', 0);
-      $('.overlap-collapse').removeClass("navbar-fixed")
-        .removeClass("col-lg-6 col-md-10").clearQueue()
-        .css('top', 0);
+      $('#navigation-bar')
+        .removeClass("navbar-fixed")
+        .css('top', 0)
+        .clearQueue();
+      $('.content')
+        .css('padding-top', 0);
+      $('.overlap-collapse')
+        .removeClass("navbar-fixed")
+        .removeClass("col-lg-6 col-md-10")
+        .css('top', 0)
+        .clearQueue();
     }
   });
 }
