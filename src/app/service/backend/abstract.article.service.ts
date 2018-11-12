@@ -23,4 +23,6 @@ export abstract class AbstractArticleService {
   abstract getImage(id): string;
 
   abstract getAdditionalArticleData(): Observable<ArticleAdditional>;
+
+  abstract getTopic(id): Observable<ArticleTopic>;
 }

@@ -4,6 +4,7 @@ import {map, tap} from 'rxjs/operators';
 import {Article} from '../../../domain/dto/article';
 import {ArticleType} from '../../../domain/emun/article-type';
 import {AbstractArticleService} from "../../../service/backend/abstract.article.service";
+import {getNavigationName} from "../../../service/util/category";
 
 @Component({
   selector: 'app-table',
@@ -13,8 +14,10 @@ import {AbstractArticleService} from "../../../service/backend/abstract.article.
 })
 export class TableComponent implements OnInit {
   @Input() articleType: ArticleType;
+  articleTypeName: string;
   @Input() articleService: AbstractArticleService;
   @Input() topicId?: number;
+  @Input() topic?: string;
 
   asyncMeals: Observable<Article[]>;
   p = 1;
@@ -37,6 +40,8 @@ export class TableComponent implements OnInit {
       this.secondPartRecommended = result[1];
       this.newest = next.newest;
     });
+
+    this.articleTypeName = getNavigationName(this.articleType);
   }
 
   chunkArray(myArray, chunk_size){

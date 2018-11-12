@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/index";
 import {HttpClient} from "@angular/common/http";
-import {UrlConfig} from "../url.config";
+import {UrlConfig} from "../util/url.config";
 import {MainArticles} from "../../domain/dto/main-articles";
 
 @Injectable({

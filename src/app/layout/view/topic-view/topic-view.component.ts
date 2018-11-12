@@ -5,6 +5,7 @@ import {WomenArticleService} from "../../../service/backend/women.article.servic
 import {NewsArticleService} from "../../../service/backend/news.article.service";
 import {AbstractArticleService} from "../../../service/backend/abstract.article.service";
 import {ArticleType} from "../../../domain/emun/article-type";
+import {getNavigationName} from "../../../service/util/category";
 
 @Component({
   selector: 'app-topic-view',
@@ -15,6 +16,7 @@ export class TopicViewComponent implements OnInit {
   articleType: ArticleType;
   service: AbstractArticleService;
   topicId;
+  topic;
 
   constructor(private route: ActivatedRoute,
               private newsArticleService: NewsArticleService,
@@ -36,6 +38,7 @@ export class TopicViewComponent implements OnInit {
     this.articleType = this.route.snapshot.data.articleType;
     this.topicId= this.route.snapshot.paramMap.get('id');
     this.service = this.getService(this.articleType);
+    this.service.getTopic(this.topicId).subscribe(next => this.topic = next.name);
   }
 
 }

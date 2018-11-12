@@ -4,10 +4,11 @@ import {Observable} from "rxjs/index";
 import {ArticlePage} from "../../domain/dto/article.page";
 import {Article} from "../../domain/dto/article";
 import {HttpClient} from "@angular/common/http";
-import {UrlConfig} from "../url.config";
+import {UrlConfig} from "../util/url.config";
 import {ArticleNavigation} from "../../domain/dto/article.navigation";
 import {ArticleShort} from "../../domain/dto/article.short";
 import {ArticleAdditional} from "../../domain/dto/article.additional";
+import {ArticleTopic} from "../../domain/dto/article.topic";
 
 @Injectable({
   providedIn: 'root'
@@ -39,5 +40,9 @@ export class WomenArticleService implements AbstractArticleService {
 
   getImage(id): string {
     return `${UrlConfig.womenUrl}/${id}/image`;
+  }
+
+  getTopic(id): Observable<ArticleTopic> {
+    return this.http.get<ArticleTopic>(`${UrlConfig.womenUrl}/topics/${id}`);
   }
 }

@@ -1,9 +1,14 @@
 <div class="container" style="margin: 0">
   <div class="row" style="margin-top: 10px">
     <div class="container col-md-8 border-left">
-      <div class="row">
-        <a class="link-on-white" href="/"><h6>Главная</h6></a>
-        <h6> > </h6>
+      <div class="container navigation">
+        <tr>
+          <td><a class="navigation-on-white" href="/"><h6>Главная</h6></a></td>
+          <td class="navigation-arrow"><h6> > </h6></td>
+          <td><a class="navigation-on-white" href="/{{articleType}}"><h6>{{articleTypeName}}</h6></a></td>
+          <td *ngIf="topic" class="navigation-arrow"><h6> > </h6></td>
+          <td *ngIf="topic"><a class="navigation-on-white" href="/{{articleType}}/by-topics/{{topicId}}"><h6>{{topic}}</h6></a></td>
+        </tr>
       </div>
 
       <div class="card-columns justify-content-center table-card">
