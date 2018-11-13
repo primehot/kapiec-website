@@ -6,7 +6,7 @@ import {WomanViewComponent} from './layout/view/woman-view/woman-view.component'
 import {MainViewComponent} from './layout/view/main-view/main-view.component';
 import {PageNotFoundComponent} from './layout/page-not-found/page-not-found.component';
 import {ArticleComponent} from './layout/view/article/article.component';
-import {ArticleType} from './domain/emun/article-type';
+import {ArticleType} from './domain/emun/article.type';
 import {TopicViewComponent} from "./layout/view/topic-view/topic-view.component";
 
 const routes: Routes = [

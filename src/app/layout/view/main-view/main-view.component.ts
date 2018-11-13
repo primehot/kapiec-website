@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ArticleType} from '../../../domain/emun/article-type';
+import {ArticleType} from '../../../domain/emun/article.type';
 import {MainArticleService} from "../../../service/backend/main.article.service";
 import {ArticleShort} from "../../../domain/dto/article.short";
 import {NewsArticleService} from "../../../service/backend/news.article.service";

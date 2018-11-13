@@ -1,6 +1,6 @@
 <div class="container main-news-container">
   <div *ngIf="mainArticle" class="card bg-dark text-white d-sm-none d-md-block">
-    <a routerLink="/{{newsType}}/{{mainArticle.id}}" class="custom-card-main">
+    <a routerLink="/{{mainArticle.articleCategory.name}}/{{mainArticle.id}}" class="custom-card-main">
       <img class="card-img" [lazyLoad]="getImage(mainArticle.id)" [offset]="100">
       <div class="card-img-overlay">
         <h1 class="card-title">{{mainArticle.shortContent}}</h1>
@@ -11,7 +11,7 @@
     <div *ngIf="mainItems" class="container col-md-8" style="padding-right: 0">
       <div class="card-columns justify-content-center no-gutter-card-deck">
         <div class="card bg-dark text-white" *ngFor="let item of mainItems">
-          <a routerLink="/{{newsType}}/{{item.id}}" class="custom-card-main">
+          <a routerLink="/{{item.articleCategory.name}}/{{item.id}}" class="custom-card-main">
             <img class="card-img" [lazyLoad]="getImage(item.id)" [offset]="100">
             <div class="card-img-overlay">
               <h3 class="card-text">{{ item.shortContent }}</h3>
@@ -41,7 +41,7 @@
         <ul *ngIf="recommendedNews" class="list-unstyled">
           <li *ngFor="let toSee of recommendedNews" class="recommended-container">
             <div class="container">
-              <a class="recommended" href="{{newsType}}/{{toSee.id}}">{{toSee.shortContent}}</a>
+              <a class="recommended" href="{{toSee.articleCategory.name}}/{{toSee.id}}">{{toSee.shortContent}}</a>
             </div>
           </li>
         </ul>
@@ -49,7 +49,7 @@
         <ul *ngIf="recommendedWomen" class="list-unstyled">
           <li *ngFor="let toSee of recommendedWomen" class="recommended-container">
             <div class="container">
-              <a class="recommended" href="{{womenType}}/{{toSee.id}}">{{toSee.shortContent}}</a>
+              <a class="recommended" href="{{toSee.articleCategory.name}}/{{toSee.id}}">{{toSee.shortContent}}</a>
             </div>
           </li>
         </ul>

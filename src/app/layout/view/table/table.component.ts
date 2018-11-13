@@ -2,9 +2,8 @@ import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {Article} from '../../../domain/dto/article';
-import {ArticleType} from '../../../domain/emun/article-type';
+import {ArticleType, getNavigationNameByType} from '../../../domain/emun/article.type';
 import {AbstractArticleService} from "../../../service/backend/abstract.article.service";
-import {getNavigationName} from "../../../service/util/category";
 
 @Component({
   selector: 'app-table',
@@ -41,7 +40,7 @@ export class TableComponent implements OnInit {
       this.newest = next.newest;
     });
 
-    this.articleTypeName = getNavigationName(this.articleType);
+    this.articleTypeName = getNavigationNameByType(this.articleType);
   }
 
   chunkArray(myArray, chunk_size){

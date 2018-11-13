@@ -1,6 +1,10 @@
-import {ArticleType} from "../../domain/emun/article-type";
+export enum ArticleType {
+  news = 'news',
+  women = 'women',
+  dream = 'dream'
+}
 
-function getNavigationName(articleType: ArticleType) {
+function getNavigationNameByType(articleType: ArticleType) {
   switch (articleType) {
     case ArticleType.dream:
       return "Сонник";
@@ -11,4 +15,5 @@ function getNavigationName(articleType: ArticleType) {
   }
 }
 
-export {getNavigationName};
+export {getNavigationNameByType};
+

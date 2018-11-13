@@ -4,7 +4,7 @@ import {Article} from "../../../domain/dto/article";
 import {AbstractArticleService} from "../../../service/backend/abstract.article.service";
 import {WomenArticleService} from "../../../service/backend/women.article.service";
 import {NewsArticleService} from "../../../service/backend/news.article.service";
-import {ArticleType} from "../../../domain/emun/article-type";
+import {ArticleType} from "../../../domain/emun/article.type";
 @Component({
   selector: 'app-article',
   templateUrl: './article.component.html',

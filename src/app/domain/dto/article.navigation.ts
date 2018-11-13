@@ -1,4 +1,4 @@
-import {ArticleType} from "../emun/article-type";
+import {ArticleType} from "../emun/article.type";
 import {Article} from "./article";
 import {ArticleShort} from "./article.short";
 
