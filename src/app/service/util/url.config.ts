@@ -7,4 +7,5 @@ export class UrlConfig {
   static mainUrl = `${UrlConfig.serverUrl}/main`;
   static newsUrl = `${UrlConfig.serverUrl}/news`;
   static womenUrl = `${UrlConfig.serverUrl}/women`;
+  static tagsUrl = `${UrlConfig.serverUrl}/tags`;
 }

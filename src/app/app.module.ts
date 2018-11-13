@@ -20,6 +20,7 @@ import {ArticleComponent} from './layout/view/article/article.component';
 import {TableComponent} from './layout/view/table/table.component';
 import { TopicViewComponent } from './layout/view/topic-view/topic-view.component';
 import { CustomArticleComponent } from './layout/navigation/collapse/custom-article/custom-article.component';
+import { TagViewComponent } from './layout/view/tag-view/tag-view.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CustomArticleComponent } from './layout/navigation/collapse/custom-arti
     ArticleComponent,
     TableComponent,
     TopicViewComponent,
-    CustomArticleComponent
+    CustomArticleComponent,
+    TagViewComponent
   ],
   imports: [
     NgbCollapseModule,

@@ -138,6 +138,18 @@ a.custom-card-main:hover {
   padding-right: 0.5rem;
 }
 
+.hash-tag {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.hash-tag:hover {
+  color: #29B6F6;
+  /*font-weight: bold;*/
+  transition: 0.08s;
+  text-decoration: none;
+}
+
 ul li {
   padding: 2px;
 }
