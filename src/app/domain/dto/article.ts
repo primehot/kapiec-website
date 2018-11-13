@@ -1,4 +1,5 @@
 import {ArticleCategory} from "./article.category";
+import {ArticleHashTag} from "./article.hash.tag";
 
 export class Article {
   id: number;
@@ -7,4 +8,5 @@ export class Article {
   hotContent: string;
   content: string;
   articleCategory: ArticleCategory;
+  hashTags: ArticleHashTag[];
 }

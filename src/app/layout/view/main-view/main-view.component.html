@@ -17,6 +17,14 @@
               <h3 class="card-text">{{ item.shortContent }}</h3>
             </div>
           </a>
+          <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+            <h6 class="card-text">Таги: </h6>
+              <tr class="card-text">
+                <td *ngFor="let tag of item.hashTags">
+                  {{ tag.name }}
+                </td>
+              </tr>
+          </div>
         </div>
       </div>
     </div>
