@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/index";
 import {HttpClient} from "@angular/common/http";
-import {UrlConfig} from "../util/url.config";
+import {urlConfig} from "../util/url.config";
 import {ArticlePage} from "../../domain/dto/article.page";
 
 @Injectable({
@@ -13,7 +13,7 @@ export class TagsArticleService {
   }
 
   getPageByTag(tagId, page, size): Observable<ArticlePage> {
-    return this.http.get<ArticlePage>(`${UrlConfig.tagsUrl}/${tagId}?page=${page}&size=${size}`);
+    return this.http.get<ArticlePage>(`${urlConfig.tagsUrl}/${tagId}?page=${page}&size=${size}`);
   }
 
 }

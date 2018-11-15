@@ -1,11 +1,26 @@
+import {ArticleType} from "../../domain/emun/article.type";
 
-export class UrlConfig {
-  static serverHost = 'http://localhost';
-  static serverPort = '8080';
-  static serverUrl = `${UrlConfig.serverHost}:${UrlConfig.serverPort}`;
+const serverHost = 'http://localhost';
+const serverPort = '8080';
+const serverUrl = `${serverHost}:${serverPort}`;
 
-  static mainUrl = `${UrlConfig.serverUrl}/main`;
-  static newsUrl = `${UrlConfig.serverUrl}/news`;
-  static womenUrl = `${UrlConfig.serverUrl}/women`;
-  static tagsUrl = `${UrlConfig.serverUrl}/tags`;
-}
+const urlConfig = {
+  mainUrl: `${serverUrl}/main`,
+  newsUrl: `${serverUrl}/news`,
+  dreamUrl: `${serverUrl}/dream`,
+  womenUrl: `${serverUrl}/women`,
+  tagsUrl: `${serverUrl}/tags`,
+};
+
+const getUrl = (articleType) => {
+  switch (articleType) {
+    case ArticleType.women:
+      return urlConfig.womenUrl;
+    case ArticleType.news:
+      return urlConfig.newsUrl;
+    case ArticleType.dream:
+      return urlConfig.dreamUrl;
+  }
+};
+
+export {urlConfig, getUrl};

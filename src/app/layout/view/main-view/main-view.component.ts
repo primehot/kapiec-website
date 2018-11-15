@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ArticleType} from '../../../domain/emun/article.type';
 import {MainArticleService} from "../../../service/backend/main.article.service";
 import {ArticleShort} from "../../../domain/dto/article.short";
-import {NewsArticleService} from "../../../service/backend/news.article.service";
+import {ImageService} from "../../../service/backend/image.service";
+import {urlConfig} from "../../../service/util/url.config";
 
 @Component({
   selector: 'app-main-view',
@@ -10,16 +10,13 @@ import {NewsArticleService} from "../../../service/backend/news.article.service"
   styleUrls: ['./main-view.component.css', '../bootstrap.view.scss']
 })
 export class MainViewComponent implements OnInit {
-  newsType = ArticleType.news;
-  womenType = ArticleType.women;
-
   mainArticle: ArticleShort;
   mainItems: ArticleShort[];
   recommendedNews: ArticleShort[];
   recommendedWomen: ArticleShort[];
 
   constructor(private service: MainArticleService,
-              private newsService: NewsArticleService) {
+              private imageService: ImageService) {
     this.service.getMainArticles().subscribe(next => {
       console.log(next);
       this.mainArticle = next.mainArticle;
@@ -30,7 +27,7 @@ export class MainViewComponent implements OnInit {
   }
 
   getImage(id) {
-    return this.newsService.getImage(id);
+    return this.imageService.getImage(urlConfig.newsUrl, id);
   }
 
   ngOnInit() {

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArticleType} from "../../../../domain/emun/article.type";
-import {AbstractArticleService} from "../../../../service/backend/abstract.article.service";
+import {NavigationDataService} from "../../../../service/backend/navigation.data.service";
+import {ImageService} from "../../../../service/backend/image.service";
 
 @Component({
   selector: 'app-custom-article',
@@ -9,7 +10,6 @@ import {AbstractArticleService} from "../../../../service/backend/abstract.artic
 })
 export class CustomArticleComponent implements OnInit {
 
-  @Input() articleService: AbstractArticleService;
   @Input() type: ArticleType;
 
   topics;
@@ -17,19 +17,20 @@ export class CustomArticleComponent implements OnInit {
   seeAlso;
   mostCommented;
 
-  constructor() { }
+  constructor(private imageService: ImageService,
+              private navigationDataService: NavigationDataService) {
+  }
 
   ngOnInit() {
-    this.articleService.getNavigationData().pipe().subscribe(navData => {
+    this.navigationDataService.getNavigationData(this.type).pipe().subscribe(navData => {
       this.topics = navData.topics;
       this.articles = navData.articles;
       this.seeAlso = navData.seeAlso;
       this.mostCommented = navData.mostCommented;
-      console.log(navData);
     });
   }
 
   getImage(id) {
-    return this.articleService.getImage(id);
+    return this.imageService.getImageByType(this.type, id);
   }
 }

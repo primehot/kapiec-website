@@ -6,23 +6,19 @@ import {ArticleTopic} from "../../domain/dto/article.topic";
 import {ArticleNavigation} from "../../domain/dto/article.navigation";
 import {ArticleShort} from "../../domain/dto/article.short";
 import {ArticleAdditional} from "../../domain/dto/article.additional";
+import {ArticleType} from "../../domain/emun/article.type";
+import {getUrl} from "../util/url.config";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
 })
-export abstract class AbstractArticleService {
+export class NavigationDataService {
 
-  abstract getPage(page, size): Observable<ArticlePage>;
+  constructor(private http: HttpClient) {
+  }
 
-  abstract getPageByTopic(topicId: any, page: any, size: any): Observable<ArticlePage>;
-
-  abstract getArticle(id): Observable<Article>;
-
-  abstract getNavigationData(): Observable<ArticleNavigation>;
-
-  abstract getImage(id): string;
-
-  abstract getAdditionalArticleData(): Observable<ArticleAdditional>;
-
-  abstract getTopic(id): Observable<ArticleTopic>;
+  getNavigationData(articleType: ArticleType): Observable<ArticleNavigation> {
+    return this.http.get<ArticleNavigation>(`${getUrl(articleType)}/navbar`);
+  }
 }

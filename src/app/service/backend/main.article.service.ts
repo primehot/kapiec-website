@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/index";
 import {HttpClient} from "@angular/common/http";
-import {UrlConfig} from "../util/url.config";
 import {MainArticles} from "../../domain/dto/main-articles";
+import {urlConfig} from "../util/url.config";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class MainArticleService {
   }
 
   getMainArticles(): Observable<MainArticles> {
-    return this.http.get<MainArticles>(`${UrlConfig.mainUrl}`);
+    return this.http.get<MainArticles>(`${urlConfig.mainUrl}`);
   }
 
 }
