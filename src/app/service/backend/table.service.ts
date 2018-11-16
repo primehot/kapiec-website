@@ -21,8 +21,8 @@ export class TableService {
     return this.http.get<ArticlePage>(`${getUrl(articleType)}/by-topics/${topicId}/?page=${page}&size=${size}`);
   }
 
-  getPageByTag(topicId, page, size): Observable<ArticlePage> {
-    return this.http.get<ArticlePage>(`${urlConfig.tagsUrl}/${topicId}?page=${page}&size=${size}`);
+  getPageByTag(tagId, page, size): Observable<ArticlePage> {
+    return this.http.get<ArticlePage>(`${urlConfig.tagsUrl}/${tagId}?page=${page}&size=${size}`);
   }
 
 }

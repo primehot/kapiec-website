@@ -20,6 +20,7 @@ a:active {
 .navbar .navbar-nav>a:focus{
   color: black;
   background-color: white;
+  box-shadow: 5px -5px 15px -1px;
 }
 
 

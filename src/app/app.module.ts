@@ -21,6 +21,8 @@ import {TableComponent} from './layout/view/table/table.component';
 import { TopicViewComponent } from './layout/view/topic-view/topic-view.component';
 import { CustomArticleComponent } from './layout/navigation/collapse/custom-article/custom-article.component';
 import { TagViewComponent } from './layout/view/tag-view/tag-view.component';
+import { TableNavigationComponent } from './layout/view/table-navigation/table-navigation.component';
+import { TableAdditionalComponent } from './layout/view/table-additional/table-additional.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { TagViewComponent } from './layout/view/tag-view/tag-view.component';
     TableComponent,
     TopicViewComponent,
     CustomArticleComponent,
-    TagViewComponent
+    TagViewComponent,
+    TableNavigationComponent,
+    TableAdditionalComponent
   ],
   imports: [
     NgbCollapseModule,

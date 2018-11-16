@@ -3,7 +3,6 @@ import {ActivatedRoute} from '@angular/router';
 import {Article} from "../../../domain/dto/article";
 import {ArticleService} from "../../../service/backend/article.service";
 import {ImageService} from "../../../service/backend/image.service";
-import {getUrl} from "../../../service/util/url.config";
 
 @Component({
   selector: 'app-article',

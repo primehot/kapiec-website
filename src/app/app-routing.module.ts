@@ -8,6 +8,7 @@ import {PageNotFoundComponent} from './layout/page-not-found/page-not-found.comp
 import {ArticleComponent} from './layout/view/article/article.component';
 import {ArticleType} from './domain/emun/article.type';
 import {TopicViewComponent} from "./layout/view/topic-view/topic-view.component";
+import {TagViewComponent} from "./layout/view/tag-view/tag-view.component";
 
 const routes: Routes = [
   { path: '', component: MainViewComponent },
@@ -21,6 +22,8 @@ const routes: Routes = [
   { path: 'news/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.news }},
   { path: 'dream/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.dream }},
   { path: 'women/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.women }},
+
+  { path: 'tags/:id', component: TagViewComponent },
 
   { path: '**', component: PageNotFoundComponent }
 ];

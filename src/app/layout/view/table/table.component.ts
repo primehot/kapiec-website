@@ -16,8 +16,8 @@ import {TableService} from "../../../service/backend/table.service";
 export class TableComponent implements OnInit {
   @Input() articleType: ArticleType;
   @Input() topicId?: number;
+  @Input() tagId?: number;
   @Input() topic?: string;
-  articleTypeName: string;
 
   asyncMeals: Observable<Article[]>;
   p = 1;
@@ -25,40 +25,12 @@ export class TableComponent implements OnInit {
   loading: boolean;
   pageSize = 20;
 
-  newest;
-  firstPartRecommended;
-  secondPartRecommended;
-
   constructor(private imageService: ImageService,
-              private additionalDataService: AdditionalDataService,
               private tableService: TableService) {
   }
 
   ngOnInit() {
     this.getPage(1);
-    this.additionalDataService.getAdditionalArticleData(this.articleType).subscribe(next => {
-      let result = this.chunkArray(next.recommended, 2);
-      this.firstPartRecommended = result[0];
-      this.secondPartRecommended = result[1];
-      this.newest = next.newest;
-    });
-
-    this.articleTypeName = getNavigationNameByType(this.articleType);
-  }
-
-  chunkArray(myArray, chunk_size) {
-    let index = 0;
-    let arrayLength = myArray.length;
-    let tempArray = [];
-    let myChunk;
-
-    for (index = 0; index < arrayLength; index += chunk_size) {
-      myChunk = myArray.slice(index, index + chunk_size);
-      // Do something if you want with the group
-      tempArray.push(myChunk);
-    }
-
-    return tempArray;
   }
 
   getImage(id) {
