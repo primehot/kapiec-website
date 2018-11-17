@@ -1,7 +1,8 @@
 export enum ArticleType {
   news = 'news',
   women = 'women',
-  dream = 'dream'
+  dream = 'dream',
+  tags = 'tags'
 }
 
 function getNavigationNameByType(articleType: ArticleType) {
@@ -12,6 +13,9 @@ function getNavigationNameByType(articleType: ArticleType) {
       return "Новости";
     case ArticleType.women:
       return "Для женщин";
+    case ArticleType.tags:
+      return "Таги";
+
   }
 }
 

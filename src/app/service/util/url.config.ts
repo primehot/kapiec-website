@@ -20,6 +20,8 @@ const getUrl = (articleType) => {
       return urlConfig.newsUrl;
     case ArticleType.dream:
       return urlConfig.dreamUrl;
+    case ArticleType.tags:
+      return urlConfig.tagsUrl;
   }
 };
 

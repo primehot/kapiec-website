@@ -5,5 +5,7 @@
     <td><a class="navigation-on-white" href="/{{articleType}}"><h6>{{articleTypeName}}</h6></a></td>
     <td *ngIf="topic" class="navigation-arrow"><h6> > </h6></td>
     <td *ngIf="topic"><a class="navigation-on-white" href="/{{articleType}}/by-topics/{{topicId}}"><h6>{{topic}}</h6></a></td>
+    <td *ngIf="tagId" class="navigation-arrow"><h6> > </h6></td>
+    <td *ngIf="tagId"><a class="navigation-on-white" href="/{{articleType}}/{{tagId}}"><h6>{{tag}}</h6></a></td>
   </tr>
 </div>

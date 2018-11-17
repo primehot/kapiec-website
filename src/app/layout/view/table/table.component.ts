@@ -16,8 +16,9 @@ import {TableService} from "../../../service/backend/table.service";
 export class TableComponent implements OnInit {
   @Input() articleType: ArticleType;
   @Input() topicId?: number;
-  @Input() tagId?: number;
   @Input() topic?: string;
+  @Input() tagId?: number;
+  @Input() tag?: string;
 
   asyncMeals: Observable<Article[]>;
   p = 1;
@@ -33,12 +34,15 @@ export class TableComponent implements OnInit {
     this.getPage(1);
   }
 
-  getImage(id) {
-    return this.imageService.getImageByType(this.articleType, id);
+  getImage(articleType: ArticleType, id) {
+    return this.imageService.getImageByType(articleType, id);
   }
 
   getServicePageMethod(page: number) {
-    if (this.topicId) {
+    if (this.tagId) {
+      return this.tableService.getPageByTag(this.tagId, page, this.pageSize);
+    }
+    else if (this.topicId) {
       return this.tableService.getPageByTopic(this.articleType, this.topicId, page, this.pageSize);
     } else {
       return this.tableService.getPage(this.articleType, page, this.pageSize);

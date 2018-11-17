@@ -25,6 +25,7 @@ const routes: Routes = [
 
   { path: 'tags/:id', component: TagViewComponent },
 
+  { path: 'tags', redirectTo: ''},
   { path: '**', component: PageNotFoundComponent }
 ];
 

@@ -2,6 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AdditionalDataService} from "../../../service/backend/additional.data.service";
 import {ArticleType} from "../../../domain/emun/article.type";
 import {ImageService} from "../../../service/backend/image.service";
+import {ArticleShort} from "../../../domain/dto/article.short";
+import {tap} from "rxjs/internal/operators";
+import {Observable} from "rxjs/index";
+import {ArticleAdditional} from "../../../domain/dto/article.additional";
 
 @Component({
   selector: 'app-table-additional',
@@ -12,20 +16,40 @@ export class TableAdditionalComponent implements OnInit {
 
   @Input() articleType: ArticleType;
 
-  newest: any;
-  firstPartRecommended: any;
-  secondPartRecommended: any;
+  additionalArticleData: Observable<ArticleAdditional>;
+  newest: ArticleShort[];
+  firstPartRecommended: ArticleShort[] = [];
+  secondPartRecommended: ArticleShort[] = [];
 
   constructor(private imageService: ImageService,
-              private additionalDataService: AdditionalDataService) { }
+              private additionalDataService: AdditionalDataService) {
+  }
 
   ngOnInit() {
-    this.additionalDataService.getAdditionalArticleData(this.articleType).subscribe(next => {
-      let result = this.chunkArray(next.recommended, 2);
-      this.firstPartRecommended = result[0];
-      this.secondPartRecommended = result[1];
-      this.newest = next.newest;
-    });
+    console.log("TableAdditionalComponent ngOnInit");
+
+     this.additionalDataService.getAdditionalArticleData(this.articleType)
+      .subscribe(next => {
+        this.additionalArticleData = Observable.create(next);
+        console.log("From server");
+        console.log(next);
+        let result = this.chunkArray(next.recommended, 2);
+        this.firstPartRecommended = result[0];
+        this.secondPartRecommended = result[1];
+        this.newest = next.newest;
+      })
+      // .pipe(
+      //   tap(next => {
+      //       console.log("From server");
+      //       console.log(next);
+      //       let result = this.chunkArray(next.recommended, 2);
+      //       this.firstPartRecommended = result[0];
+      //       this.secondPartRecommended = result[1];
+      //       this.newest = next.newest;
+      //     }
+      //   )
+      // )
+    ;
   }
 
   chunkArray(myArray, chunk_size) {
@@ -43,8 +67,8 @@ export class TableAdditionalComponent implements OnInit {
     return tempArray;
   }
 
-  getImage(id) {
-    return this.imageService.getImageByType(this.articleType, id);
+  getImage(articleType: ArticleType, id) {
+    return this.imageService.getImageByType(articleType, id);
   }
 
 }
