@@ -1,5 +1,5 @@
 <div class="container main-news-container">
-  <div *ngIf="mainArticle" class="card bg-dark text-white d-sm-none d-md-block">
+  <div *ngIf="mainArticle" class="card card-item bg-dark text-white d-sm-none d-md-block">
     <a routerLink="/{{mainArticle.articleCategory.name}}/{{mainArticle.id}}" class="custom-card-main">
       <img class="card-img" [lazyLoad]="getImage(mainArticle.id)" [offset]="100">
       <div class="card-img-overlay">
@@ -10,7 +10,7 @@
   <div class="row" style="margin-top: 3px;">
     <div *ngIf="mainItems" class="container col-md-8" style="padding-right: 0">
       <div class="card-columns justify-content-center no-gutter-card-deck">
-        <div class="card bg-dark text-white" *ngFor="let item of mainItems">
+        <div class="card card-item bg-dark text-white" *ngFor="let item of mainItems">
           <img class="card-img" [lazyLoad]="getImage(item.id)" [offset]="100">
           <a routerLink="/{{item.articleCategory.name}}/{{item.id}}" class="custom-card-main">
             <div class="card-img-overlay">

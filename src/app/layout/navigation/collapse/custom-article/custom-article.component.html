@@ -10,7 +10,7 @@
 
     <div class="container col-md-5 p-3">
       <div class="card small border-0" *ngFor="let article of articles">
-        <a class="link-on-white" href="{{article.articleCategory.name}}/{{article.id}}">
+        <a routerLink="/{{article.articleCategory.name}}/{{article.id}}" class="custom-card">
           <div class="row mt-3">
             <div class="container col-md-4">
               <img class="card-img" [lazyLoad]="getImage(article.id)" [offset]="100" alt="Card image">
