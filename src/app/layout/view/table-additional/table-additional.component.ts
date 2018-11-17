@@ -3,8 +3,8 @@ import {AdditionalDataService} from "../../../service/backend/additional.data.se
 import {ArticleType} from "../../../domain/emun/article.type";
 import {ImageService} from "../../../service/backend/image.service";
 import {ArticleShort} from "../../../domain/dto/article.short";
-import {tap} from "rxjs/internal/operators";
 import {Observable} from "rxjs/index";
+import {share, tap} from "rxjs/internal/operators";
 import {ArticleAdditional} from "../../../domain/dto/article.additional";
 
 @Component({
@@ -16,10 +16,11 @@ export class TableAdditionalComponent implements OnInit {
 
   @Input() articleType: ArticleType;
 
-  additionalArticleData: Observable<ArticleAdditional>;
+  additional: Observable<ArticleAdditional>;
+
   newest: ArticleShort[];
-  firstPartRecommended: ArticleShort[] = [];
-  secondPartRecommended: ArticleShort[] = [];
+  firstPartRecommended: ArticleShort[];
+  secondPartRecommended: ArticleShort[];
 
   constructor(private imageService: ImageService,
               private additionalDataService: AdditionalDataService) {
@@ -28,27 +29,14 @@ export class TableAdditionalComponent implements OnInit {
   ngOnInit() {
     console.log("TableAdditionalComponent ngOnInit");
 
-     this.additionalDataService.getAdditionalArticleData(this.articleType)
-      .subscribe(next => {
-        this.additionalArticleData = Observable.create(next);
-        console.log("From server");
-        console.log(next);
-        let result = this.chunkArray(next.recommended, 2);
-        this.firstPartRecommended = result[0];
-        this.secondPartRecommended = result[1];
-        this.newest = next.newest;
-      })
-      // .pipe(
-      //   tap(next => {
-      //       console.log("From server");
-      //       console.log(next);
-      //       let result = this.chunkArray(next.recommended, 2);
-      //       this.firstPartRecommended = result[0];
-      //       this.secondPartRecommended = result[1];
-      //       this.newest = next.newest;
-      //     }
-      //   )
-      // )
+    this.additional = this.additionalDataService.getAdditionalArticleData(this.articleType)
+      .pipe(share(),
+        tap(next => {
+          let result = this.chunkArray(next.recommended, 2);
+          this.firstPartRecommended = result[0];
+          this.secondPartRecommended = result[1];
+          this.newest = next.newest;
+        }))
     ;
   }
 

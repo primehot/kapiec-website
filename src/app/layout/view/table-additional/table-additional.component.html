@@ -1,5 +1,5 @@
 <h6 class="recommended-title">Рекомендованое</h6>
-<div class="container justify-content-center">
+<div *ngIf="additional | async" class="container justify-content-center">
   <div class="card border-0" *ngFor="let rec of firstPartRecommended" style="margin: 1rem">
     <a routerLink="/{{rec.articleCategory.name}}/{{rec.id}}" class="custom-card">
       <img class="card-img" [lazyLoad]="getImage(rec.articleCategory.name, rec.id)" [offset]="100">
@@ -10,8 +10,8 @@
   </div>
 </div>
 
-<h6 *ngIf="additionalArticleData" class="recommended-title">Только что добавлено</h6>
-<ul class="list-unstyled">
+<h6 class="recommended-title">Только что добавлено</h6>
+<ul *ngIf="additional | async" class="list-unstyled">
   <li *ngFor="let newestArt of newest" class="recommended-container border-bottom" style="height: 200%">
     <div class="container">
       <a class="recommended" href="{{newestArt.articleCategory.name}}/{{newestArt.id}}">{{newestArt.shortContent}}</a>
@@ -20,7 +20,7 @@
 </ul>
 
 <h6 class="recommended-title">Рекомендованое</h6>
-<div class="container justify-content-center">
+<div *ngIf="additional | async" class="container justify-content-center">
   <div class="card border-0" *ngFor="let rec of secondPartRecommended" style="margin: 1rem">
     <a routerLink="/{{rec.articleCategory.name}}/{{rec.id}}" class="custom-card">
       <img class="card-img" [lazyLoad]="getImage(rec.articleCategory.name, rec.id)" [offset]="100">
