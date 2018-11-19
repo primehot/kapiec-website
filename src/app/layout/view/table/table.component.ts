@@ -49,6 +49,14 @@ export class TableComponent implements OnInit {
     }
   }
 
+  calculateCol(index) {
+    console.log(index);
+    if(index % 2 == 0) {
+      return 1;
+    }
+    return 1;
+  }
+
   getPage(page: number) {
     this.loading = true;
     this.asyncMeals = this.getServicePageMethod(page - 1).pipe(

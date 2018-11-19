@@ -24,7 +24,10 @@ import {TagViewComponent} from './layout/view/tag-view/tag-view.component';
 import {TableNavigationComponent} from './layout/view/table-navigation/table-navigation.component';
 import {TableAdditionalComponent} from './layout/view/table-additional/table-additional.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule, MatListModule} from '@angular/material';
+import {
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatGridListModule, MatIconModule,
+  MatListModule
+} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -58,7 +61,8 @@ import {MatButtonModule, MatCardModule, MatCheckboxModule, MatIconModule, MatLis
     MatIconModule,
     MatCheckboxModule,
     MatListModule,
-    MatCardModule
+    MatCardModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
