@@ -7,6 +7,21 @@ function addJqueryLogic() {
     addNavbarLogic(ArticleType.women);
     addNavbarLogic(ArticleType.dream);
     addCollapseScroll();
+    addScrollToTop();
+  });
+}
+
+function addScrollToTop() {
+  let onClick = function () {
+    $("html, body").animate({scrollTop: 0}, 700);
+  };
+  $('.btn-scroll-up').click(onClick);
+  $(window).scroll(function () {
+    if ($(this).scrollTop() > 300) {
+      $('.btn-scroll-up').css('visibility', 'visible').fadeIn();
+    } else {
+      $('.btn-scroll-up').css('visibility', 'visible').fadeOut();
+    }
   });
 }
 

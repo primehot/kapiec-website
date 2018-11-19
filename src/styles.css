@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .overlap-collapse {
   position: absolute;
@@ -52,7 +53,7 @@
 }
 
 .link-on-white:hover {
-  color: black;
+  color: #29B6F6;
   font-weight: bold;
   transition: 0.08s;
   text-decoration: none;
@@ -168,6 +169,19 @@ a.custom-card-main:hover {
   -moz-transform: scale(1.1);
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
+}
+
+.custom-go-top-button {
+  /*cursor: pointer;*/
+  /*position: fixed;*/
+  /*bottom: .5em;*/
+  /*right: .5em;*/
+  /*padding: .5em;*/
+  /*text-decoration: none;*/
+  /*color: white;*/
+  /*background-color: rgba(0, 0, 0, 0.2);*/
+  /*font-size: 14px;*/
+  /*outline-style: none;*/
 }
 
 ul li {

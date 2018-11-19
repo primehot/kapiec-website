@@ -1,0 +1,9 @@
+.btn-scroll-up {
+  display: none;
+  position: fixed;
+  bottom: 1em;
+  right: 1em;
+  background-color: #FFCA28;
+  border: none;
+  outline:none;
+}

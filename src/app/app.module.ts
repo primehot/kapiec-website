@@ -18,11 +18,13 @@ import {MainViewComponent} from './layout/view/main-view/main-view.component';
 import {PageNotFoundComponent} from './layout/page-not-found/page-not-found.component';
 import {ArticleComponent} from './layout/view/article/article.component';
 import {TableComponent} from './layout/view/table/table.component';
-import { TopicViewComponent } from './layout/view/topic-view/topic-view.component';
-import { CustomArticleComponent } from './layout/navigation/collapse/custom-article/custom-article.component';
-import { TagViewComponent } from './layout/view/tag-view/tag-view.component';
-import { TableNavigationComponent } from './layout/view/table-navigation/table-navigation.component';
-import { TableAdditionalComponent } from './layout/view/table-additional/table-additional.component';
+import {TopicViewComponent} from './layout/view/topic-view/topic-view.component';
+import {CustomArticleComponent} from './layout/navigation/collapse/custom-article/custom-article.component';
+import {TagViewComponent} from './layout/view/tag-view/tag-view.component';
+import {TableNavigationComponent} from './layout/view/table-navigation/table-navigation.component';
+import {TableAdditionalComponent} from './layout/view/table-additional/table-additional.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatButtonModule, MatCheckboxModule, MatIconModule} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -50,7 +52,11 @@ import { TableAdditionalComponent } from './layout/view/table-additional/table-a
     NgxPaginationModule,
     HttpClientModule,
     LazyLoadImageModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
