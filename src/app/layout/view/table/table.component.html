@@ -4,36 +4,36 @@
       <app-table-navigation [articleType]="articleType" [topicId]="topicId" [topic]="topic"
                             [tagId]="tagId" [tag]="tag"></app-table-navigation>
 
-      <!--<div class="card-columns justify-content-center table-card">-->
-      <!--<div class="card card-item border-0"-->
-      <!--*ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: p, totalItems: total }">-->
+      <div class="card-columns justify-content-center table-card">
+        <div class="card card-item border-0"
+             *ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: p, totalItems: total }">
+          <a routerLink="/{{item.articleCategory.name}}/{{item.id}}" class="custom-card">
+            <img class="card-img" [lazyLoad]="getImage(item.articleCategory.name, item.id)" [offset]="100">
+            <div class="card-body">
+              <h4 class="card-title">{{ item.title }}</h4>
+              <h5 class="card-text">{{ item.hotContent }}</h5>
+            </div>
+          </a>
+        </div>
+      </div>
+      <!--<mat-grid-list cols="2" gutterSize="1rem">-->
+      <!--<mat-grid-tile-->
+      <!--*ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: p, totalItems: total } ; index as i"-->
+      <!--[colspan]="1">-->
+      <!--<mat-card class="card-item custom-card">-->
       <!--<a routerLink="/{{item.articleCategory.name}}/{{item.id}}" class="custom-card">-->
-      <!--<img class="card-img" [lazyLoad]="getImage(item.articleCategory.name, item.id)" [offset]="100">-->
-      <!--<div class="card-body">-->
-      <!--<h4 class="card-title">{{ item.title }}</h4>-->
-      <!--<h5 class="card-text">{{ item.hotContent }}</h5>-->
-      <!--</div>-->
+      <!--<img mat-card-image [lazyLoad]="getImage(item.articleCategory.name, item.id)" [offset]="300">-->
+      <!--<mat-card-content>-->
+      <!--<mat-card-title>{{ item.title }}</mat-card-title>-->
+      <!--<p>-->
+      <!--{{ item.hotContent }}-->
+      <!--</p>-->
+      <!--</mat-card-content>-->
       <!--</a>-->
-      <!--</div>-->
-      <mat-grid-list cols="2" gutterSize="1rem">
-
-        <mat-grid-tile
-          *ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: p, totalItems: total } ; index as i"
-          [colspan]="1">
-          <mat-card class="card-item">
-            <a routerLink="/{{item.articleCategory.name}}/{{item.id}}" class="custom-card">
-              <img mat-card-image [lazyLoad]="getImage(item.articleCategory.name, item.id)" [offset]="300">
-              <mat-card-content>
-                <mat-card-title>{{ item.title }}</mat-card-title>
-                <p>
-                  {{ item.hotContent }}
-                </p>
-              </mat-card-content>
-            </a>
-          </mat-card>
-          <!--</div>-->
-        </mat-grid-tile>
-      </mat-grid-list>
+      <!--</mat-card>-->
+      <!--&lt;!&ndash;</div>&ndash;&gt;-->
+      <!--</mat-grid-tile>-->
+      <!--</mat-grid-list>-->
       <div class="has-text-centered">
         <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
         <pagination-controls class="container" (pageChange)="getPage($event)"

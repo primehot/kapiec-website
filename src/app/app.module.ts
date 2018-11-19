@@ -19,7 +19,7 @@ import {PageNotFoundComponent} from './layout/page-not-found/page-not-found.comp
 import {ArticleComponent} from './layout/view/article/article.component';
 import {TableComponent} from './layout/view/table/table.component';
 import {TopicViewComponent} from './layout/view/topic-view/topic-view.component';
-import {CustomArticleComponent} from './layout/navigation/collapse/custom-article/custom-article.component';
+import {CustomMenuComponent} from './layout/navigation/collapse/custom-menu/custom-menu.component';
 import {TagViewComponent} from './layout/view/tag-view/tag-view.component';
 import {TableNavigationComponent} from './layout/view/table-navigation/table-navigation.component';
 import {TableAdditionalComponent} from './layout/view/table-additional/table-additional.component';
@@ -28,6 +28,9 @@ import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatGridListModule, MatIconModule,
   MatListModule
 } from '@angular/material';
+import { CenterComponent } from './layout/navigation/collapse/custom/center/center.component';
+import { RightComponent } from './layout/navigation/collapse/custom/right/right.component';
+import { LeftComponent } from './layout/navigation/collapse/custom/left/left.component';
 
 @NgModule({
   declarations: [
@@ -44,10 +47,13 @@ import {
     ArticleComponent,
     TableComponent,
     TopicViewComponent,
-    CustomArticleComponent,
+    CustomMenuComponent,
     TagViewComponent,
     TableNavigationComponent,
-    TableAdditionalComponent
+    TableAdditionalComponent,
+    CenterComponent,
+    RightComponent,
+    LeftComponent
   ],
   imports: [
     NgbCollapseModule,

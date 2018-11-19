@@ -5,10 +5,10 @@ import {ImageService} from "../../../../service/backend/image.service";
 
 @Component({
   selector: 'app-custom-article',
-  templateUrl: './custom-article.component.html',
-  styleUrls: ['./custom-article.component.css']
+  templateUrl: './custom-menu.component.html',
+  styleUrls: ['./custom-menu.component.css']
 })
-export class CustomArticleComponent implements OnInit {
+export class CustomMenuComponent implements OnInit {
 
   @Input() type: ArticleType;
 
@@ -17,8 +17,7 @@ export class CustomArticleComponent implements OnInit {
   seeAlso;
   mostCommented;
 
-  constructor(private imageService: ImageService,
-              private navigationDataService: NavigationDataService) {
+  constructor(private navigationDataService: NavigationDataService) {
   }
 
   ngOnInit() {
@@ -30,7 +29,4 @@ export class CustomArticleComponent implements OnInit {
     });
   }
 
-  getImage(id) {
-    return this.imageService.getImageByType(this.type, id);
-  }
 }

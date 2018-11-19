@@ -1,0 +1,10 @@
+<ul *ngIf="isArticle(); else dream" class="list-unstyled navbar-collapse-container-topic">
+  <li *ngFor="let topic of topics"><a class="link-on-black" href="{{type}}/by-topics/{{topic.id}}">{{topic.name}}</a>
+  </li>
+</ul>
+
+<ng-template #dream>
+  <ul class="list-unstyled navbar-collapse-container-topic">
+    <li><a class="link-on-black" href="{{type}}">{{getNavigationName()}}</a></li>
+  </ul>
+</ng-template>
