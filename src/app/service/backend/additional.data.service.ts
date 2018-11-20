@@ -1,14 +1,9 @@
 import {Injectable} from '@angular/core';
-import {ArticlePage} from "../../domain/dto/article.page";
 import {Observable} from "rxjs/index";
-import {Article} from "../../domain/dto/article";
-import {ArticleTopic} from "../../domain/dto/article.topic";
-import {ArticleNavigation} from "../../domain/dto/article.navigation";
-import {ArticleShort} from "../../domain/dto/article.short";
-import {ArticleAdditional} from "../../domain/dto/article.additional";
-import {ArticleType} from "../../domain/emun/article.type";
 import {getUrl} from "../util/url.config";
 import {HttpClient} from "@angular/common/http";
+import {ArticleAdditional} from "../../domain/dto/article/article.additional";
+import {ArticleType} from "../../domain/emun/article.type";
 
 @Injectable({
   providedIn: 'root'

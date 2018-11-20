@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArticleType} from "../../../../domain/emun/article.type";
 import {NavigationDataService} from "../../../../service/backend/navigation.data.service";
-import {ImageService} from "../../../../service/backend/image.service";
 
 @Component({
   selector: 'app-custom-article',

@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MainArticleService} from "../../../service/backend/main.article.service";
-import {ArticleShort} from "../../../domain/dto/article.short";
 import {ImageService} from "../../../service/backend/image.service";
 import {urlConfig} from "../../../service/util/url.config";
+import {ArticleShort} from "../../../domain/dto/article/article.short";
 
 @Component({
   selector: 'app-main-view',

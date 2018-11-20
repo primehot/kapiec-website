@@ -1,11 +1,10 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
-import {Article} from '../../../domain/dto/article';
-import {ArticleType, getNavigationNameByType} from '../../../domain/emun/article.type';
+import {ArticleType} from '../../../domain/emun/article.type';
 import {ImageService} from "../../../service/backend/image.service";
-import {AdditionalDataService} from "../../../service/backend/additional.data.service";
 import {TableService} from "../../../service/backend/table.service";
+import {Article} from "../../../domain/dto/article/article";
 
 @Component({
   selector: 'app-table',
@@ -51,7 +50,7 @@ export class TableComponent implements OnInit {
 
   calculateCol(index) {
     console.log(index);
-    if(index % 2 == 0) {
+    if (index % 2 == 0) {
       return 1;
     }
     return 1;

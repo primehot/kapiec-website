@@ -2,10 +2,10 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AdditionalDataService} from "../../../service/backend/additional.data.service";
 import {ArticleType} from "../../../domain/emun/article.type";
 import {ImageService} from "../../../service/backend/image.service";
-import {ArticleShort} from "../../../domain/dto/article.short";
 import {Observable} from "rxjs/index";
 import {share, tap} from "rxjs/internal/operators";
-import {ArticleAdditional} from "../../../domain/dto/article.additional";
+import {ArticleAdditional} from "../../../domain/dto/article/article.additional";
+import {ArticleShort} from "../../../domain/dto/article/article.short";
 
 @Component({
   selector: 'app-table-additional',

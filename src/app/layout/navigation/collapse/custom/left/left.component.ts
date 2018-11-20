@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArticleType, getNavigationNameByType} from "../../../../../domain/emun/article.type";
-import {ArticleTopic} from "../../../../../domain/dto/article.topic";
+import {ArticleTopic} from "../../../../../domain/dto/article/article.topic";
 
 @Component({
   selector: 'app-left',

@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {ArticlePage} from "../../domain/dto/article.page";
 import {Observable} from "rxjs/index";
-import {ArticleType} from "../../domain/emun/article.type";
 import {getUrl, urlConfig} from "../util/url.config";
 import {HttpClient} from "@angular/common/http";
+import {ArticleType} from "../../domain/emun/article.type";
+import {ArticlePage} from "../../domain/dto/article/article.page";
 
 @Injectable({
   providedIn: 'root'

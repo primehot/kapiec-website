@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {Article} from "../../../domain/dto/article";
 import {ArticleService} from "../../../service/backend/article.service";
 import {ImageService} from "../../../service/backend/image.service";
+import {Article} from "../../../domain/dto/article/article";
 
 @Component({
   selector: 'app-article',
