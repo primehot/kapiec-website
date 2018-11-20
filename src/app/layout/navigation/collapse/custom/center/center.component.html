@@ -17,15 +17,15 @@
 </div>
 
 <ng-template #centerDream>
-  <p>HA-ha</p>
-  <mat-grid-list cols="2" gutterSize="1rem">
+  <mat-grid-list cols="2" gutterSize="0" rowHeight="4rem">
     <mat-grid-tile
       [colspan]="1">
-
+      НАЙТИ ЗНАЧЕНИЕ
     </mat-grid-tile>
     <mat-grid-tile
-      *ngFor="let article of articles"
+      *ngFor="let db of dreamBookMainTitles"
       [colspan]="1">
+      {{db}}
     </mat-grid-tile>
   </mat-grid-list>
 </ng-template>

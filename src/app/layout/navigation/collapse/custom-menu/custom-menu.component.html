@@ -2,15 +2,15 @@
   <div class="row">
 
     <div class="container col-md-2 bg-dark">
-      <app-left [type]="type" [topics]="topics"></app-left>
+      <app-left [type]="type" [topics]="articleTopics"></app-left>
     </div>
 
     <div class="container col-md-5 p-3">
-      <app-center [type]="type" [articles]="articles"></app-center>
+      <app-center [type]="type" [articles]="articles" [dreamBookMainTitles]="dreamBookMainTitles"></app-center>
     </div>
 
     <div class="container col-md-5 border">
-      <app-right [seeAlso]="seeAlso" [mostCommented]="mostCommented"></app-right>
+      <app-right [seeAlso]="articleSeeAlso" [mostCommented]="articleMostCommented"></app-right>
     </div>
   </div>
 </div>

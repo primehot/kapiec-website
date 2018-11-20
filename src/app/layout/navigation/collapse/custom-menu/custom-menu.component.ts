@@ -11,21 +11,32 @@ export class CustomMenuComponent implements OnInit {
 
   @Input() type: ArticleType;
 
-  topics;
+  articleTopics;
   articles;
-  seeAlso;
-  mostCommented;
+  articleSeeAlso;
+  articleMostCommented;
+
+  dreamBookMainTitles;
+  dreamBookSeeAlso;
 
   constructor(private navigationDataService: NavigationDataService) {
   }
 
   ngOnInit() {
-    this.navigationDataService.getNavigationData(this.type).pipe().subscribe(navData => {
-      this.topics = navData.topics;
-      this.articles = navData.articles;
-      this.seeAlso = navData.seeAlso;
-      this.mostCommented = navData.mostCommented;
-    });
+    if(this.type === ArticleType.dream) {
+      this.navigationDataService.getDreamBookNavigationData().pipe().subscribe(navData => {
+        this.dreamBookMainTitles = navData.mainTitles;
+        this.dreamBookSeeAlso = navData.seeAlso;
+        console.log(navData);
+      });
+    } else {
+      this.navigationDataService.getArticleNavigationData(this.type).pipe().subscribe(navData => {
+        this.articleTopics = navData.topics;
+        this.articles = navData.articles;
+        this.articleSeeAlso = navData.seeAlso;
+        this.articleMostCommented = navData.mostCommented;
+      });
+    }
   }
 
 }

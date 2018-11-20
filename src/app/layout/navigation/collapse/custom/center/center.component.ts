@@ -11,6 +11,7 @@ export class CenterComponent implements OnInit {
 
   @Input() articles;
   @Input() type;
+  @Input() dreamBookMainTitles;
 
   constructor(private imageService: ImageService) { }
 
