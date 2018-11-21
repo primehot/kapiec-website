@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Data, ParamMap} from '@angular/router';
 import {ArticleService} from "../../../service/backend/article.service";
 import {ImageService} from "../../../service/backend/image.service";
 import {Article} from "../../../domain/dto/article/article";
+import {switchMap} from 'rxjs/operators';
+import {Observable} from "rxjs/index";
 
 @Component({
   selector: 'app-article',
@@ -11,7 +13,7 @@ import {Article} from "../../../domain/dto/article/article";
 })
 export class ArticleComponent implements OnInit {
 
-  article: Article;
+  article$: Observable<Article>;
   imageSrc: string;
 
   constructor(private route: ActivatedRoute,
@@ -20,19 +22,10 @@ export class ArticleComponent implements OnInit {
   }
 
   ngOnInit() {
-    const articleType = this.route.snapshot.data.articleType;
-    const id = this.route.snapshot.paramMap.get('id');
+    this.article$ = this.route.paramMap.pipe(
+      switchMap((params: ParamMap) => this.articleService.getArticle(this.route.snapshot.data.articleType, params.get('id')))
+    );
 
-    this.getArticle(articleType, id);
+    this.article$.subscribe(next => this.imageSrc = this.imageService.getImageByType(next.articleCategory.name, next.id));
   }
-
-  getArticle(articleType, id): void {
-
-    this.articleService.getArticle(articleType, id).pipe().subscribe(article => {
-      this.article = article;
-    });
-
-    this.imageSrc = this.imageService.getImageByType(articleType, id);
-  }
-
 }

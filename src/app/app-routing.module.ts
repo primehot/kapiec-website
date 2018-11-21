@@ -19,9 +19,9 @@ const routes: Routes = [
   { path: 'dream/:id', component: ArticleComponent, data: { articleType: ArticleType.dream }},
   { path: 'women/:id', component: ArticleComponent, data: { articleType: ArticleType.women }},
 
-  { path: 'news/by-articleTopics/:id', component: TopicViewComponent, data: { articleType: ArticleType.news }},
-  { path: 'dream/by-articleTopics/:id', component: TopicViewComponent, data: { articleType: ArticleType.dream }},
-  { path: 'women/by-articleTopics/:id', component: TopicViewComponent, data: { articleType: ArticleType.women }},
+  { path: 'news/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.news }},
+  { path: 'dream/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.dream }},
+  { path: 'women/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.women }},
 
   { path: 'tags/:id', component: TagViewComponent },
 

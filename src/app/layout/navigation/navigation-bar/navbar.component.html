@@ -9,15 +9,17 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
     <div class="navbar-nav col-4 col-md-3"></div>
     <div class="navbar-nav col-4 col-md-6 justify-content-center">
-      <a class="nav-item nav-link active panel-heading-{{news}}" routerLink="/{{news}}">Новости <span class="sr-only">(current)</span></a>
-      <a class="nav-item nav-link panel-heading-{{dream}}" routerLink="/{{dream}}">Сонник</a>
-      <a class="nav-item nav-link panel-heading-{{women}}" routerLink="/{{women}}">Для женщин</a>
+      <a class="nav-item nav-link active panel-heading-{{news}}" routerLink="/{{news}}" (click)="hideNews()">Новости <span
+        class="sr-only">(current)</span></a>
+      <a class="nav-item nav-link panel-heading-{{dream}}" routerLink="/{{dream}}" (click)="hideDream()">Сонник</a>
+      <a class="nav-item nav-link panel-heading-{{women}}" routerLink="/{{women}}" (click)="hideWomen()">Для женщин</a>
     </div>
     <div class="navbar-nav col-4 col-md-3 justify-content-end">
       <div class="input-group col-lg-8 col-sm-10">
-        <input type="text" class="form-control form-control-sm input-xs" placeholder="" aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <input type="text" class="form-control form-control-sm input-xs" placeholder=""
+               aria-label="Recipient's username" aria-describedby="basic-addon2">
         <!--<div class="input-group-append">-->
-          <!--<button class="btn btn-outline-secondary btn-sm" type="button">Поиск</button>-->
+        <!--<button class="btn btn-outline-secondary btn-sm" type="button">Поиск</button>-->
         <!--</div>-->
       </div>
     </div>

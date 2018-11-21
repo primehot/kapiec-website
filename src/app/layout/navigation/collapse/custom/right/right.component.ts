@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ArticleType} from "../../../../../domain/emun/article.type";
+import {hideCollapse} from "../../../../../jquery";
 
 @Component({
   selector: 'app-right',
@@ -20,6 +21,10 @@ export class RightComponent implements OnInit {
 
   isArticle() {
     return this.type !== ArticleType.dream;
+  }
+
+  hide() {
+    hideCollapse(this.type);
   }
 
 }

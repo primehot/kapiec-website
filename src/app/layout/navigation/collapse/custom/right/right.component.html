@@ -2,13 +2,13 @@
   <h6>Также смотрите:</h6>
   <ul>
     <li *ngFor="let toSee of seeAlso">
-      <a class="link-on-white" href="{{toSee.articleCategory.name}}/{{toSee.id}}" style="font-size: 75%;">{{toSee.shortContent}}</a>
+      <a class="link-on-white" routerLink="{{toSee.articleCategory.name}}/{{toSee.id}}" style="font-size: 75%;" (click)="hide()">{{toSee.shortContent}}</a>
     </li>
   </ul>
   <h6>Топ коментариев:</h6>
   <ul>
     <li *ngFor="let mostC of mostCommented">
-      <a class="link-on-white" href="{{mostC.articleCategory.name}}/{{mostC.id}}" style="font-size: 75%;">{{mostC.shortContent}}</a>
+      <a class="link-on-white" routerLink="{{mostC.articleCategory.name}}/{{mostC.id}}" style="font-size: 75%;" (click)="hide()">{{mostC.shortContent}}</a>
     </li>
   </ul>
 </div>
@@ -17,7 +17,7 @@
   <h6>Также смотрите:</h6>
   <ul>
     <li *ngFor="let toSee of dreamBookSeeAlso">
-      <a class="link-on-white" href="/" style="font-size: 75%;">{{toSee.data}}</a>
+      <a class="link-on-white" routerLink="/" style="font-size: 75%;" (click)="hide()">{{toSee.data}}</a>
     </li>
   </ul>
 </ng-template>

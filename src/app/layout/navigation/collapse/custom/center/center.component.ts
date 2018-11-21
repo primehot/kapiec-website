@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ImageService} from "../../../../../service/backend/image.service";
 import {ArticleType} from "../../../../../domain/emun/article.type";
+import {hideCollapse} from "../../../../../jquery";
 
 @Component({
   selector: 'app-center',
@@ -24,6 +25,10 @@ export class CenterComponent implements OnInit {
 
   isArticle() {
     return this.type !== ArticleType.dream;
+  }
+
+  hide() {
+    hideCollapse(this.type);
   }
 
 }

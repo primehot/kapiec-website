@@ -1,4 +1,4 @@
-<div class="component" *ngIf="article">
+<div class="component" *ngIf="article$ | async as article">
   <h5>{{article.title}}</h5>
   <h3>{{article.hotContent}}</h3>
   <img class="img-fluid" alt="Responsive image" [lazyLoad]="imageSrc" [offset]="100">

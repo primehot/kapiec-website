@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleType} from "../../../domain/emun/article.type";
+import {hideCollapse} from "../../../jquery";
 
 @Component({
   selector: 'app-navbar',
@@ -16,5 +17,17 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  hideNews() {
+    hideCollapse(this.news);
+  }
+
+  hideWomen() {
+    hideCollapse(this.women);
+  }
+
+  hideDream() {
+    hideCollapse(this.dream);
   }
 }

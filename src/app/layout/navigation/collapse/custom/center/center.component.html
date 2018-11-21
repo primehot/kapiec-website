@@ -1,6 +1,6 @@
 <div *ngIf="isArticle(); else centerDream">
   <div class="card small border-0" *ngFor="let article of articles">
-    <a routerLink="/{{article.articleCategory.name}}/{{article.id}}" class="custom-card">
+    <a routerLink="/{{article.articleCategory.name}}/{{article.id}}" class="custom-card" (click)="hide()">
       <div class="row mt-3">
         <div class="container col-md-5" style="vertical-align: middle;">
           <img class="card-img" [lazyLoad]="getImage(article.id)" [offset]="100" alt="Card image">

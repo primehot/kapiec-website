@@ -84,5 +84,15 @@ function hideElement(el) {
   el.hide().css('z-index', -1).css('visibility', 'hidden');
 }
 
-export {addJqueryLogic};
+function hideCollapse(type: ArticleType) {
+  hideElement($('.overlap' + '-' + type));
+}
+
+function hideNavigationCollapse() {
+
+  hideElement($('.overlap' + '-' + ArticleType.women));
+  hideElement($('.overlap' + '-' + ArticleType.dream));
+}
+
+export {addJqueryLogic, hideCollapse, hideNavigationCollapse};
 
