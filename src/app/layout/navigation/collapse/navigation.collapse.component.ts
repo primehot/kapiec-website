@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ArticleType} from "../../../../domain/emun/article.type";
-import {NavigationDataService} from "../../../../service/backend/navigation.data.service";
+import {ArticleType} from "../../../domain/emun/article.type";
+import {NavigationDataService} from "../../../service/backend/navigation.data.service";
 
 @Component({
-  selector: 'app-custom-article',
-  templateUrl: './custom-menu.component.html',
-  styleUrls: ['./custom-menu.component.css']
+  selector: 'app-navigation-collapse',
+  templateUrl: './navigation.collapse.component.html',
+  styleUrls: ['./navigation.collapse.component.css']
 })
 export class CustomMenuComponent implements OnInit {
 

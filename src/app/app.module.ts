@@ -6,10 +6,7 @@ import {AppComponent} from './app.component';
 import {NavbarComponent} from './layout/navigation/navigation-bar/navbar.component';
 import {NewsViewComponent} from './layout/view/news-view/news-view.component';
 import {NgxPaginationModule} from 'ngx-pagination';
-import {NewsComponent} from './layout/navigation/collapse/news/news.component';
 import {HeaderComponent} from './layout/navigation/header/header.component';
-import {DreamComponent} from './layout/navigation/collapse/dream/dream.component';
-import {WomanComponent} from './layout/navigation/collapse/woman/woman.component';
 import {HttpClientModule} from '@angular/common/http';
 import {WomanViewComponent} from './layout/view/woman-view/woman-view.component';
 import {LazyLoadImageModule} from 'ng-lazyload-image';
@@ -19,14 +16,15 @@ import {PageNotFoundComponent} from './layout/page-not-found/page-not-found.comp
 import {ArticleComponent} from './layout/view/article/article.component';
 import {TableComponent} from './layout/view/table/table.component';
 import {TopicViewComponent} from './layout/view/topic-view/topic-view.component';
-import {CustomMenuComponent} from './layout/navigation/collapse/custom-menu/custom-menu.component';
+import {CustomMenuComponent} from './layout/navigation/collapse/navigation.collapse.component';
 import {TagViewComponent} from './layout/view/tag-view/tag-view.component';
 import {TableNavigationComponent} from './layout/view/table-navigation/table-navigation.component';
 import {TableAdditionalComponent} from './layout/view/table-additional/table-additional.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatGridListModule, MatIconModule,
-  MatListModule
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule, MatIconModule,
+  MatInputModule,
+  MatListModule, MatRippleModule
 } from '@angular/material';
 import { CenterComponent } from './layout/navigation/collapse/custom/center/center.component';
 import { RightComponent } from './layout/navigation/collapse/custom/right/right.component';
@@ -37,10 +35,7 @@ import { LeftComponent } from './layout/navigation/collapse/custom/left/left.com
     AppComponent,
     NavbarComponent,
     NewsViewComponent,
-    NewsComponent,
     HeaderComponent,
-    DreamComponent,
-    WomanComponent,
     WomanViewComponent,
     MainViewComponent,
     PageNotFoundComponent,
@@ -68,7 +63,10 @@ import { LeftComponent } from './layout/navigation/collapse/custom/left/left.com
     MatCheckboxModule,
     MatListModule,
     MatCardModule,
-    MatGridListModule
+    MatGridListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]

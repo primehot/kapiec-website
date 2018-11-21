@@ -2,30 +2,16 @@
 <div class="row content" style="margin: 0">
   <div class="container col-lg-3 col-md-1"></div>
   <div class="container col-lg-6 col-md-10">
-    <app-navbar-collapse-news></app-navbar-collapse-news>
-    <app-navbar-collapse-dream></app-navbar-collapse-dream>
-    <app-navbar-collapse-woman></app-navbar-collapse-woman>
+    <app-navigation-collapse [type]="news"></app-navigation-collapse>
+    <app-navigation-collapse [type]="dream"></app-navigation-collapse>
+    <app-navigation-collapse [type]="women"></app-navigation-collapse>
 
     <router-outlet></router-outlet>
   </div>
   <div class="container col-lg-3 col-md-1">
-    <!--<button mat-button>Click me!</button>-->
-
-    <!--<button class="mat-fab mat-accent btn-scroll-up"-->
-            <!--style="-->
-                   <!--">-->
-      <!--<span class="mat-button-wrapper"><mat-icon aria-label="Example icon-button with a heart icon"-->
-                                                 <!--class="mat-icon material-icons" role="img"-->
-                                                 <!--aria-hidden="true">expand_less</mat-icon></span>-->
-      <!--<div class="mat-button-ripple mat-ripple mat-button-ripple-round"></div>-->
-      <!--<div class="mat-button-focus-overlay"></div>-->
-    <!--</button>-->
-
     <button mat-fab class="btn-scroll-up">
       <mat-icon>expand_less</mat-icon>
     </button>
-
-    <div></div>
   </div>
 </div>
 
