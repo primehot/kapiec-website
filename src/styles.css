@@ -85,11 +85,25 @@
 }
 
 a.custom-card {
+  transition: 0.2s;
   text-decoration: none;
   color: black;
 }
 
 a.custom-card:hover {
+  transition: 0.2s;
+  color: #29B6F6;
+  -ms-transform: scale(1.05); /* IE 9 */
+  -webkit-transform: scale(1.05); /* Safari 3-8 */
+  transform: scale(1.05);
+}
+
+a.custom-card-nav {
+  text-decoration: none;
+  color: black;
+}
+
+a.custom-card-nav:hover {
   transition: 0.2s;
   color: #29B6F6;
   -ms-transform: scale(1.05); /* IE 9 */
