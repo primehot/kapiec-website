@@ -9,7 +9,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
     <div class="navbar-nav col-4 col-md-3"></div>
     <div class="navbar-nav col-4 col-md-6 justify-content-center">
-      <a class="nav-item nav-link active panel-heading-{{news}}" routerLink="/{{news}}" (click)="hideNews()">Новости <span
+      <a class="nav-item nav-link active panel-heading-{{news}}" [routerLink]="['/', news]" (click)="hideNews()">Новости <span
         class="sr-only">(current)</span></a>
       <a class="nav-item nav-link panel-heading-{{dream}}" routerLink="/{{dream}}" (click)="hideDream()">Сонник</a>
       <a class="nav-item nav-link panel-heading-{{women}}" routerLink="/{{women}}" (click)="hideWomen()">Для женщин</a>

@@ -4,11 +4,9 @@ import {NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {AppComponent} from './app.component';
 import {NavbarComponent} from './layout/navigation/navigation-bar/navbar.component';
-import {NewsViewComponent} from './layout/view/news-view/news-view.component';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {HeaderComponent} from './layout/navigation/header/header.component';
 import {HttpClientModule} from '@angular/common/http';
-import {WomanViewComponent} from './layout/view/woman-view/woman-view.component';
 import {LazyLoadImageModule} from 'ng-lazyload-image';
 import {AppRoutingModule} from './app-routing.module';
 import {MainViewComponent} from './layout/view/main-view/main-view.component';
@@ -34,9 +32,7 @@ import { LeftComponent } from './layout/navigation/collapse/custom/left/left.com
   declarations: [
     AppComponent,
     NavbarComponent,
-    NewsViewComponent,
     HeaderComponent,
-    WomanViewComponent,
     MainViewComponent,
     PageNotFoundComponent,
     ArticleComponent,

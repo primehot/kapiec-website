@@ -18,7 +18,6 @@ export class MainViewComponent implements OnInit {
   constructor(private service: MainArticleService,
               private imageService: ImageService) {
     this.service.getMainArticles().subscribe(next => {
-      console.log(next);
       this.mainArticle = next.mainArticle;
       this.mainItems = next.mainItems;
       this.recommendedNews = next.recommendedNews;

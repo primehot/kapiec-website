@@ -27,7 +27,6 @@ export class CustomMenuComponent implements OnInit {
       this.navigationDataService.getDreamBookNavigationData().pipe().subscribe(navData => {
         this.dreamBookMainTitles = navData.mainTitles;
         this.dreamBookSeeAlso = navData.seeAlso;
-        console.log(navData);
       });
     } else {
       this.navigationDataService.getArticleNavigationData(this.type).pipe().subscribe(navData => {

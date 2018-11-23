@@ -1,38 +1,83 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule, Routes } from '@angular/router';
-import {NewsViewComponent} from './layout/view/news-view/news-view.component';
-import {WomanViewComponent} from './layout/view/woman-view/woman-view.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {RouterModule, Routes} from '@angular/router';
 import {MainViewComponent} from './layout/view/main-view/main-view.component';
 import {PageNotFoundComponent} from './layout/page-not-found/page-not-found.component';
 import {ArticleComponent} from './layout/view/article/article.component';
 import {ArticleType} from './domain/emun/article.type';
-import {TopicViewComponent} from "./layout/view/topic-view/topic-view.component";
-import {TagViewComponent} from "./layout/view/tag-view/tag-view.component";
+import {ArticleGuard} from "./guard/article.guard";
+import {TableComponent} from "./layout/view/table/table.component";
+import {TopicGuard} from "./guard/topic.guard";
+import {TagGuard} from "./guard/tag.guard";
+import {CategoryGuard} from "./guard/category.guard";
 
 const routes: Routes = [
-  { path: '', component: MainViewComponent },
-  { path: 'news', component: NewsViewComponent },
-  { path: 'women', component: WomanViewComponent },
+  {path: '', component: MainViewComponent},
+  {
+    path: 'news', component: TableComponent, data: {articleType: ArticleType.news}, resolve: {
+    categoryPage: CategoryGuard
+  }
+  },
+  {
+    path: 'women', component: TableComponent, data: {articleType: ArticleType.women}, resolve: {
+    categoryPage: CategoryGuard
+  }
+  },
 
-  { path: 'news/:id', component: ArticleComponent, data: { articleType: ArticleType.news }},
-  { path: 'dream/:id', component: ArticleComponent, data: { articleType: ArticleType.dream }},
-  { path: 'women/:id', component: ArticleComponent, data: { articleType: ArticleType.women }},
+  {
+    path: 'news/:id', component: ArticleComponent, data: {articleType: ArticleType.news},
+    resolve: {
+      article: ArticleGuard
+    }
+  },
+  {
+    path: 'dream/:id', component: ArticleComponent, data: {articleType: ArticleType.dream},
+    resolve: {
+      article: ArticleGuard
+    }
+  },
+  {
+    path: 'women/:id', component: ArticleComponent, data: {articleType: ArticleType.women},
+    resolve: {
+      article: ArticleGuard
+    }
+  },
 
-  { path: 'news/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.news }},
-  { path: 'dream/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.dream }},
-  { path: 'women/by-topics/:id', component: TopicViewComponent, data: { articleType: ArticleType.women }},
+  {
+    path: 'news/by-topics/:topicId', component: TableComponent, data: {articleType: ArticleType.news},
+    resolve: {
+      topicPage: TopicGuard
+    }
+  },
+  {
+    path: 'dream/by-topics/:topicId', component: TableComponent, data: {articleType: ArticleType.dream},
+    resolve: {
+      topicPage: TopicGuard
+    }
+  },
+  {
+    path: 'women/by-topics/:topicId', component: TableComponent, data: {articleType: ArticleType.women},
+    resolve: {
+      topicPage: TopicGuard
+    }
+  },
 
-  { path: 'tags/:id', component: TagViewComponent },
+  {
+    path: 'tags/:tagId', component: TableComponent, data: {articleType: ArticleType.tags},
+    resolve: {
+      tagPage: TagGuard
+    }
+  },
 
-  { path: 'tags', redirectTo: ''},
-  { path: '**', component: PageNotFoundComponent }
+  {path: 'tags', redirectTo: ''},
+  {path: '**', component: PageNotFoundComponent}
 ];
 
 @NgModule({
-  exports: [ RouterModule ],
-  imports: [ CommonModule, RouterModule.forRoot(routes) ],
+  exports: [RouterModule],
+  imports: [CommonModule, RouterModule.forRoot(routes)],
   declarations: []
 })
 
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

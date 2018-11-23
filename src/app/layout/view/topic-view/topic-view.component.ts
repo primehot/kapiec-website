@@ -9,7 +9,6 @@ import {NamingService} from "../../../service/backend/naming.service";
   styleUrls: ['./topic-view.component.css']
 })
 export class TopicViewComponent implements OnInit {
-  articleType: ArticleType;
   topicId;
   topic;
 
@@ -18,8 +17,10 @@ export class TopicViewComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.articleType = this.route.snapshot.data.articleType;
-    this.topicId = this.route.snapshot.paramMap.get('id');
-    this.namingService.getTopic(this.articleType, this.topicId).subscribe(next => this.topic = next.name);
+    this.route.data
+      .subscribe((data: { articleType: ArticleType }) => {
+        this.namingService.getTopic(data.articleType, this.topicId).subscribe(next => this.topic = next.name);
+      });
+
   }
 }

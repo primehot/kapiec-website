@@ -1,11 +1,11 @@
 <div class="container navigation">
   <tr>
-    <td><a class="navigation-on-white" href="/"><h6>Главная</h6></a></td>
+    <td><a class="navigation-on-white" routerLink="/"><h6>Главная</h6></a></td>
     <td class="navigation-arrow"><h6> > </h6></td>
-    <td><a class="navigation-on-white" href="/{{articleType}}"><h6>{{articleTypeName}}</h6></a></td>
-    <td *ngIf="topic" class="navigation-arrow"><h6> > </h6></td>
-    <td *ngIf="topic"><a class="navigation-on-white" href="/{{articleType}}/by-topics/{{topicId}}"><h6>{{topic}}</h6></a></td>
+    <td><a class="navigation-on-white" routerLink="/{{articleType}}"><h6>{{articleTypeName}}</h6></a></td>
+    <td *ngIf="topicId" class="navigation-arrow"><h6> > </h6></td>
+    <td *ngIf="topicId"><a class="navigation-on-white" routerLink="/{{articleType}}/by-topics/{{topicId}}"><h6>{{topic}}</h6></a></td>
     <td *ngIf="tagId" class="navigation-arrow"><h6> > </h6></td>
-    <td *ngIf="tagId"><a class="navigation-on-white" href="/{{articleType}}/{{tagId}}"><h6>{{tag}}</h6></a></td>
+    <td *ngIf="tagId"><a class="navigation-on-white" routerLink="/{{articleType}}/{{tagId}}"><h6>{{tag}}</h6></a></td>
   </tr>
 </div>

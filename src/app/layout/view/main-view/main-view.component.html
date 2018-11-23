@@ -16,15 +16,16 @@
             <div class="card-img-overlay">
               <h3 class="card-text">{{ item.shortContent }}</h3>
             </div>
+          </a>
             <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
               <h6 class="card-text" style="color: white;">Таги: </h6>
               <tr class="card-text">
-                <td class="hash-tag" *ngFor="let tag of item.hashTags">
+                <td class="hash-tag" *ngFor="let tag of item.hashTags" style="z-index: 1">
                   <a routerLink="/tags/{{tag.id}}" class="custom-card-main">{{ tag.name }}</a>
                 </td>
               </tr>
             </div>
-          </a>
+
         </div>
       </div>
     </div>
@@ -49,7 +50,7 @@
         <ul *ngIf="recommendedNews" class="list-unstyled">
           <li *ngFor="let toSee of recommendedNews" class="recommended-container">
             <div class="container">
-              <a class="recommended" href="{{toSee.articleCategory.name}}/{{toSee.id}}">{{toSee.shortContent}}</a>
+              <a class="recommended" routerLink="{{toSee.articleCategory.name}}/{{toSee.id}}">{{toSee.shortContent}}</a>
             </div>
           </li>
         </ul>
@@ -57,7 +58,7 @@
         <ul *ngIf="recommendedWomen" class="list-unstyled">
           <li *ngFor="let toSee of recommendedWomen" class="recommended-container">
             <div class="container">
-              <a class="recommended" href="{{toSee.articleCategory.name}}/{{toSee.id}}">{{toSee.shortContent}}</a>
+              <a class="recommended" routerLink="{{toSee.articleCategory.name}}/{{toSee.id}}">{{toSee.shortContent}}</a>
             </div>
           </li>
         </ul>

@@ -1,10 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Data, ParamMap} from '@angular/router';
-import {ArticleService} from "../../../service/backend/article.service";
+import {ActivatedRoute} from '@angular/router';
 import {ImageService} from "../../../service/backend/image.service";
 import {Article} from "../../../domain/dto/article/article";
-import {switchMap} from 'rxjs/operators';
-import {Observable} from "rxjs/index";
 
 @Component({
   selector: 'app-article',
@@ -13,19 +10,18 @@ import {Observable} from "rxjs/index";
 })
 export class ArticleComponent implements OnInit {
 
-  article$: Observable<Article>;
+  article: Article;
   imageSrc: string;
 
   constructor(private route: ActivatedRoute,
-              private imageService: ImageService,
-              private articleService: ArticleService) {
+              private imageService: ImageService) {
   }
 
   ngOnInit() {
-    this.article$ = this.route.paramMap.pipe(
-      switchMap((params: ParamMap) => this.articleService.getArticle(this.route.snapshot.data.articleType, params.get('id')))
-    );
-
-    this.article$.subscribe(next => this.imageSrc = this.imageService.getImageByType(next.articleCategory.name, next.id));
+    this.route.data
+      .subscribe((data: { article: Article }) => {
+        this.article = data.article;
+        this.imageSrc = this.imageService.getImageByType(this.article.articleCategory.name, this.article.id)
+      });
   }
 }
