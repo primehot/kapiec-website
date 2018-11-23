@@ -12,10 +12,7 @@ function addJqueryLogic() {
 }
 
 function addScrollToTop() {
-  let onClick = function () {
-    $("html, body").animate({scrollTop: 0}, 700);
-  };
-  $('.btn-scroll-up').click(onClick);
+  $('.btn-scroll-up').click(scrollTop);
   $(window).scroll(function () {
     if ($(this).scrollTop() > 300) {
       $('.btn-scroll-up').css('visibility', 'visible').fadeIn();
@@ -23,6 +20,16 @@ function addScrollToTop() {
       $('.btn-scroll-up').css('visibility', 'visible').fadeOut();
     }
   });
+}
+
+function scrollTop(speed) {
+  let defaultSpeed = 700;
+  if (speed) {
+    defaultSpeed = speed;
+  }
+  if ($(window).scrollTop() > 0) {
+    $("html, body").animate({scrollTop: 0}, defaultSpeed);
+  }
 }
 
 function addCollapseScroll() {
@@ -88,11 +95,5 @@ function hideCollapse(type: ArticleType) {
   hideElement($('.overlap' + '-' + type));
 }
 
-function hideNavigationCollapse() {
-
-  hideElement($('.overlap' + '-' + ArticleType.women));
-  hideElement($('.overlap' + '-' + ArticleType.dream));
-}
-
-export {addJqueryLogic, hideCollapse, hideNavigationCollapse};
+export {addJqueryLogic, hideCollapse, scrollTop};
 

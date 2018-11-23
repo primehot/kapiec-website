@@ -5,6 +5,7 @@ import {mergeMap, take} from 'rxjs/operators';
 import {pageSize} from "../service/util/page.config";
 import {TableService} from "../service/backend/table.service";
 import {TagPageDecorator} from "../domain/decorator/tag.page.decorator";
+import {scrollTop} from "../jquery";
 
 @Injectable({
   providedIn: 'root',
@@ -21,6 +22,7 @@ export class TagGuard implements Resolve<TagPageDecorator> {
       take(1),
       mergeMap(articlePage => {
         if (articlePage) {
+          scrollTop(300);
           let td = new TagPageDecorator();
           td.tagId = id;
           td.articlePage = articlePage;

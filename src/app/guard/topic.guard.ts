@@ -6,6 +6,7 @@ import {pageSize} from "../service/util/page.config";
 import {TableService} from "../service/backend/table.service";
 import {ArticlePage} from "../domain/dto/article/article.page";
 import {TopicPageDecorator} from "../domain/decorator/topic.page.decorator";
+import {scrollTop} from "../jquery";
 
 @Injectable({
   providedIn: 'root',
@@ -22,6 +23,7 @@ export class TopicGuard implements Resolve<TopicPageDecorator> {
       take(1),
       mergeMap(articlePage => {
         if (articlePage) {
+          scrollTop(300);
           let td = new TopicPageDecorator();
           td.topicId = id;
           td.articlePage = articlePage;

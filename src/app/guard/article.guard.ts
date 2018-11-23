@@ -10,6 +10,7 @@ import { mergeMap, take }         from 'rxjs/operators';
 import {Article} from "../domain/dto/article/article";
 import {ArticleService} from "../service/backend/article.service";
 import {TopicPageDecorator} from "../domain/decorator/topic.page.decorator";
+import {scrollTop} from "../jquery";
 
 @Injectable({
   providedIn: 'root',
@@ -21,12 +22,11 @@ export class ArticleGuard implements Resolve<Article> {
     let id = route.paramMap.get('id');
     let articleType = route.data.articleType;
 
-    console.log("Article guard");
-
     return this.as.getArticle(articleType, id).pipe(
       take(1),
       mergeMap(article => {
         if (article) {
+          scrollTop(300);
           return of(article);
         } else { // id not found
           this.router.navigate(['/']);
