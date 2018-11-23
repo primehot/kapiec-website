@@ -1,5 +1,5 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {Observable, of} from 'rxjs';
+import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Observable, of, Subject} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {ArticleType} from '../../../domain/emun/article.type';
 import {ImageService} from "../../../service/backend/image.service";
@@ -11,13 +11,14 @@ import {pageSize} from "../../../service/util/page.config";
 import {TopicPageDecorator} from "../../../domain/decorator/topic.page.decorator";
 import {TagPageDecorator} from "../../../domain/decorator/tag.page.decorator";
 import {ArticlePage} from "../../../domain/dto/article/article.page";
+import {takeUntil} from "rxjs/internal/operators";
 
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css', '../bootstrap.view.scss']
 })
-export class TableComponent implements OnInit, OnChanges {
+export class TableComponent implements OnInit, OnChanges, OnDestroy {
   articleType: ArticleType;
   topicId: string;
   topic: string;
@@ -30,6 +31,8 @@ export class TableComponent implements OnInit, OnChanges {
   total: number;
   loading: boolean;
 
+  private componentDestroyed: Subject<any> = new Subject();
+
   constructor(private imageService: ImageService,
               private tableService: TableService,
               private namingService: NamingService,
@@ -38,23 +41,29 @@ export class TableComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.route.data
+      .pipe(takeUntil(this.componentDestroyed))
       .subscribe((data: { articleType: ArticleType, topicPage: TopicPageDecorator, tagPage: TagPageDecorator, categoryPage: ArticlePage }) => {
         this.articleType = data.articleType;
         if (data.topicPage) {
           this.total = data.topicPage.articlePage.totalElements;
           this.asyncMeals = of(data.topicPage.articlePage.items);
           this.topicId = data.topicPage.topicId;
-          this.namingService.getTopic(this.articleType, this.topicId).subscribe(next => this.topic = next.name);
+          this.namingService.getTopic(this.articleType, this.topicId).pipe(takeUntil(this.componentDestroyed)).subscribe(next => this.topic = next.name);
         } else if (data.tagPage) {
           this.total = data.tagPage.articlePage.totalElements;
           this.asyncMeals = of(data.tagPage.articlePage.items);
           this.tagId = data.tagPage.tagId;
-          this.namingService.getTag(this.tagId).subscribe(next => this.tag = next.name);
+          this.namingService.getTag(this.tagId).pipe(takeUntil(this.componentDestroyed)).subscribe(next => this.tag = next.name);
         } else if(data.categoryPage) {
           this.total = data.categoryPage.totalElements;
           this.asyncMeals = of(data.categoryPage.items);
         }
       });
+  }
+
+  ngOnDestroy() {
+    this.componentDestroyed.next();
+    this.componentDestroyed.unsubscribe();
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -85,7 +94,8 @@ export class TableComponent implements OnInit, OnChanges {
         this.loading = false;
         console.log("getPage");
       }),
-      map(res => res.items)
+      map(res => res.items),
+      takeUntil(this.componentDestroyed)
     );
   }
 
