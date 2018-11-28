@@ -11,9 +11,8 @@
     <div *ngIf="mainItems" class="container col-md-8" style="padding-right: 0">
       <div class="card-columns justify-content-center no-gutter-card-deck">
         <div class="card card-item bg-dark text-white" *ngFor="let item of mainItems">
-          <a routerLink="/{{item.articleCategory.name}}/{{item.id}}" class="custom-card-main">
+          <a class="custom-card-main" routerLink="/{{item.articleCategory.name}}/{{item.id}}">
           <img class="card-img" [lazyLoad]="getImage(item.id)" [offset]="100">
-          </a>
           <div class="card-img-overlay">
               <h3 class="card-text">{{ item.shortContent }}</h3>
           </div>
@@ -22,10 +21,11 @@
             <h6 class="card-text" style="color: white;">Таги: </h6>
             <tr class="card-text">
               <td class="hash-tag" *ngFor="let tag of item.hashTags" style="z-index: 1">
-                <a routerLink="/tags/{{tag.id}}" class="custom-card-main">{{ tag.name }}</a>
+                <a routerLink="/tags/{{tag.id}}" class="custom-card-main" (click)="tagClick($event)">{{ tag.name }}</a>
               </td>
             </tr>
           </div>
+          </a>
         </div>
       </div>
     </div>

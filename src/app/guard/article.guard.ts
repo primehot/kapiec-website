@@ -22,6 +22,8 @@ export class ArticleGuard implements Resolve<Article> {
     let id = route.paramMap.get('id');
     let articleType = route.data.articleType;
 
+    console.log("Article guard");
+
     return this.as.getArticle(articleType, id).pipe(
       take(1),
       mergeMap(article => {

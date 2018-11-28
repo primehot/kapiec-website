@@ -38,6 +38,10 @@ export class MainViewComponent implements OnInit, OnDestroy {
       })
   }
 
+  tagClick(event) {
+    event.stopPropagation();
+  }
+
   ngOnDestroy() {
     this.componentDestroyed.next();
     this.componentDestroyed.unsubscribe();
