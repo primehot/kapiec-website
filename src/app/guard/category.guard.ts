@@ -5,6 +5,7 @@ import {mergeMap, take} from 'rxjs/operators';
 import {pageSize} from "../service/util/page.config";
 import {TableService} from "../service/backend/article/table.service";
 import {ArticlePage} from "../domain/dto/article/article.page";
+import {scrollTop} from "../jquery";
 
 @Injectable({
   providedIn: 'root',
@@ -20,6 +21,7 @@ export class CategoryGuard implements Resolve<ArticlePage> {
       take(1),
       mergeMap(articlePage => {
         if (articlePage) {
+          scrollTop(300);
           return of(articlePage);
         } else { // id not found
           this.router.navigate(['/']);

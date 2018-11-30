@@ -12,6 +12,7 @@ import {TopicPageDecorator} from "../../../domain/decorator/topic.page.decorator
 import {TagPageDecorator} from "../../../domain/decorator/tag.page.decorator";
 import {ArticlePage} from "../../../domain/dto/article/article.page";
 import {takeUntil} from "rxjs/internal/operators";
+import {scrollTop} from "../../../jquery";
 
 @Component({
   selector: 'app-table',
@@ -93,6 +94,7 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
         this.p = page;
         this.loading = false;
         console.log("getPage");
+        scrollTop(300);
       }),
       map(res => res.items),
       takeUntil(this.componentDestroyed)

@@ -20,12 +20,12 @@
   <mat-grid-list cols="2" gutterSize="0" rowHeight="4:1">
     <mat-grid-tile
       [colspan]="1">
-      <a mat-raised-button color="primary" href="/">НАЙТИ ЗНАЧЕНИЕ</a>
+      <a mat-raised-button color="primary" href="/" (click)="hide()">НАЙТИ ЗНАЧЕНИЕ</a>
     </mat-grid-tile>
     <mat-grid-tile
       *ngFor="let db of dreamBookMainTitles"
       [colspan]="1">
-      <a mat-button routerLink="/{{type}}/{{db}}" style="text-decoration: none;">{{db}}</a>
+      <a mat-button routerLink="/{{type}}/{{db}}" style="text-decoration: none;" (click)="hide()">{{db}}</a>
     </mat-grid-tile>
   </mat-grid-list>
 </ng-template>
