@@ -7,7 +7,7 @@
       </div>
     </a>
   </div>
-  <div class="row" style="margin-top: 3px;">
+  <div class="row main-news-container">
     <div *ngIf="mainItems" class="container col-md-8" style="padding-right: 0">
       <div class="card-columns justify-content-center no-gutter-card-deck">
         <div class="card card-item bg-dark text-white" *ngFor="let item of mainItems" title="{{ item.shortContent }}">
@@ -20,9 +20,8 @@
             <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
               <h6 class="card-text" style="color: white;">Таги: </h6>
               <tr class="card-text">
-                <td class="hash-tag" *ngFor="let tag of item.hashTags" style="z-index: 1">
-                  <a routerLink="/tags/{{tag.id}}" class="custom-card-main" (click)="tagClick($event)">{{ tag.name
-                    }}</a>
+                <td class="hash-tag" *ngFor="let tag of item.hashTags" title="{{ tag.name }}">
+                  <a routerLink="/tags/{{tag.id}}" class="custom-card-main" (click)="tagClick($event)">{{ tag.name }}</a>
                 </td>
               </tr>
             </div>
@@ -49,18 +48,18 @@
       <div class="container border border-left-0" style="margin: 0">
         <h5 class="mat-h2">Топ новости:</h5>
         <ul *ngIf="recommendedNews" class="list-unstyled">
-          <li *ngFor="let toSee of recommendedNews" class="recommended-container">
-            <div class="container">
-              <a class="recommended" routerLink="{{toSee.articleCategory.name}}/{{toSee.id}}">{{toSee.shortContent}}</a>
-            </div>
+          <li *ngFor="let toSee of recommendedNews" class="recommended-container border-bottom">
+            <a class="recommended" routerLink="{{toSee.articleCategory.name}}/{{toSee.id}}">
+              <div class="container">{{toSee.shortContent}}</div>
+            </a>
           </li>
         </ul>
         <h5 class="mat-h2">Топ для женщин:</h5>
         <ul *ngIf="recommendedWomen" class="list-unstyled">
           <li *ngFor="let toSee of recommendedWomen" class="recommended-container">
-            <div class="container">
-              <a class="recommended" routerLink="{{toSee.articleCategory.name}}/{{toSee.id}}">{{toSee.shortContent}}</a>
-            </div>
+            <a class="recommended" routerLink="{{toSee.articleCategory.name}}/{{toSee.id}}">
+              <div class="container">{{toSee.shortContent}}</div>
+            </a>
           </li>
         </ul>
       </div>
