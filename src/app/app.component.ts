@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {addJqueryLogic, scrollTop} from "./jquery";
 import {ArticleType} from "./domain/emun/article.type";
+import {$} from "protractor";
 
 @Component({
   selector: 'app-root',

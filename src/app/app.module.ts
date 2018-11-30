@@ -20,7 +20,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule, MatIconModule,
   MatInputModule,
-  MatListModule, MatRippleModule
+  MatListModule, MatRippleModule, MatTooltipModule
 } from '@angular/material';
 import { CenterComponent } from './layout/navigation/collapse/custom/center/center.component';
 import { RightComponent } from './layout/navigation/collapse/custom/right/right.component';
@@ -28,6 +28,7 @@ import { LeftComponent } from './layout/navigation/collapse/custom/left/left.com
 import { DreamBookViewComponent } from './layout/view/dream-book-view/dream-book-view.component';
 import {FormsModule} from "@angular/forms";
 import { FooterComponent } from './layout/footer/footer.component';
+import {NgxPopperModule} from "ngx-popper";
 
 @NgModule({
   declarations: [
@@ -64,7 +65,9 @@ import { FooterComponent } from './layout/footer/footer.component';
     MatFormFieldModule,
     MatInputModule,
     MatRippleModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule,
+    NgxPopperModule
   ],
   providers: [],
   bootstrap: [AppComponent]

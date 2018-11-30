@@ -1,7 +1,7 @@
 <div class="container main-news-container justify-content-center">
-  <div *ngIf="mainArticle" class="card card-item bg-dark text-white d-sm-none d-md-block">
+  <div *ngIf="mainArticle" class="card card-item bg-dark text-white d-sm-none d-md-block" title="{{ mainArticle.shortContent }}">
     <a routerLink="/{{mainArticle.articleCategory.name}}/{{mainArticle.id}}" class="custom-card-main">
-      <img class="card-img" [lazyLoad]="getImage(mainArticle.id)" [offset]="100">
+      <img class="card-img" [lazyLoad]="getImage(mainArticle.id)" [offset]="300">
       <div class="card-img-overlay">
         <h1 class="card-title">{{mainArticle.shortContent}}</h1>
       </div>
@@ -10,21 +10,22 @@
   <div class="row" style="margin-top: 3px;">
     <div *ngIf="mainItems" class="container col-md-8" style="padding-right: 0">
       <div class="card-columns justify-content-center no-gutter-card-deck">
-        <div class="card card-item bg-dark text-white" *ngFor="let item of mainItems">
+        <div class="card card-item bg-dark text-white" *ngFor="let item of mainItems" title="{{ item.shortContent }}">
           <a class="custom-card-main" routerLink="/{{item.articleCategory.name}}/{{item.id}}">
-          <img class="card-img" [lazyLoad]="getImage(item.id)" [offset]="100">
-          <div class="card-img-overlay">
+            <img class="card-img" [lazyLoad]="getImage(item.id)" [offset]="300">
+            <div class="card-img-overlay">
               <h3 class="card-text">{{ item.shortContent }}</h3>
-          </div>
+            </div>
 
-          <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
-            <h6 class="card-text" style="color: white;">Таги: </h6>
-            <tr class="card-text">
-              <td class="hash-tag" *ngFor="let tag of item.hashTags" style="z-index: 1">
-                <a routerLink="/tags/{{tag.id}}" class="custom-card-main" (click)="tagClick($event)">{{ tag.name }}</a>
-              </td>
-            </tr>
-          </div>
+            <div class="card-img-overlay h-100 d-flex flex-column justify-content-end">
+              <h6 class="card-text" style="color: white;">Таги: </h6>
+              <tr class="card-text">
+                <td class="hash-tag" *ngFor="let tag of item.hashTags" style="z-index: 1">
+                  <a routerLink="/tags/{{tag.id}}" class="custom-card-main" (click)="tagClick($event)">{{ tag.name
+                    }}</a>
+                </td>
+              </tr>
+            </div>
           </a>
         </div>
       </div>
