@@ -1,11 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ArticleType} from "../../../domain/emun/article.type";
 import {Subject} from "rxjs/index";
-import {Article} from "../../../domain/dto/article/article";
 import {takeUntil} from "rxjs/internal/operators";
 import {ImageService} from "../../../service/backend/article/image.service";
 import {ActivatedRoute} from "@angular/router";
-import {DreamBook, DreamBookTitlePage} from "../../../domain/dto/dream_book/dream.book";
+import {DreamBookTitlePage} from "../../../domain/dto/dream_book/dream.book";
 
 @Component({
   selector: 'app-dream-book-view',

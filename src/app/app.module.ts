@@ -27,6 +27,7 @@ import { RightComponent } from './layout/navigation/collapse/custom/right/right.
 import { LeftComponent } from './layout/navigation/collapse/custom/left/left.component';
 import { DreamBookViewComponent } from './layout/view/dream-book-view/dream-book-view.component';
 import {FormsModule} from "@angular/forms";
+import { FooterComponent } from './layout/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {FormsModule} from "@angular/forms";
     CenterComponent,
     RightComponent,
     LeftComponent,
-    DreamBookViewComponent
+    DreamBookViewComponent,
+    FooterComponent
   ],
   imports: [
     NgbCollapseModule,
