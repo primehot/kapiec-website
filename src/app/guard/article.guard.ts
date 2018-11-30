@@ -8,7 +8,7 @@ import { Observable, of, EMPTY }  from 'rxjs';
 import { mergeMap, take }         from 'rxjs/operators';
 
 import {Article} from "../domain/dto/article/article";
-import {ArticleService} from "../service/backend/article.service";
+import {ArticleService} from "../service/backend/article/article.service";
 import {TopicPageDecorator} from "../domain/decorator/topic.page.decorator";
 import {scrollTop} from "../jquery";
 

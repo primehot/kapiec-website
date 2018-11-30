@@ -3,7 +3,7 @@ import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@ang
 import {EMPTY, Observable, of} from 'rxjs';
 import {mergeMap, take} from 'rxjs/operators';
 import {pageSize} from "../service/util/page.config";
-import {TableService} from "../service/backend/table.service";
+import {TableService} from "../service/backend/article/table.service";
 import {TagPageDecorator} from "../domain/decorator/tag.page.decorator";
 import {scrollTop} from "../jquery";
 

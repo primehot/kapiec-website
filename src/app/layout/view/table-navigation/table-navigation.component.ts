@@ -8,8 +8,8 @@ import {ArticleType, getNavigationNameByType} from "../../../domain/emun/article
 })
 export class TableNavigationComponent implements OnInit, OnChanges {
   @Input() articleType: ArticleType;
-  @Input() topicId: number;
-  @Input() topic: string;
+  @Input() topicId?: number;
+  @Input() topic?: string;
   @Input() tagId?: number;
   @Input() tag?: string;
   articleTypeName: string;

@@ -10,6 +10,8 @@ import {TableComponent} from "./layout/view/table/table.component";
 import {TopicGuard} from "./guard/topic.guard";
 import {TagGuard} from "./guard/tag.guard";
 import {CategoryGuard} from "./guard/category.guard";
+import {DreamBookViewComponent} from "./layout/view/dream-book-view/dream-book-view.component";
+import {DreamBookGuard} from "./guard/dream.book.guard";
 
 const routes: Routes = [
   {path: '', component: MainViewComponent},
@@ -21,6 +23,11 @@ const routes: Routes = [
   {
     path: 'women', component: TableComponent, data: {articleType: ArticleType.women}, resolve: {
     categoryPage: CategoryGuard
+  }
+  },
+  {
+    path: 'dream/:title', component: DreamBookViewComponent, data: {articleType: ArticleType.women}, resolve: {
+    dreamBookTitlePage: DreamBookGuard
   }
   },
 

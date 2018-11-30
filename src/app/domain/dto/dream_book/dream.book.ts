@@ -9,3 +9,8 @@ export class ShortDreamBook {
   id: number;
   data: string;
 }
+
+export class DreamBookTitlePage {
+  title: string;
+  dreamBooks: DreamBook[];
+}

@@ -1,0 +1,30 @@
+<div class="container" style="margin: 0">
+  <div class="row" style="margin-top: 10px">
+    <div class="container col-md-8 border-left">
+      <app-table-navigation [articleType]="articleType"></app-table-navigation>
+      <div class="container justify-content-center">
+        <mat-form-field>
+          <input matInput type="text" placeholder="Найти значение" [(ngModel)]="inputValue">
+          <button mat-button *ngIf="inputValue" matSuffix mat-icon-button aria-label="Clear" (click)="inputValue=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div class="container" *ngFor="let db of dreamBookData.dreamBooks" style="margin-top: 10px">
+        <mat-card>
+          <mat-card-content>
+            <p>
+              {{db.content}}
+            </p>
+          </mat-card-content>
+          <mat-card-footer class="text-right">
+            <div class="container">{{db.author}}</div>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </div>
+
+    <div class="container col-md-4 border">
+    </div>
+  </div>
+</div>

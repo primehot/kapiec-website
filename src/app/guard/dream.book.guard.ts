@@ -7,27 +7,25 @@ import {TableService} from "../service/backend/article/table.service";
 import {ArticlePage} from "../domain/dto/article/article.page";
 import {TopicPageDecorator} from "../domain/decorator/topic.page.decorator";
 import {scrollTop} from "../jquery";
+import {DreamBookService} from "../service/backend/dream.book.service";
+import {DreamBook, DreamBookTitlePage} from "../domain/dto/dream_book/dream.book";
 
 @Injectable({
   providedIn: 'root',
 })
-export class TopicGuard implements Resolve<TopicPageDecorator> {
-  constructor(private ts: TableService, private router: Router) {
+export class DreamBookGuard implements Resolve<DreamBookTitlePage> {
+  constructor(private dbs: DreamBookService, private router: Router) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<TopicPageDecorator > | Observable<never> {
-    let id = route.paramMap.get('topicId');
-    let articleType = route.data.articleType;
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<DreamBookTitlePage> | Observable<never> {
+    let title = route.paramMap.get('title');
 
-    return this.ts.getPageByTopic(articleType, id, 0, pageSize).pipe(
+    return this.dbs.getDreamBookDataByTitle(title).pipe(
       take(1),
-      mergeMap(articlePage => {
-        if (articlePage) {
+      mergeMap(dreamBookTitlePage => {
+        if (dreamBookTitlePage) {
           scrollTop(300);
-          let td = new TopicPageDecorator();
-          td.topicId = id;
-          td.articlePage = articlePage;
-          return of(td);
+          return of(dreamBookTitlePage);
         } else { // id not found
           this.router.navigate(['/']);
           return EMPTY;

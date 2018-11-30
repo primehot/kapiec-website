@@ -1,6 +1,6 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {ArticleType} from "../../../domain/emun/article.type";
-import {NavigationDataService} from "../../../service/backend/navigation.data.service";
+import {NavigationDataService} from "../../../service/backend/article/navigation.data.service";
 import {Subject} from "rxjs/index";
 import {takeUntil} from "rxjs/internal/operators";
 

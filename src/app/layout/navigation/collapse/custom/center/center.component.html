@@ -25,7 +25,7 @@
     <mat-grid-tile
       *ngFor="let db of dreamBookMainTitles"
       [colspan]="1">
-      <a mat-button href="/" style="text-decoration: none;">{{db}}</a>
+      <a mat-button routerLink="/{{type}}/{{db}}" style="text-decoration: none;">{{db}}</a>
     </mat-grid-tile>
   </mat-grid-list>
 </ng-template>

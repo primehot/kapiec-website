@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {ImageService} from "../../../service/backend/image.service";
+import {ImageService} from "../../../service/backend/article/image.service";
 import {Article} from "../../../domain/dto/article/article";
 import {takeUntil} from "rxjs/internal/operators";
 import {Subject} from "rxjs/index";

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ImageService} from "../../../../../service/backend/image.service";
+import {ImageService} from "../../../../../service/backend/article/image.service";
 import {ArticleType} from "../../../../../domain/emun/article.type";
 import {hideCollapse} from "../../../../../jquery";
 

@@ -13,9 +13,7 @@ import {MainViewComponent} from './layout/view/main-view/main-view.component';
 import {PageNotFoundComponent} from './layout/page-not-found/page-not-found.component';
 import {ArticleComponent} from './layout/view/article/article.component';
 import {TableComponent} from './layout/view/table/table.component';
-import {TopicViewComponent} from './layout/view/topic-view/topic-view.component';
 import {CustomMenuComponent} from './layout/navigation/collapse/navigation.collapse.component';
-import {TagViewComponent} from './layout/view/tag-view/tag-view.component';
 import {TableNavigationComponent} from './layout/view/table-navigation/table-navigation.component';
 import {TableAdditionalComponent} from './layout/view/table-additional/table-additional.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -27,6 +25,8 @@ import {
 import { CenterComponent } from './layout/navigation/collapse/custom/center/center.component';
 import { RightComponent } from './layout/navigation/collapse/custom/right/right.component';
 import { LeftComponent } from './layout/navigation/collapse/custom/left/left.component';
+import { DreamBookViewComponent } from './layout/view/dream-book-view/dream-book-view.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -37,14 +37,13 @@ import { LeftComponent } from './layout/navigation/collapse/custom/left/left.com
     PageNotFoundComponent,
     ArticleComponent,
     TableComponent,
-    TopicViewComponent,
     CustomMenuComponent,
-    TagViewComponent,
     TableNavigationComponent,
     TableAdditionalComponent,
     CenterComponent,
     RightComponent,
-    LeftComponent
+    LeftComponent,
+    DreamBookViewComponent
   ],
   imports: [
     NgbCollapseModule,
@@ -62,7 +61,8 @@ import { LeftComponent } from './layout/navigation/collapse/custom/left/left.com
     MatGridListModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRippleModule
+    MatRippleModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

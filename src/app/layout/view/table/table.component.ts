@@ -2,11 +2,11 @@ import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/c
 import {Observable, of, Subject} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {ArticleType} from '../../../domain/emun/article.type';
-import {ImageService} from "../../../service/backend/image.service";
-import {TableService} from "../../../service/backend/table.service";
+import {ImageService} from "../../../service/backend/article/image.service";
+import {TableService} from "../../../service/backend/article/table.service";
 import {Article} from "../../../domain/dto/article/article";
 import {ActivatedRoute} from "@angular/router";
-import {NamingService} from "../../../service/backend/naming.service";
+import {NamingService} from "../../../service/backend/article/naming.service";
 import {pageSize} from "../../../service/util/page.config";
 import {TopicPageDecorator} from "../../../domain/decorator/topic.page.decorator";
 import {TagPageDecorator} from "../../../domain/decorator/tag.page.decorator";

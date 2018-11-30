@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AdditionalDataService} from "../../../service/backend/additional.data.service";
+import {AdditionalDataService} from "../../../service/backend/article/additional.data.service";
 import {ArticleType} from "../../../domain/emun/article.type";
-import {ImageService} from "../../../service/backend/image.service";
+import {ImageService} from "../../../service/backend/article/image.service";
 import {Observable} from "rxjs/index";
 import {share, tap} from "rxjs/internal/operators";
 import {ArticleAdditional} from "../../../domain/dto/article/article.additional";
@@ -27,8 +27,6 @@ export class TableAdditionalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log("TableAdditionalComponent ngOnInit");
-
     this.additional = this.additionalDataService.getAdditionalArticleData(this.articleType)
       .pipe(share(),
         tap(next => {
