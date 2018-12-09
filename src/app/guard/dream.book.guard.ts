@@ -20,6 +20,8 @@ export class DreamBookGuard implements Resolve<DreamBookTitlePage> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<DreamBookTitlePage> | Observable<never> {
     let title = route.paramMap.get('title');
 
+    console.log("DreamBook guard");
+
     return this.dbs.getDreamBookDataByTitle(title).pipe(
       take(1),
       mergeMap(dreamBookTitlePage => {

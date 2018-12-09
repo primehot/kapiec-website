@@ -16,4 +16,8 @@ export class DreamBookService {
   getDreamBookDataByTitle(title): Observable<DreamBookTitlePage> {
     return this.http.get<DreamBookTitlePage>(`${getUrl(ArticleType.dream)}/title?name=${title}`);
   }
+
+  getDreamBookDataByPhrase(phrase): Observable<DreamBook[]> {
+    return this.http.get<DreamBook[]>(`${getUrl(ArticleType.dream)}?phrase=${phrase}`);
+  }
 }

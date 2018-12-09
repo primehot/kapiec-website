@@ -2,9 +2,9 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ArticleType} from "../../../domain/emun/article.type";
 import {Subject} from "rxjs/index";
 import {takeUntil} from "rxjs/internal/operators";
-import {ImageService} from "../../../service/backend/article/image.service";
 import {ActivatedRoute} from "@angular/router";
-import {DreamBookTitlePage} from "../../../domain/dto/dream_book/dream.book";
+import {DreamBook, DreamBookTitlePage} from "../../../domain/dto/dream_book/dream.book";
+import {DreamBookService} from "../../../service/backend/dream.book.service";
 
 @Component({
   selector: 'app-dream-book-view',
@@ -14,27 +14,39 @@ import {DreamBookTitlePage} from "../../../domain/dto/dream_book/dream.book";
 export class DreamBookViewComponent implements OnInit, OnDestroy {
 
   articleType = ArticleType.dream;
-  dreamBookData: DreamBookTitlePage;
-  inputValue;
+  title: string;
+  dreamBooks: DreamBook[];
+  inputValue: string;
 
   private componentDestroyed: Subject<any> = new Subject();
 
   constructor(private route: ActivatedRoute,
-              private imageService: ImageService) {
+              private dreamBookService: DreamBookService) {
   }
 
   ngOnInit() {
     this.route.data
       .pipe(takeUntil(this.componentDestroyed))
       .subscribe((data: { dreamBookTitlePage: DreamBookTitlePage }) => {
-        this.dreamBookData = data.dreamBookTitlePage;
-        this.inputValue = data.dreamBookTitlePage.title;
+        if (data.dreamBookTitlePage) {
+          this.dreamBooks = data.dreamBookTitlePage.dreamBooks;
+          this.inputValue = data.dreamBookTitlePage.title;
+        }
       });
   }
 
   ngOnDestroy() {
     this.componentDestroyed.next();
     this.componentDestroyed.unsubscribe();
+  }
+
+  onEnterPress() {
+    this.dreamBookService.getDreamBookDataByPhrase(this.inputValue)
+      .pipe(takeUntil(this.componentDestroyed))
+      .subscribe(next => {
+        console.log(next);
+        this.dreamBooks = next;
+      });
   }
 
 }

@@ -4,17 +4,16 @@
       <app-table-navigation [articleType]="articleType"></app-table-navigation>
       <div class="container justify-content-center">
         <mat-form-field>
-          <input matInput type="text" placeholder="Найти значение" [(ngModel)]="inputValue">
+          <input matInput type="text" placeholder="Найти значение" [(ngModel)]="inputValue" (keyup.enter)="onEnterPress()">
           <button mat-button *ngIf="inputValue" matSuffix mat-icon-button aria-label="Clear" (click)="inputValue=''">
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
       </div>
-      <div class="container" *ngFor="let db of dreamBookData.dreamBooks" style="margin-top: 10px">
-        <mat-card>
+      <div class="container" *ngIf="dreamBooks" style="margin-top: 10px">
+        <mat-card *ngFor="let db of dreamBooks">
           <mat-card-content>
-            <p>
-              {{db.content}}
+            <p [innerHTML]="db.content">
             </p>
           </mat-card-content>
           <mat-card-footer class="text-right">

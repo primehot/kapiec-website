@@ -21,27 +21,21 @@ const routes: Routes = [
   }
   },
   {
-    path: 'women', component: TableComponent, data: {articleType: ArticleType.women}, resolve: {
-    categoryPage: CategoryGuard
-  }
-  },
-  {
-    path: 'dream/:title', component: DreamBookViewComponent, data: {articleType: ArticleType.women}, resolve: {
-    dreamBookTitlePage: DreamBookGuard
-  }
-  },
-
-  {
     path: 'news/:id', component: ArticleComponent, data: {articleType: ArticleType.news},
     resolve: {
       article: ArticleGuard
     }
   },
   {
-    path: 'dream/:id', component: ArticleComponent, data: {articleType: ArticleType.dream},
+    path: 'news/by-topics/:topicId', component: TableComponent, data: {articleType: ArticleType.news},
     resolve: {
-      article: ArticleGuard
+      topicPage: TopicGuard
     }
+  },
+  {
+    path: 'women', component: TableComponent, data: {articleType: ArticleType.women}, resolve: {
+    categoryPage: CategoryGuard
+  }
   },
   {
     path: 'women/:id', component: ArticleComponent, data: {articleType: ArticleType.women},
@@ -49,11 +43,25 @@ const routes: Routes = [
       article: ArticleGuard
     }
   },
-
   {
-    path: 'news/by-topics/:topicId', component: TableComponent, data: {articleType: ArticleType.news},
+    path: 'women/by-topics/:topicId', component: TableComponent, data: {articleType: ArticleType.women},
     resolve: {
       topicPage: TopicGuard
+    }
+  },
+  {
+    path: 'dream', component: DreamBookViewComponent
+  },
+  {
+    path: 'dream/:title', component: DreamBookViewComponent, resolve: {
+    dreamBookTitlePage: DreamBookGuard
+  }
+  },
+
+  {
+    path: 'dream/:id', component: ArticleComponent, data: {articleType: ArticleType.dream},
+    resolve: {
+      article: ArticleGuard
     }
   },
   {
@@ -63,20 +71,13 @@ const routes: Routes = [
     }
   },
   {
-    path: 'women/by-topics/:topicId', component: TableComponent, data: {articleType: ArticleType.women},
-    resolve: {
-      topicPage: TopicGuard
-    }
-  },
-
-  {
     path: 'tags/:tagId', component: TableComponent, data: {articleType: ArticleType.tags},
     resolve: {
       tagPage: TagGuard
     }
   },
-
   {path: 'tags', redirectTo: ''},
+
   {path: '**', component: PageNotFoundComponent}
 ];
 

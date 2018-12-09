@@ -13,7 +13,7 @@
 <h6 class="recommended-title">Только что добавлено</h6>
 <ul *ngIf="additional | async" class="list-unstyled">
   <li *ngFor="let newestArt of newest" class="recommended-container border-bottom">
-    <a class="recommended" routerLink="{{newestArt.articleCategory.name}}/{{newestArt.id}}">
+    <a class="recommended" routerLink="/{{newestArt.articleCategory.name}}/{{newestArt.id}}">
       <div class="container">{{newestArt.shortContent}}</div>
     </a>
   </li>
