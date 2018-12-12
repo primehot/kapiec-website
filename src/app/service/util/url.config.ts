@@ -10,6 +10,7 @@ const urlConfig = {
   dreamUrl: `${serverUrl}/dream`,
   womenUrl: `${serverUrl}/women`,
   tagsUrl: `${serverUrl}/tags`,
+  searchUrl: `${serverUrl}/search`,
 };
 
 const getUrl = (articleType) => {
@@ -22,6 +23,8 @@ const getUrl = (articleType) => {
       return urlConfig.dreamUrl;
     case ArticleType.tags:
       return urlConfig.tagsUrl;
+    case ArticleType.search:
+      return urlConfig.searchUrl;
   }
 };
 

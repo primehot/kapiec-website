@@ -1,4 +1,4 @@
-import {Component, OnChanges, OnDestroy, OnInit, SimpleChanges} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable, of, Subject} from 'rxjs';
 import {map, tap} from 'rxjs/operators';
 import {ArticleType} from '../../../domain/emun/article.type';
@@ -8,8 +8,7 @@ import {Article} from "../../../domain/dto/article/article";
 import {ActivatedRoute} from "@angular/router";
 import {NamingService} from "../../../service/backend/article/naming.service";
 import {pageSize} from "../../../service/util/page.config";
-import {TopicPageDecorator} from "../../../domain/decorator/topic.page.decorator";
-import {TagPageDecorator} from "../../../domain/decorator/tag.page.decorator";
+import {IdentificationPageDecorator} from "../../../domain/decorator/identification.page.decorator";
 import {ArticlePage} from "../../../domain/dto/article/article.page";
 import {takeUntil} from "rxjs/internal/operators";
 import {scrollTop} from "../../../jquery";
@@ -19,12 +18,13 @@ import {scrollTop} from "../../../jquery";
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css', '../bootstrap.view.scss']
 })
-export class TableComponent implements OnInit, OnChanges, OnDestroy {
+export class TableComponent implements OnInit, OnDestroy {
   articleType: ArticleType;
   topicId: string;
   topic: string;
   tagId: string;
   tag: string;
+  phrase: string;
 
   asyncMeals: Observable<Article[]>;
   p = 1;
@@ -43,31 +43,54 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     this.route.data
       .pipe(takeUntil(this.componentDestroyed))
-      .subscribe((data: { articleType: ArticleType, topicPage: TopicPageDecorator, tagPage: TagPageDecorator, categoryPage: ArticlePage }) => {
+      .subscribe((data: {
+        articleType: ArticleType,
+        topicPage: IdentificationPageDecorator,
+        tagPage: IdentificationPageDecorator,
+        categoryPage: ArticlePage,
+        searchPage: IdentificationPageDecorator
+      }) => {
         this.articleType = data.articleType;
         if (data.topicPage) {
-          this.total = data.topicPage.articlePage.totalElements;
-          this.asyncMeals = of(data.topicPage.articlePage.items);
-          this.topicId = data.topicPage.topicId;
-          this.namingService.getTopic(this.articleType, this.topicId).pipe(takeUntil(this.componentDestroyed)).subscribe(next => this.topic = next.name);
+          this.topicPageData(data.topicPage);
         } else if (data.tagPage) {
-          this.total = data.tagPage.articlePage.totalElements;
-          this.asyncMeals = of(data.tagPage.articlePage.items);
-          this.tagId = data.tagPage.tagId;
-          this.namingService.getTag(this.tagId).pipe(takeUntil(this.componentDestroyed)).subscribe(next => this.tag = next.name);
-        } else if(data.categoryPage) {
-          this.total = data.categoryPage.totalElements;
-          this.asyncMeals = of(data.categoryPage.items);
+          this.tagPageData(data.tagPage);
+        } else if (data.categoryPage) {
+          this.categoryPageData(data.categoryPage)
+        } else if (data.searchPage) {
+          this.searchPageData(data.searchPage);
         }
       });
+  }
+
+  categoryPageData(categoryPage) {
+    this.total = categoryPage.totalElements;
+    this.asyncMeals = of(categoryPage.items);
+  }
+
+  topicPageData(topicPage) {
+    this.total = topicPage.articlePage.totalElements;
+    this.asyncMeals = of(topicPage.articlePage.items);
+    this.topicId = topicPage.id;
+    this.namingService.getTopic(this.articleType, this.topicId).pipe(takeUntil(this.componentDestroyed)).subscribe(next => this.topic = next.name);
+  }
+
+  searchPageData(searchPage) {
+    this.total = searchPage.articlePage.totalElements;
+    this.asyncMeals = of(searchPage.articlePage.items);
+    this.phrase = searchPage.id;
+  }
+
+  tagPageData(tagPage) {
+    this.total = tagPage.articlePage.totalElements;
+    this.asyncMeals = of(tagPage.articlePage.items);
+    this.tagId = tagPage.id;
+    this.namingService.getTag(this.tagId).pipe(takeUntil(this.componentDestroyed)).subscribe(next => this.tag = next.name);
   }
 
   ngOnDestroy() {
     this.componentDestroyed.next();
     this.componentDestroyed.unsubscribe();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
   }
 
   getImage(articleType: ArticleType, id) {
@@ -77,10 +100,10 @@ export class TableComponent implements OnInit, OnChanges, OnDestroy {
   getServicePageMethod(page: number) {
     if (this.tagId) {
       return this.tableService.getPageByTag(this.tagId, page, pageSize);
-    }
-    else if (this.topicId) {
-      console.log("getPageByTopic");
+    } else if (this.topicId) {
       return this.tableService.getPageByTopic(this.articleType, this.topicId, page, pageSize);
+    } else if (this.phrase) {
+      return this.tableService.getPageByPhrase(this.phrase, page, this.pageSize);
     } else {
       return this.tableService.getPage(this.articleType, page, pageSize);
     }

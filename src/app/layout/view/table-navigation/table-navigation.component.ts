@@ -12,6 +12,7 @@ export class TableNavigationComponent implements OnInit, OnChanges {
   @Input() topic?: string;
   @Input() tagId?: number;
   @Input() tag?: string;
+  @Input() phrase?: string;
   articleTypeName: string;
 
   constructor() {
@@ -30,8 +31,8 @@ export class TableNavigationComponent implements OnInit, OnChanges {
     //       case "articleType":
     //         this.articleType = changes[propName].currentValue;
     //         break;
-    //       case "topicId":
-    //         this.topicId = changes[propName].currentValue;
+    //       case "id":
+    //         this.id = changes[propName].currentValue;
     //         break;
     //       case "topic":
     //         this.topic = changes[propName].currentValue;

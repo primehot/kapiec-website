@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleType} from "../../../domain/emun/article.type";
 import {hideCollapse} from "../../../jquery";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +14,9 @@ export class NavbarComponent implements OnInit {
   women = ArticleType.women;
   dream = ArticleType.dream;
 
-  constructor() {
+  inputValue: string;
+
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
@@ -29,5 +32,10 @@ export class NavbarComponent implements OnInit {
 
   hideDream() {
     hideCollapse(this.dream);
+  }
+
+  onEnterPress() {
+    this.router.navigate(['/' + ArticleType.search, this.inputValue]);
+    this.inputValue = "";
   }
 }

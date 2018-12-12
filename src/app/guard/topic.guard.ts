@@ -4,18 +4,17 @@ import {EMPTY, Observable, of} from 'rxjs';
 import {mergeMap, take} from 'rxjs/operators';
 import {pageSize} from "../service/util/page.config";
 import {TableService} from "../service/backend/article/table.service";
-import {ArticlePage} from "../domain/dto/article/article.page";
-import {TopicPageDecorator} from "../domain/decorator/topic.page.decorator";
+import {IdentificationPageDecorator} from "../domain/decorator/identification.page.decorator";
 import {scrollTop} from "../jquery";
 
 @Injectable({
   providedIn: 'root',
 })
-export class TopicGuard implements Resolve<TopicPageDecorator> {
+export class TopicGuard implements Resolve<IdentificationPageDecorator> {
   constructor(private ts: TableService, private router: Router) {
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<TopicPageDecorator > | Observable<never> {
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IdentificationPageDecorator> | Observable<never> {
     let id = route.paramMap.get('topicId');
     let articleType = route.data.articleType;
 
@@ -24,8 +23,8 @@ export class TopicGuard implements Resolve<TopicPageDecorator> {
       mergeMap(articlePage => {
         if (articlePage) {
           scrollTop(300);
-          let td = new TopicPageDecorator();
-          td.topicId = id;
+          let td = new IdentificationPageDecorator();
+          td.id = id;
           td.articlePage = articlePage;
           return of(td);
         } else { // id not found

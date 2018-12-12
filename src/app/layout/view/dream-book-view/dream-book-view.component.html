@@ -13,7 +13,7 @@
       <div class="container" *ngIf="dreamBooks" style="margin-top: 10px">
         <mat-card *ngFor="let db of dreamBooks">
           <mat-card-content>
-            <p [innerHTML]="db.content">
+            <p [innerHTML]=" db.content">
             </p>
           </mat-card-content>
           <mat-card-footer class="text-right">

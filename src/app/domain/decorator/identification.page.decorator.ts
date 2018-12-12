@@ -1,6 +1,6 @@
 import {ArticlePage} from "../dto/article/article.page";
 
-export class TopicPageDecorator {
-  topicId: string;
+export class IdentificationPageDecorator {
+  id: string;
   articlePage: ArticlePage;
 }

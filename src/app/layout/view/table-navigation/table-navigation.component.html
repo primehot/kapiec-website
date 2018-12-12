@@ -7,5 +7,7 @@
     <td *ngIf="topicId"><a class="navigation-on-white" routerLink="/{{articleType}}/by-topics/{{topicId}}"><h6>{{topic}}</h6></a></td>
     <td *ngIf="tagId" class="navigation-arrow"><h6> > </h6></td>
     <td *ngIf="tagId"><a class="navigation-on-white" routerLink="/{{articleType}}/{{tagId}}"><h6>{{tag}}</h6></a></td>
+    <td *ngIf="phrase" class="navigation-arrow"><h6> > </h6></td>
+    <td *ngIf="phrase"><a class="navigation-on-white"><h6>{{phrase}}</h6></a></td>
   </tr>
 </div>

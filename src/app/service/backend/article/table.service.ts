@@ -25,4 +25,8 @@ export class TableService {
     return this.http.get<ArticlePage>(`${urlConfig.tagsUrl}/${tagId}?page=${page}&size=${size}`);
   }
 
+  getPageByPhrase(phrase, page, size): Observable<ArticlePage> {
+    return this.http.get<ArticlePage>(`${urlConfig.searchUrl}?phrase=${phrase}&page=${page}&size=${size}`);
+  }
+
 }

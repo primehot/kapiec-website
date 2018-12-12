@@ -1,15 +1,10 @@
-import { Injectable }             from '@angular/core';
-import {
-  Router, Resolve,
-  RouterStateSnapshot,
-  ActivatedRouteSnapshot
-}                                 from '@angular/router';
-import { Observable, of, EMPTY }  from 'rxjs';
-import { mergeMap, take }         from 'rxjs/operators';
+import {Injectable} from '@angular/core';
+import {ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot} from '@angular/router';
+import {EMPTY, Observable, of} from 'rxjs';
+import {mergeMap, take} from 'rxjs/operators';
 
 import {Article} from "../domain/dto/article/article";
 import {ArticleService} from "../service/backend/article/article.service";
-import {TopicPageDecorator} from "../domain/decorator/topic.page.decorator";
 import {scrollTop} from "../jquery";
 
 @Injectable({

@@ -12,6 +12,7 @@ import {TagGuard} from "./guard/tag.guard";
 import {CategoryGuard} from "./guard/category.guard";
 import {DreamBookViewComponent} from "./layout/view/dream-book-view/dream-book-view.component";
 import {DreamBookGuard} from "./guard/dream.book.guard";
+import {SearchGuard} from "./guard/search.guard";
 
 const routes: Routes = [
   {path: '', component: MainViewComponent},
@@ -77,6 +78,14 @@ const routes: Routes = [
     }
   },
   {path: 'tags', redirectTo: ''},
+
+  {
+    path: 'search/:phrase', component: TableComponent, data: {articleType: ArticleType.search},
+    resolve: {
+      searchPage: SearchGuard
+    }
+  },
+  {path: 'search', redirectTo: ''},
 
   {path: '**', component: PageNotFoundComponent}
 ];

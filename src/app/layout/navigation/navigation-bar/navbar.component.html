@@ -17,7 +17,7 @@
     <div class="navbar-nav col-4 col-md-3 justify-content-end">
       <div class="input-group col-lg-8 col-sm-10">
         <input type="text" class="form-control form-control-sm input-xs" placeholder=""
-               aria-label="Recipient's username" aria-describedby="basic-addon2">
+               aria-label="Recipient's username" aria-describedby="basic-addon2" [(ngModel)]="inputValue" (keyup.enter)="onEnterPress()">
         <!--<div class="input-group-append">-->
         <!--<button class="btn btn-outline-secondary btn-sm" type="button">Поиск</button>-->
         <!--</div>-->
