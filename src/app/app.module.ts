@@ -67,7 +67,8 @@ import {NgxPopperModule} from "ngx-popper";
     MatRippleModule,
     FormsModule,
     MatTooltipModule,
-    NgxPopperModule
+    NgxPopperModule,
+    BrowserModule.withServerTransition({appId: 'my-app'})
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -15,6 +15,7 @@ export class NavbarComponent implements OnInit {
   dream = ArticleType.dream;
 
   inputValue: string;
+  isCollapsed = false;
 
   constructor(private router: Router) {
   }

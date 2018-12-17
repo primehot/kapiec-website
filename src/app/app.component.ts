@@ -1,7 +1,7 @@
-import {Component} from '@angular/core';
-import {addJqueryLogic, scrollTop} from "./jquery";
+import {Component, Inject, PLATFORM_ID} from '@angular/core';
+import {addJqueryLogic} from "./jquery";
 import {ArticleType} from "./domain/emun/article.type";
-import {$} from "protractor";
+import {isPlatformBrowser, isPlatformServer} from "@angular/common";
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,14 @@ export class AppComponent {
   news = ArticleType.news;
   women = ArticleType.women;
 
-  constructor() {
-    addJqueryLogic();
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {
+    if (isPlatformBrowser(this.platformId)) {
+      // Client only code.
+      addJqueryLogic();
+    }
+    if (isPlatformServer(this.platformId)) {
+      // Server only code.
+    }
   }
 }
 
