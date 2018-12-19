@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ArticleType} from "../../../domain/emun/article.type";
 import {Subject} from "rxjs/index";
 import {takeUntil} from "rxjs/internal/operators";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {DreamBook, DreamBookTitlePage} from "../../../domain/dto/dream_book/dream.book";
 import {DreamBookService} from "../../../service/backend/dream.book.service";
 
@@ -21,6 +21,7 @@ export class DreamBookViewComponent implements OnInit, OnDestroy {
   private componentDestroyed: Subject<any> = new Subject();
 
   constructor(private route: ActivatedRoute,
+              private router: Router,
               private dreamBookService: DreamBookService) {
   }
 
@@ -41,12 +42,7 @@ export class DreamBookViewComponent implements OnInit, OnDestroy {
   }
 
   onEnterPress() {
-    this.dreamBookService.getDreamBookDataByPhrase(this.inputValue)
-      .pipe(takeUntil(this.componentDestroyed))
-      .subscribe(next => {
-        console.log(next);
-        this.dreamBooks = next;
-      });
+    this.router.navigate(['/' + ArticleType.dream + '/search', this.inputValue]);
   }
 
 }

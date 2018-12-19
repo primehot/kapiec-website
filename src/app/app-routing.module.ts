@@ -13,6 +13,7 @@ import {CategoryGuard} from "./guard/category.guard";
 import {DreamBookViewComponent} from "./layout/view/dream-book-view/dream-book-view.component";
 import {DreamBookGuard} from "./guard/dream.book.guard";
 import {SearchGuard} from "./guard/search.guard";
+import {DreamBookSearchGuard} from "./guard/dream.book.search.guard";
 
 const routes: Routes = [
   {path: '', component: MainViewComponent},
@@ -56,6 +57,11 @@ const routes: Routes = [
   {
     path: 'dream/:title', component: DreamBookViewComponent, resolve: {
     dreamBookTitlePage: DreamBookGuard
+  }
+  },
+  {
+    path: 'dream/search/:phrase', component: DreamBookViewComponent, resolve: {
+    dreamBookTitlePage: DreamBookSearchGuard
   }
   },
 
