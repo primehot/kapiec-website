@@ -4,7 +4,7 @@ import {Subject} from "rxjs/index";
 import {takeUntil} from "rxjs/internal/operators";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DreamBook, DreamBookTitlePage} from "../../../domain/dto/dream_book/dream.book";
-import {DreamBookService} from "../../../service/backend/dream.book.service";
+import {Meta, Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-dream-book-view',
@@ -22,7 +22,8 @@ export class DreamBookViewComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute,
               private router: Router,
-              private dreamBookService: DreamBookService) {
+              private title: Title,
+              private meta: Meta) {
   }
 
   ngOnInit() {
@@ -42,7 +43,14 @@ export class DreamBookViewComponent implements OnInit, OnDestroy {
   }
 
   onEnterPress() {
-    this.router.navigate(['/' + ArticleType.dream + '/search', this.inputValue]);
+    // this.router.navigate(['/' + ArticleType.dream + '/' + ArticleType.search, this.inputValue]);
+    this.router.navigateByUrl('/' + ArticleType.dream + '/' + ArticleType.search + '/' + this.inputValue)
+  }
+
+  setTitleMetadata() {
+
+    this.meta.addTag({name: "", content: ""});
+
   }
 
 }

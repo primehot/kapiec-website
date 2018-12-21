@@ -36,7 +36,8 @@ export class NavbarComponent implements OnInit {
   }
 
   onEnterPress() {
-    this.router.navigate(['/' + ArticleType.search, this.inputValue]);
+    // this.router.navigate(['/' + ArticleType.search, this.inputValue]);
+    this.router.navigateByUrl('/' + ArticleType.search + '/' + this.inputValue);
     this.inputValue = "";
   }
 }
