@@ -1,4 +1,4 @@
-<div class="container main-news-container justify-content-center">
+<div id="main-view" class="container main-news-container justify-content-center">
   <div *ngIf="mainArticle" class="card card-item bg-dark text-white d-sm-none d-md-block" title="{{ mainArticle.shortContent }}">
     <a routerLink="/{{mainArticle.articleCategory.name}}/{{mainArticle.id}}" class="custom-card-main">
       <img class="card-img" [lazyLoad]="getImage(mainArticle.id)" [offset]="300">

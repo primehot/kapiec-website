@@ -95,5 +95,11 @@ function hideCollapse(type: ArticleType) {
   hideElement($('.overlap' + '-' + type));
 }
 
-export {addJqueryLogic, hideCollapse, scrollTop};
+function addFullViewPort(id, delta) {
+    let fullScreen = $(window).height();
+    let minTableHeight = fullScreen - $('#navigation-bar-header').height() + $('#navigation-bar').height();
+    $('#'+id).css('min-height', minTableHeight + delta);
+}
+
+export {addJqueryLogic, hideCollapse, scrollTop, addFullViewPort};
 

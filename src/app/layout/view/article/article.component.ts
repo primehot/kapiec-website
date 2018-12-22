@@ -4,6 +4,7 @@ import {ImageService} from "../../../service/backend/article/image.service";
 import {Article} from "../../../domain/dto/article/article";
 import {takeUntil} from "rxjs/internal/operators";
 import {Subject} from "rxjs/index";
+import {addFullViewPort} from "../../../jquery";
 
 @Component({
   selector: 'app-article',
@@ -22,6 +23,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    addFullViewPort('dream-book-view', -10);
     this.route.data
       .pipe(takeUntil(this.componentDestroyed))
       .subscribe((data: { article: Article }) => {

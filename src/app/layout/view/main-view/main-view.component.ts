@@ -5,6 +5,7 @@ import {urlConfig} from "../../../service/util/url.config";
 import {ArticleShort} from "../../../domain/dto/article/article.short";
 import {Subject} from "rxjs/index";
 import {takeUntil} from "rxjs/internal/operators";
+import {addFullViewPort} from "../../../jquery";
 
 @Component({
   selector: 'app-main-view',
@@ -28,6 +29,7 @@ export class MainViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    addFullViewPort('main-view', -12);
     this.service.getMainArticles()
       .pipe(takeUntil(this.componentDestroyed))
       .subscribe(next => {
