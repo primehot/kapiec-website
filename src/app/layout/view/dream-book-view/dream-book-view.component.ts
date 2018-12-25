@@ -4,6 +4,7 @@ import {Subject} from "rxjs/index";
 import {takeUntil} from "rxjs/internal/operators";
 import {ActivatedRoute, Router} from "@angular/router";
 import {DreamBook, DreamBookTitlePage} from "../../../domain/dto/dream_book/dream.book";
+import {addFullViewPort} from "../../../jquery";
 import {Meta, Title} from "@angular/platform-browser";
 
 @Component({
@@ -27,6 +28,7 @@ export class DreamBookViewComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    addFullViewPort('dream-book-view', -20);
     this.route.data
       .pipe(takeUntil(this.componentDestroyed))
       .subscribe((data: { dreamBookTitlePage: DreamBookTitlePage }) => {

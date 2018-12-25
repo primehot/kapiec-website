@@ -11,7 +11,7 @@ import {pageSize} from "../../../service/util/page.config";
 import {IdentificationPageDecorator} from "../../../domain/decorator/identification.page.decorator";
 import {ArticlePage} from "../../../domain/dto/article/article.page";
 import {takeUntil} from "rxjs/internal/operators";
-import {scrollTop} from "../../../jquery";
+import {addFullViewPort, scrollTop} from "../../../jquery";
 
 @Component({
   selector: 'app-table',
@@ -41,6 +41,7 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    addFullViewPort('table-view', -10);
     this.route.data
       .pipe(takeUntil(this.componentDestroyed))
       .subscribe((data: {
@@ -116,7 +117,6 @@ export class TableComponent implements OnInit, OnDestroy {
         this.total = res.totalElements;
         this.p = page;
         this.loading = false;
-        console.log("getPage");
         scrollTop(300);
       }),
       map(res => res.items),
