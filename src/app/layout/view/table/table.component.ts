@@ -117,7 +117,6 @@ export class TableComponent implements OnInit, OnDestroy {
         this.total = res.totalElements;
         this.p = page;
         this.loading = false;
-        console.log("getPage");
         scrollTop(300);
       }),
       map(res => res.items),

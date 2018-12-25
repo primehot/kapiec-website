@@ -4,11 +4,11 @@
       <app-table-navigation [articleType]="articleType" [topicId]="topicId" [topic]="topic"
                             [tagId]="tagId" [tag]="tag" [phrase]="phrase"></app-table-navigation>
 
-      <div class="card-columns justify-content-center table-card">
-        <div class="card card-item border-0"
+      <div class="row">
+        <div class="card table-card border-0 col-md-6 col-12"
              *ngFor="let item of asyncMeals | async | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: p, totalItems: total }" title="{{ item.title }}">
           <a routerLink="/{{item.articleCategory.name}}/{{item.id}}" class="custom-card" >
-            <img class="card-img" [lazyLoad]="getImage(item.articleCategory.name, item.id)" [offset]="300">
+            <img src="https://via.placeholder.com/800x600?text=VakiVasi.com" class="card-img" [lazyLoad]="getImage(item.articleCategory.name, item.id)" [offset]="0">
             <div class="card-body">
               <h4 class="card-title">{{ item.title }}</h4>
               <h5 class="card-text">{{ item.hotContent }}</h5>
