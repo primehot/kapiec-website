@@ -15,7 +15,7 @@ import {Meta, Title} from "@angular/platform-browser";
 export class DreamBookViewComponent implements OnInit, OnDestroy {
 
   articleType = ArticleType.dream;
-  title: string;
+  // title: string;
   dreamBooks: DreamBook[];
   inputValue: string;
 
@@ -35,6 +35,7 @@ export class DreamBookViewComponent implements OnInit, OnDestroy {
         if (data.dreamBookTitlePage) {
           this.dreamBooks = data.dreamBookTitlePage.dreamBooks;
           this.inputValue = data.dreamBookTitlePage.title;
+          this.setTitleMetadata();
         }
       });
   }
@@ -50,9 +51,9 @@ export class DreamBookViewComponent implements OnInit, OnDestroy {
   }
 
   setTitleMetadata() {
-
-    this.meta.addTag({name: "", content: ""});
-
+    this.meta.addTag({ name: 'description', content: 'Значение снов. Если приснилось: ' + this.inputValue });
+    this.meta.addTag({ name: 'author', content: 'talkingdotnet' });
+    this.meta.addTag({ name: 'keywords', content: 'Сонник' });
   }
 
 }
