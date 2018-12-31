@@ -18,7 +18,7 @@ export class TagGuard implements Resolve<IdentificationPageDecorator> {
     let id = route.paramMap.get('tagId');
     console.log("Tag guard");
 
-    return this.ts.getPageByTag(id, 0, pageSize).pipe(
+    return this.ts.getPageByTag(id, 1, pageSize).pipe(
       take(1),
       mergeMap(articlePage => {
         if (articlePage) {

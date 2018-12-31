@@ -18,7 +18,7 @@ export class TopicGuard implements Resolve<IdentificationPageDecorator> {
     let id = route.paramMap.get('topicId');
     let articleType = route.data.articleType;
 
-    return this.ts.getPageByTopic(articleType, id, 0, pageSize).pipe(
+    return this.ts.getPageByTopic(articleType, id, 1, pageSize).pipe(
       take(1),
       mergeMap(articlePage => {
         if (articlePage) {

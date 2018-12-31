@@ -13,7 +13,15 @@ export class AdditionalDataService {
   constructor(private http: HttpClient) {
   }
 
-  getAdditionalArticleData(articleType: ArticleType): Observable<ArticleAdditional> {
+  getAdditionalArticle(articleType: ArticleType): Observable<ArticleAdditional> {
     return this.http.get<ArticleAdditional>(`${getUrl(articleType)}/additional`);
+  }
+
+  getAdditionalArticleByTopic(articleType: ArticleType, topicId): Observable<ArticleAdditional> {
+    return this.http.get<ArticleAdditional>(`${getUrl(articleType)}/additional/topic/${topicId}`);
+  }
+
+  getAdditionalArticleByTag(articleType: ArticleType, tagId): Observable<ArticleAdditional> {
+    return this.http.get<ArticleAdditional>(`${getUrl(articleType)}/${tagId}/additional`);
   }
 }

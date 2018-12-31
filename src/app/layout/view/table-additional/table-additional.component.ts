@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {AdditionalDataService} from "../../../service/backend/article/additional.data.service";
 import {ArticleType} from "../../../domain/emun/article.type";
 import {ImageService} from "../../../service/backend/article/image.service";
-import {Observable} from "rxjs/index";
-import {share, tap} from "rxjs/internal/operators";
+import {Observable, Subject} from "rxjs/index";
+import {share, subscribeOn, takeUntil, tap} from "rxjs/internal/operators";
 import {ArticleAdditional} from "../../../domain/dto/article/article.additional";
 import {ArticleShort} from "../../../domain/dto/article/article.short";
 
@@ -12,45 +12,47 @@ import {ArticleShort} from "../../../domain/dto/article/article.short";
   templateUrl: './table-additional.component.html',
   styleUrls: ['./table-additional.component.css']
 })
-export class TableAdditionalComponent implements OnInit {
+export class TableAdditionalComponent implements OnInit, OnDestroy {
 
   @Input() articleType: ArticleType;
-
-  additional: Observable<ArticleAdditional>;
+  @Input() topicId?: string;
+  @Input() tagId?: string;
 
   newest: ArticleShort[];
   firstPartRecommended: ArticleShort[];
   secondPartRecommended: ArticleShort[];
+
+  private componentDestroyed: Subject<any> = new Subject();
 
   constructor(private imageService: ImageService,
               private additionalDataService: AdditionalDataService) {
   }
 
   ngOnInit() {
-    this.additional = this.additionalDataService.getAdditionalArticleData(this.articleType)
-      .pipe(share(),
-        tap(next => {
-          let result = this.chunkArray(next.recommended, 2);
-          this.firstPartRecommended = result[0];
-          this.secondPartRecommended = result[1];
+    console.log(this.articleType);
+    this.getAdditionalArticleDataMethod()
+      .pipe(takeUntil(this.componentDestroyed))
+      .subscribe(next => {
+          console.log(next);
+          this.firstPartRecommended = next.recommended.slice(0, 2);
+          this.secondPartRecommended = next.recommended.slice(2, next.recommended.length);
           this.newest = next.newest;
-        }))
-    ;
+        });
   }
 
-  chunkArray(myArray, chunk_size) {
-    let index: number;
-    let arrayLength = myArray.length;
-    let tempArray = [];
-    let myChunk;
+  ngOnDestroy() {
+    this.componentDestroyed.next();
+    this.componentDestroyed.unsubscribe();
+  }
 
-    for (index = 0; index < arrayLength; index += chunk_size) {
-      myChunk = myArray.slice(index, index + chunk_size);
-      // Do something if you want with the group
-      tempArray.push(myChunk);
+  getAdditionalArticleDataMethod() {
+    if (this.tagId) {
+      return this.additionalDataService.getAdditionalArticleByTag(this.articleType, this.tagId);
+    } else if (this.topicId) {
+      return this.additionalDataService.getAdditionalArticleByTopic(this.articleType, this.topicId);
+    } else {
+      return this.additionalDataService.getAdditionalArticle(this.articleType);
     }
-
-    return tempArray;
   }
 
   getImage(articleType: ArticleType, id) {

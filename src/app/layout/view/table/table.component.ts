@@ -64,6 +64,11 @@ export class TableComponent implements OnInit, OnDestroy {
       });
   }
 
+  ngOnDestroy() {
+    this.componentDestroyed.next();
+    this.componentDestroyed.unsubscribe();
+  }
+
   categoryPageData(categoryPage) {
     this.total = categoryPage.totalElements;
     this.asyncMeals = of(categoryPage.items);
@@ -89,11 +94,6 @@ export class TableComponent implements OnInit, OnDestroy {
     this.namingService.getTag(this.tagId).pipe(takeUntil(this.componentDestroyed)).subscribe(next => this.tag = next.name);
   }
 
-  ngOnDestroy() {
-    this.componentDestroyed.next();
-    this.componentDestroyed.unsubscribe();
-  }
-
   getImage(articleType: ArticleType, id) {
     return this.imageService.getImageByType(articleType, id);
   }
@@ -110,10 +110,15 @@ export class TableComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * We start from page 1 instead of 0. Because page 0 is reserved for recommended and newest data
+   * @param {number} page
+   */
   getPage(page: number) {
     this.loading = true;
-    this.asyncMeals = this.getServicePageMethod(page - 1).pipe(
+    this.asyncMeals = this.getServicePageMethod(page).pipe(
       tap(res => {
+        console.log(res);
         this.total = res.totalElements;
         this.p = page;
         this.loading = false;

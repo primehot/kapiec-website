@@ -17,7 +17,7 @@ export class CategoryGuard implements Resolve<ArticlePage> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<ArticlePage> | Observable<never> {
     let articleType = route.data.articleType;
 
-    return this.ts.getPage(articleType, 0, pageSize).pipe(
+    return this.ts.getPage(articleType, 1, pageSize).pipe(
       take(1),
       mergeMap(articlePage => {
         if (articlePage) {
