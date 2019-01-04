@@ -2,6 +2,7 @@ export enum ArticleType {
   news = 'news',
   women = 'women',
   dream = 'dream',
+  dreambook = 'dreambook',
   tags = 'tags',
   search = 'search'
 }
@@ -9,6 +10,7 @@ export enum ArticleType {
 function getNavigationNameByType(articleType: ArticleType) {
   switch (articleType) {
     case ArticleType.dream:
+    case ArticleType.dreambook:
       return "Сонник";
     case ArticleType.news:
       return "Новости";

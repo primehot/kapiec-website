@@ -20,7 +20,7 @@ export class DreamBookAdditionalComponent implements OnInit, OnDestroy {
               private additionalDataService: AdditionalDataService) { }
 
   ngOnInit() {
-    this.additionalDataService.getAdditionalArticle(ArticleType.dream).pipe(takeUntil(this.componentDestroyed))
+    this.additionalDataService.getAdditionalArticle(ArticleType.dreambook).pipe(takeUntil(this.componentDestroyed))
       .subscribe(next => {
         this.recommended = next.recommended;
       });

@@ -77,6 +77,12 @@ const routes: Routes = [
     }
   },
   {
+    path: 'dreambook/:id', component: ArticleComponent, data: {articleType: ArticleType.dreambook},
+    resolve: {
+      article: ArticleGuard
+    }
+  },
+  {
     path: 'tags/:tagId', component: TableComponent, data: {articleType: ArticleType.tags},
     resolve: {
       tagPage: TagGuard
