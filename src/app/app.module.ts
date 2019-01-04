@@ -29,6 +29,7 @@ import { DreamBookViewComponent } from './layout/view/dream-book-view/dream-book
 import {FormsModule} from "@angular/forms";
 import { FooterComponent } from './layout/footer/footer.component';
 import {NgxPopperModule} from "ngx-popper";
+import { DreamBookAdditionalComponent } from './layout/view/dream-book-additional/dream-book-additional.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import {NgxPopperModule} from "ngx-popper";
     RightComponent,
     LeftComponent,
     DreamBookViewComponent,
-    FooterComponent
+    FooterComponent,
+    DreamBookAdditionalComponent
   ],
   imports: [
     NgbCollapseModule,

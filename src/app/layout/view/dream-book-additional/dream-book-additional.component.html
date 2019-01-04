@@ -1,0 +1,11 @@
+<h6 class="recommended-title">Рекомендованое</h6>
+<div *ngIf="recommended" class="container justify-content-center">
+  <div class="card border-0" *ngFor="let rec of recommended" style="margin-top: 1rem; margin-bottom: 1rem">
+    <a routerLink="/{{rec.articleCategory.name}}/{{rec.id}}" class="custom-card">
+      <img class="card-img" [lazyLoad]="getImage(rec.articleCategory.name, rec.id)" [offset]="300">
+      <div class="card-body">
+        <h6 class="card-title">{{rec.shortContent}}</h6>
+      </div>
+    </a>
+  </div>
+</div>

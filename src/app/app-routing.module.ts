@@ -64,7 +64,6 @@ const routes: Routes = [
     dreamBookTitlePage: DreamBookSearchGuard
   }
   },
-
   {
     path: 'dream/:id', component: ArticleComponent, data: {articleType: ArticleType.dream},
     resolve: {
