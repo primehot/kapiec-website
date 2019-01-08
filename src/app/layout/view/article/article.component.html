@@ -4,3 +4,25 @@
   <img class="img-fluid" alt="Responsive image" [lazyLoad]="imageSrc" [offset]="100">
   <p class="text-justify">{{article.content}}</p>
 </div>
+<div class="container">
+  <div class="row justify-content-between" style="margin-bottom: 4rem">
+    <div class="recommended-container col-5 col-md-4 justify-content-center" *ngIf="article.previous">
+      <h4>Предедущая</h4>
+      <a class="recommended" routerLink="/{{article.previous.articleCategory.name}}/{{article.previous.id}}">
+        <div class="container">
+          <h5>{{article.previous.title}}</h5>
+          <h6>{{article.previous.shortContent}}</h6>
+        </div>
+      </a>
+    </div>
+    <div class="recommended-container col-5 col-md-4" *ngIf="article.next">
+      <h5>Следущая</h5>
+      <a class="recommended" routerLink="/{{article.next.articleCategory.name}}/{{article.next.id}}">
+        <div class="container">
+          <h6>{{article.next.title}}</h6>
+          {{article.next.shortContent}}
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

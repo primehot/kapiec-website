@@ -1,5 +1,6 @@
 import {ArticleCategory} from "./article.category";
 import {ArticleHashTag} from "./article.hash.tag";
+import {ArticleShort} from "./article.short";
 
 export class Article {
   id: number;
@@ -9,4 +10,6 @@ export class Article {
   content: string;
   articleCategory: ArticleCategory;
   hashTags: ArticleHashTag[];
+  previous: ArticleShort;
+  next: ArticleShort;
 }
