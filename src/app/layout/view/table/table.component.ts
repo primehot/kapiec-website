@@ -7,7 +7,7 @@ import {TableService} from "../../../service/backend/article/table.service";
 import {Article} from "../../../domain/dto/article/article";
 import {ActivatedRoute} from "@angular/router";
 import {NamingService} from "../../../service/backend/article/naming.service";
-import {pageSize} from "../../../service/util/page.config";
+import {navigationSize, newestSize, pageSize, recommendedSize} from "../../../service/util/page.config";
 import {IdentificationPageDecorator} from "../../../domain/decorator/identification.page.decorator";
 import {ArticlePage} from "../../../domain/dto/article/article.page";
 import {takeUntil} from "rxjs/internal/operators";
@@ -70,25 +70,25 @@ export class TableComponent implements OnInit, OnDestroy {
   }
 
   categoryPageData(categoryPage) {
-    this.total = categoryPage.totalElements;
+    this.setTotal(categoryPage.totalElements);
     this.asyncMeals = of(categoryPage.items);
   }
 
   topicPageData(topicPage) {
-    this.total = topicPage.articlePage.totalElements;
+    this.setTotal(topicPage.articlePage.totalElements);
     this.asyncMeals = of(topicPage.articlePage.items);
     this.topicId = topicPage.id;
     this.namingService.getTopic(this.articleType, this.topicId).pipe(takeUntil(this.componentDestroyed)).subscribe(next => this.topic = next.name);
   }
 
   searchPageData(searchPage) {
-    this.total = searchPage.articlePage.totalElements;
+    this.setTotal(searchPage.articlePage.totalElements);
     this.asyncMeals = of(searchPage.articlePage.items);
     this.phrase = searchPage.id;
   }
 
   tagPageData(tagPage) {
-    this.total = tagPage.articlePage.totalElements;
+    this.setTotal(tagPage.articlePage.totalElements);
     this.asyncMeals = of(tagPage.articlePage.items);
     this.tagId = tagPage.id;
     this.namingService.getTag(this.tagId).pipe(takeUntil(this.componentDestroyed)).subscribe(next => this.tag = next.name);
@@ -119,7 +119,7 @@ export class TableComponent implements OnInit, OnDestroy {
     this.asyncMeals = this.getServicePageMethod(page).pipe(
       tap(res => {
         console.log(res);
-        this.total = res.totalElements;
+        this.setTotal(res.totalElements);
         this.p = page;
         this.loading = false;
         scrollTop(300);
@@ -127,6 +127,10 @@ export class TableComponent implements OnInit, OnDestroy {
       map(res => res.items),
       takeUntil(this.componentDestroyed)
     );
+  }
+
+  setTotal(newTotal: number) {
+    this.total = newTotal - recommendedSize - newestSize - navigationSize;
   }
 
 }
