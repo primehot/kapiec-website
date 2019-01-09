@@ -1,5 +1,5 @@
 import * as $ from 'jquery';
-import {ArticleType} from "./domain/emun/article.type";
+import {ArticleType} from "./main-panel/domain/emun/article.type";
 
 function addJqueryLogic() {
   $(document).ready(function () {
@@ -51,15 +51,13 @@ function addCollapseScroll() {
     } else {
       $('#navigation-bar')
         .removeClass("navbar-fixed")
-        .css('top', 0)
-        .clearQueue();
+        .css('top', 0);
       $('.content')
         .css('padding-top', 0);
       $('.overlap-collapse')
         .removeClass("navbar-fixed")
         .removeClass("col-lg-6 col-md-10")
-        .css('top', 0)
-        .clearQueue();
+        .css('top', 0);
     }
   });
 }
