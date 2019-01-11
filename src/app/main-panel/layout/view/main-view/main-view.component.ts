@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MainArticleService} from "../../../service/backend/article/main.article.service";
 import {ImageService} from "../../../service/backend/article/image.service";
-import {urlConfig} from "../../../service/util/url.config";
+import {urlConfig} from "../../../../url.config";
 import {ArticleShort} from "../../../domain/dto/article/article.short";
 import {Subject} from "rxjs/index";
 import {takeUntil} from "rxjs/internal/operators";

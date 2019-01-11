@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from "rxjs/index";
 import {ArticleNavigation, DreamBookNavigation} from "../../../domain/dto/navigation";
 import {ArticleType} from "../../../domain/emun/article.type";
-import {getUrl} from "../../util/url.config";
+import {getUrl} from "../../../../url.config";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable({

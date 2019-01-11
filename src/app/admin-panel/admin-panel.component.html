@@ -1,3 +1,28 @@
-<p>
-  admin-panel works!
-</p>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark py-0" id="navigation-bar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">VakiVasi</a>
+    </div>
+    <ul class="nav navbar-nav" routerLinkActive="active">
+      <li class="nav-item"><a class="nav-link" routerLink="/admin">Home</a></li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="article">Create Article</a>
+      </li>
+      <li *ngIf="authority === 'admin'" class="nav-item">
+        <a class="nav-link" routerLink="admin">Admin Board</a>
+      </li>
+      <li *ngIf="authority === 'pm'" class="nav-item">
+        <a class="nav-link" routerLink="pm">PM Board</a>
+      </li>
+      <li *ngIf="authority" class="nav-item">
+        <a class="nav-link" routerLink="login" (click)="logOut()">LogOut</a>
+      </li>
+      <li *ngIf="!authority" class="nav-item">
+        <a class="nav-link" routerLink="login">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

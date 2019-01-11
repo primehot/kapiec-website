@@ -16,9 +16,17 @@ import {TopicGuard} from "./main-panel/guard/topic.guard";
 import {DreamBookSearchGuard} from "./main-panel/guard/dream.book.search.guard";
 import {MainViewComponent} from "./main-panel/layout/view/main-view/main-view.component";
 import {CategoryGuard} from "./main-panel/guard/category.guard";
+import {LoginComponent} from "./admin-panel/view/login/login.component";
+import {ArticleCreateComponent} from "./admin-panel/view/article-create/article-create.component";
+import {AuthGuard} from "./admin-panel/guard/auth.guard";
+import {RegisterComponent} from "./admin-panel/view/register/register.component";
 
 const routes: Routes = [
-  {path: 'admin', component: AdminPanelComponent},
+  {path: 'admin', component: AdminPanelComponent, children: [
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent},
+    {path: 'article', component: ArticleCreateComponent, canActivate: [AuthGuard]}
+  ]},
   {path: '', component: MainPanelComponent, children: [
     {path: '', component: MainViewComponent, },
     {

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {getUrl} from "../../util/url.config";
+import {getUrl} from "../../../../url.config";
 import {Observable} from "rxjs/index";
 import {ArticleType} from "../../../domain/emun/article.type";
 import {ArticleTopic} from "../../../domain/dto/article/article.topic";

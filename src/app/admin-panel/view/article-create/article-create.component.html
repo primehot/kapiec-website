@@ -1,0 +1,42 @@
+<div class="row" style="margin-top: 10px">
+  <div class="container col-6">
+    <form>
+      <mat-radio-group class="example-radio-group" [(ngModel)]="article.articleCategory.name" name="article types"
+                       style="display: inline-flex; flex-direction: column;">
+        <mat-radio-button class="example-radio-button" *ngFor="let type of articleTypes" [value]="type">
+          {{type}}
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <mat-form-field hintLabel="Max 10 characters" class="full-width">
+        <input [(ngModel)]="article.title" matInput #input maxlength="10" placeholder="Title" name="title">
+        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field hintLabel="Max 100 characters" class="full-width">
+        <textarea [(ngModel)]="article.hotContent" matInput maxlength="100" placeholder="Hot Content"
+                  name="hot content"></textarea>
+        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field hintLabel="Max 1000 characters" *ngFor="let p of paragraphs; index as i;" class="full-width">
+        <textarea [(ngModel)]="p.content" matInput maxlength="1000" placeholder="Paragraph"
+                  name="Paragraph ${{i}}"></textarea>
+        <mat-hint align="end">{{input.value?.length || 0}}/1000</mat-hint>
+      </mat-form-field>
+
+      <button mat-raised-button (click)="addParagraph()">Add Paragraph</button>
+      <button mat-raised-button (click)="removeParagraph()">Remove Paragraph</button>
+    </form>
+
+  </div>
+
+  <div class="container col-6">
+    <div id="article" class="component content-container">
+      <h5>{{article.title}}</h5>
+      <h3>{{article.hotContent}}</h3>
+      <img src="https://via.placeholder.com/400x200?text=VakiVasi.com">
+      <p *ngFor="let p of paragraphs; index as i;" [innerHTML]="p.content">
+    </div>
+  </div>
+</div>

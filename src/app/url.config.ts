@@ -1,4 +1,4 @@
-import {ArticleType} from "../../domain/emun/article.type";
+import {ArticleType} from "./main-panel/domain/emun/article.type";
 
 const serverHost = 'http://localhost';
 const serverPort = '8080';
@@ -31,4 +31,14 @@ const getUrl = (articleType) => {
   }
 };
 
-export {urlConfig, getUrl};
+const getAdminUrl = () => {
+  return `${serverUrl}/admin`;
+};
+
+const getAuthUrl = () => {
+  return `${serverUrl}/auth`;
+};
+
+
+
+export {urlConfig, getUrl, getAdminUrl, getAuthUrl};

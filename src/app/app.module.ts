@@ -19,19 +19,22 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule, MatIconModule,
   MatInputModule,
-  MatListModule, MatRippleModule, MatTooltipModule
+  MatListModule, MatRadioModule, MatRippleModule, MatTooltipModule
 } from '@angular/material';
 import { CenterComponent } from './main-panel/layout/navigation/collapse/custom/center/center.component';
 import { RightComponent } from './main-panel/layout/navigation/collapse/custom/right/right.component';
 import { LeftComponent } from './main-panel/layout/navigation/collapse/custom/left/left.component';
 import { DreamBookViewComponent } from './main-panel/layout/view/dream-book-view/dream-book-view.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { FooterComponent } from './main-panel/layout/footer/footer.component';
 import {NgxPopperModule} from "ngx-popper";
 import { DreamBookAdditionalComponent } from './main-panel/layout/view/dream-book-additional/dream-book-additional.component';
 import { MainPanelComponent } from './main-panel/main-panel.component';
 import { AdminPanelComponent } from './admin-panel/admin-panel.component';
 import { AppRoutingModule } from './app-routing.module';
+import { LoginComponent } from './admin-panel/view/login/login.component';
+import { RegisterComponent } from './admin-panel/view/register/register.component';
+import { ArticleCreateComponent } from './admin-panel/view/article-create/article-create.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { AppRoutingModule } from './app-routing.module';
     FooterComponent,
     DreamBookAdditionalComponent,
     MainPanelComponent,
-    AdminPanelComponent
+    AdminPanelComponent,
+    LoginComponent,
+    RegisterComponent,
+    ArticleCreateComponent,
   ],
   imports: [
     NgbCollapseModule,
@@ -73,7 +79,9 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     MatTooltipModule,
     NgxPopperModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

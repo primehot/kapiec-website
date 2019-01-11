@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {ArticleType} from "../../../domain/emun/article.type";
-import {getUrl} from "../../util/url.config";
+import {getUrl} from "../../../../url.config";
 
 @Injectable({
   providedIn: 'root'
