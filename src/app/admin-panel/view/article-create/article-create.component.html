@@ -1,34 +1,50 @@
 <div class="row" style="margin-top: 10px">
   <div class="container col-6">
-    <form>
-      <mat-radio-group class="example-radio-group" [(ngModel)]="article.articleCategory.name" name="article types"
-                       style="display: inline-flex; flex-direction: column;">
-        <mat-radio-button class="example-radio-button" *ngFor="let type of articleTypes" [value]="type">
-          {{type}}
-        </mat-radio-button>
-      </mat-radio-group>
+    <mat-radio-group class="example-radio-group" (change)="articleTypeChange($event)"
+                     [(ngModel)]="article.articleCategory.name" name="article types"
+                     style="display: inline-flex; flex-direction: column;">
+      <mat-radio-button class="example-radio-button" *ngFor="let type of articleTypes" [value]="type">
+        {{type}}
+      </mat-radio-button>
+    </mat-radio-group>
 
-      <mat-form-field hintLabel="Max 10 characters" class="full-width">
-        <input [(ngModel)]="article.title" matInput #input maxlength="10" placeholder="Title" name="title">
-        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
-      </mat-form-field>
+    <mat-form-field hintLabel="Max 10 characters" class="full-width">
+      <input [(ngModel)]="article.title" matInput #input maxlength="10" placeholder="Title" name="title">
+      <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+    </mat-form-field>
 
-      <mat-form-field hintLabel="Max 100 characters" class="full-width">
+    <mat-form-field hintLabel="Max 100 characters" class="full-width">
         <textarea [(ngModel)]="article.hotContent" matInput maxlength="100" placeholder="Hot Content"
                   name="hot content"></textarea>
-        <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
-      </mat-form-field>
+      <mat-hint align="end">{{input.value?.length || 0}}/10</mat-hint>
+    </mat-form-field>
 
-      <mat-form-field hintLabel="Max 1000 characters" *ngFor="let p of paragraphs; index as i;" class="full-width">
+    <mat-form-field hintLabel="Max 1000 characters" *ngFor="let p of paragraphs; index as i;" class="full-width">
         <textarea [(ngModel)]="p.content" matInput maxlength="1000" placeholder="Paragraph"
                   name="Paragraph ${{i}}"></textarea>
-        <mat-hint align="end">{{input.value?.length || 0}}/1000</mat-hint>
-      </mat-form-field>
+      <mat-hint align="end">{{input.value?.length || 0}}/1000</mat-hint>
+    </mat-form-field>
 
-      <button mat-raised-button (click)="addParagraph()">Add Paragraph</button>
-      <button mat-raised-button (click)="removeParagraph()">Remove Paragraph</button>
-    </form>
+    <button mat-raised-button (click)="addParagraph()">Add Paragraph</button>
+    <button mat-raised-button (click)="removeParagraph()">Remove Paragraph</button>
 
+    <div class="container" style="margin-top: 2rem">
+      <label class="full-width">Hash Tags:</label>
+      <mat-checkbox *ngFor="let hashTag of tags" class="example-margin"
+                    (change)="checkHashTag($event.checked, hashTag)" style="padding: 1rem">
+        {{hashTag.name}}
+      </mat-checkbox>
+    </div>
+
+    <div *ngIf="topics" class="container" style="margin-top: 2rem">
+      <label class="full-width">Topics: </label>
+      <mat-radio-group class="example-radio-group" (change)="topicChange($event)" name="article topic"
+                       style="display: inline-flex; flex-direction: column;">
+        <mat-radio-button class="example-radio-button" *ngFor="let topic of topics" [value]="topic">
+          {{topic.name}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
   </div>
 
   <div class="container col-6">
