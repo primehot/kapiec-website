@@ -17,7 +17,8 @@ import {TableNavigationComponent} from './main-panel/layout/view/table-navigatio
 import {TableAdditionalComponent} from './main-panel/layout/view/table-additional/table-additional.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatFormFieldModule, MatGridListModule, MatIconModule,
+  MatButtonModule, MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatGridListModule,
+  MatIconModule,
   MatInputModule,
   MatListModule, MatRadioModule, MatRippleModule, MatTooltipModule
 } from '@angular/material';
@@ -35,6 +36,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './admin-panel/view/login/login.component';
 import { RegisterComponent } from './admin-panel/view/register/register.component';
 import { ArticleCreateComponent } from './admin-panel/view/article-create/article-create.component';
+import { DialogComponent } from './admin-panel/view/error-dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import { ArticleCreateComponent } from './admin-panel/view/article-create/articl
     LoginComponent,
     RegisterComponent,
     ArticleCreateComponent,
+    DialogComponent
   ],
   imports: [
     NgbCollapseModule,
@@ -82,9 +85,11 @@ import { ArticleCreateComponent } from './admin-panel/view/article-create/articl
     AppRoutingModule,
     ReactiveFormsModule,
     MatRadioModule,
+    MatDialogModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DialogComponent]
 })
 export class AppModule {
 }

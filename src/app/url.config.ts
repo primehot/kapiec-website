@@ -31,8 +31,8 @@ const getUrl = (articleType) => {
   }
 };
 
-const getAdminUrl = () => {
-  return `${serverUrl}/admin`;
+const getAdministrationUrl = () => {
+  return `${serverUrl}/administration`;
 };
 
 const getAuthUrl = () => {
@@ -41,4 +41,4 @@ const getAuthUrl = () => {
 
 
 
-export {urlConfig, getUrl, getAdminUrl, getAuthUrl};
+export {urlConfig, getUrl, getAdministrationUrl, getAuthUrl};
