@@ -17,7 +17,8 @@ import {TableNavigationComponent} from './main-panel/layout/view/table-navigatio
 import {TableAdditionalComponent} from './main-panel/layout/view/table-additional/table-additional.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
-  MatButtonModule, MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatGridListModule,
+  MatButtonModule, MatButtonToggleModule, MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule,
+  MatGridListModule,
   MatIconModule,
   MatInputModule,
   MatListModule, MatRadioModule, MatRippleModule, MatTooltipModule
@@ -37,6 +38,7 @@ import { LoginComponent } from './admin-panel/view/login/login.component';
 import { RegisterComponent } from './admin-panel/view/register/register.component';
 import { ArticleCreateComponent } from './admin-panel/view/article-create/article-create.component';
 import { DialogComponent } from './admin-panel/view/error-dialog/dialog.component';
+import {httpInterceptorProviders} from "./admin-panel/interceptor/auth-interceptor";
 
 @NgModule({
   declarations: [
@@ -85,11 +87,12 @@ import { DialogComponent } from './admin-panel/view/error-dialog/dialog.componen
     AppRoutingModule,
     ReactiveFormsModule,
     MatRadioModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonToggleModule
   ],
-  providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [DialogComponent]
+  entryComponents: [DialogComponent],
+  providers: [httpInterceptorProviders],
 })
 export class AppModule {
 }
